@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FoodieMate</string>
+    <string name="main">Main</string>
+    <string name="recipes">Recipes</string>
+    <string name="fridge">Fridge</string>
+    <string name="none">None</string>
 </resources>

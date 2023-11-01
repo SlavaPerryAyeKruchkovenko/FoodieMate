@@ -87,6 +87,6 @@ fun FridgeProductView(product: FridgeProduct) {
 
 @Preview
 @Composable
-fun PreviewProduct() {
+private fun PreviewProduct() {
     FridgeProductView(Mock.mockFridgeProduct().first())
 }
