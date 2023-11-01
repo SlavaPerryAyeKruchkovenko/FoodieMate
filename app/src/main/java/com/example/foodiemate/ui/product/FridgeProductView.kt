@@ -1,36 +1,85 @@
 package com.example.foodiemate.ui.product
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.foodiemate.R
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.foodiemate.data.FridgeProduct
-import java.util.*
+import com.example.foodiemate.network.Mock
+import com.example.foodiemate.ui.theme.Blue200
+import com.example.foodiemate.ui.theme.Blue700
+import com.example.foodiemate.ui.theme.Orange
+import com.example.foodiemate.utils.ProductUtils
 
 @Composable
 fun FridgeProductView(product: FridgeProduct) {
+    val image = ProductUtils.getProductImage(product.product)
     Card(
-        modifier = Modifier.fillMaxWidth()
+        shape = RoundedCornerShape(8.dp),
+        border = BorderStroke(1.dp, Blue700),
+        modifier = Modifier
+            .fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = Blue200,
+        ),
     ) {
-        Box(modifier = Modifier.fillMaxWidth()) {
-            Column {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Image(
-                    painter = painterResource(id = R.drawable.meat),
-                    contentDescription = "product"
-
+                    contentScale = ContentScale.Fit,
+                    painter = painterResource(id = image),
+                    contentDescription = product.product.category,
+                    modifier = Modifier.width(120.dp)
                 )
-                Text("Колбаса")
-                HorizontalDivider()
-                Text("Бренд: Вязанка")
-                Text("Кол-во: 200Г")
+                Text(
+                    product.product.name,
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = Orange,
+                    fontSize = 16.sp,
+                    lineHeight = 24.sp
+                )
+                HorizontalDivider(
+                    modifier = Modifier
+                        .padding(vertical = 8.dp)
+                        .fillMaxWidth(),
+                    color = Blue700
+                )
+                Text(
+                    "Бренд: ${product.product.category}",
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    color = Blue700,
+                    fontSize = 12.sp,
+                    lineHeight = 16.sp
+                )
+                Text(
+                    "Кол-во: ${product.count}",
+                    modifier = Modifier
+                        .padding(vertical = 4.dp)
+                        .fillMaxWidth(),
+                    color = Blue700,
+                    fontSize = 12.sp,
+                    lineHeight = 16.sp
+                )
             }
         }
     }
@@ -39,5 +88,5 @@ fun FridgeProductView(product: FridgeProduct) {
 @Preview
 @Composable
 fun PreviewProduct() {
-    FridgeProductView(FridgeProduct("1", "1", 1, true, 1, Date(), null))
+    FridgeProductView(Mock.mockFridgeProduct().first())
 }

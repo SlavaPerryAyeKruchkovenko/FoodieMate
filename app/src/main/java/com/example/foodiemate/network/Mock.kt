@@ -60,6 +60,24 @@ object Mock {
                 3,
                 Date(),
                 null
+            ),
+            FridgeProduct(
+                "7",
+                mockProducts().first { it.id === "7" },
+                3,
+                false,
+                3,
+                Date(),
+                null
+            ),
+            FridgeProduct(
+                "8",
+                mockProducts().first { it.id === "8" },
+                23,
+                true,
+                3,
+                Date(),
+                null
             )
         )
     }
@@ -71,8 +89,9 @@ object Mock {
             Product("3", "Cheese", "Feta", "Фетос", "3"),
             Product("4", "Sausage", "Smoked", "Московская", "4"),
             Product("5", "Milk", "Low- fat", "Простоквашено", "5"),
-            Product("6", "Cucumber", "default", "Огурец", "6"),
-            Product("7", "Tomato", "Barnaul", "Сто пудов", "6")
+            Product("6", "Vegetables", "Cucumber", "Огурец", "6"),
+            Product("7", "Vegetables", "Tomato", "Сто пудов", "7"),
+            Product("8", "Fruits", "Banana", "Мама негра", "8")
         )
     }
 }
