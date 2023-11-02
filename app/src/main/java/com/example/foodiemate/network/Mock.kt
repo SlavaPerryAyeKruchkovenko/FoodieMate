@@ -84,14 +84,14 @@ object Mock {
 
     private fun mockProducts(): List<Product> {
         return listOf(
-            Product("1", "Sausage", "Meat product", "Вязанка", "1"),
-            Product("2", "Cheese", "Mozzarella", "Galbani", "2"),
-            Product("3", "Cheese", "Feta", "Фетос", "3"),
-            Product("4", "Sausage", "Smoked", "Московская", "4"),
-            Product("5", "Milk", "Low- fat", "Простоквашено", "5"),
-            Product("6", "Vegetables", "Cucumber", "Огурец", "6"),
-            Product("7", "Vegetables", "Tomato", "Сто пудов", "7"),
-            Product("8", "Fruits", "Banana", "Мама негра", "8")
+            Product("1", "Sausage", "Meat product", "Вязанка", "Колбаса Варенная", "1"),
+            Product("2", "Cheese", "Mozzarella", "Galbani", "Сыр Моцарелла", "2"),
+            Product("3", "Cheese", "Feta", "Фетос", "Сыр кубиком", "3"),
+            Product("4", "Sausage", "Smoked", "Московская", "Колбаса", "4"),
+            Product("5", "Milk", "Low- fat", "Простоквашено", "Молоко", "5"),
+            Product("6", "Vegetables", "Cucumber", null, "Огурец", "6"),
+            Product("7", "Vegetables", "Tomato", "Сто пудов", "Помидор", "7"),
+            Product("8", "Fruits", "Banana", "Мама негра", "Бананы", "8")
         )
     }
 }

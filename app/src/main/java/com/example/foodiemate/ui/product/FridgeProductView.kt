@@ -63,14 +63,16 @@ fun FridgeProductView(product: FridgeProduct) {
                         .fillMaxWidth(),
                     color = Blue700
                 )
-                Text(
-                    "Бренд: ${product.product.category}",
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    color = Blue700,
-                    fontSize = 12.sp,
-                    lineHeight = 16.sp
-                )
+                product.product.brand?.let {
+                    Text(
+                        "Бренд: ${product.product.brand}",
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        color = Blue700,
+                        fontSize = 12.sp,
+                        lineHeight = 16.sp
+                    )
+                }
                 Text(
                     "Кол-во: ${product.count}",
                     modifier = Modifier
