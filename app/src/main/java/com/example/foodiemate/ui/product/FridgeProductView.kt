@@ -65,7 +65,7 @@ fun FridgeProductView(product: FridgeProduct) {
                 )
                 product.product.brand?.let {
                     Text(
-                        "Бренд: ${product.product.brand}",
+                        "Бренд: $it",
                         modifier = Modifier
                             .fillMaxWidth(),
                         color = Blue700,
