@@ -5,6 +5,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.compose.rememberNavController
 import com.example.foodiemate.ui.navigations.NavigationBottomBar
 import com.example.foodiemate.ui.navigations.NavigationGraph
@@ -20,7 +21,7 @@ fun MainScreen() {
         containerColor = White,
         bottomBar = {
             NavigationBottomBar(navController)
-        }
+        },
     ) {
         NavigationGraph(navController = navController)
     }

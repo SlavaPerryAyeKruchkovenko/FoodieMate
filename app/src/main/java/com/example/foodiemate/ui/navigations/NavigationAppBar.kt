@@ -145,7 +145,12 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
                     }
                 }
                 BackHandler {
-                    isActive = false
+                    if(queryString.isNotEmpty()){
+                        queryString = ""
+                    }
+                    else{
+                        isActive = false
+                    }
                 }
             }
         }
