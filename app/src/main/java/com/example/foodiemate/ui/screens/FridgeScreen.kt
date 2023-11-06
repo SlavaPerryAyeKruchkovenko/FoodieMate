@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.foodiemate.R
 import com.example.foodiemate.data.FridgeProduct
 import com.example.foodiemate.data.IndexObject
+import com.example.foodiemate.data.SearchData
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.navigations.NavigationAppBar
 import com.example.foodiemate.ui.product.FridgeProductView
@@ -30,7 +31,7 @@ fun FridgeScreen() {
                 .fillMaxSize()
         ) {
             NavigationAppBar(
-                products.map { it.product.name },
+                products.map { SearchData(it.id, it.product.name) },
                 stringResource(id = R.string.products)
             )
             LazyVerticalGrid(
