@@ -30,7 +30,7 @@ fun FridgeProductView(product: FridgeProduct) {
         shape = RoundedCornerShape(8.dp),
         border = BorderStroke(1.dp, Blue700),
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxSize(),
         colors = CardDefaults.cardColors(
             containerColor = Blue200,
         ),

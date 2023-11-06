@@ -14,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -63,16 +64,19 @@ fun FridgeScreen() {
                 }) {
                     Box(
                         contentAlignment = Alignment.Center,
-                        modifier = if (it.index % 2 == 0) Modifier.padding(
-                            top = 8.dp,
-                            bottom = 8.dp,
-                            end = 8.dp
-                        ) else Modifier.padding(
-                            top = 8.dp,
-                            bottom = 8.dp,
-                            start = 8.dp
-                        )
-
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .composed {
+                                if (it.index % 2 == 0) Modifier.padding(
+                                    top = 8.dp,
+                                    bottom = 8.dp,
+                                    end = 8.dp
+                                ) else Modifier.padding(
+                                    top = 8.dp,
+                                    bottom = 8.dp,
+                                    start = 8.dp
+                                )
+                            }
                     ) {
                         FridgeProductView(product = it.value)
                     }
