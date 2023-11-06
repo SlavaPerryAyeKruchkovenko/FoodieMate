@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FoodieMate</string>
+    <string name="main">Главная</string>
+    <string name="recipes">Рецепты</string>
+    <string name="fridge">Холодильник</string>
+    <string name="none">Нету</string>
+    <string name="products">Продукты</string>
+    <string name="search_more">Поиск…</string>
+</resources>
