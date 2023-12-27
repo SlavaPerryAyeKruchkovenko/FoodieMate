@@ -16,7 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.foodiemate.data.FridgeProduct
+import com.example.foodiemate.data.models.FridgeProduct
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.theme.Blue200
 import com.example.foodiemate.ui.theme.Blue700

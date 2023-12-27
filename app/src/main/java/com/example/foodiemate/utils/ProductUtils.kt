@@ -1,7 +1,7 @@
 package com.example.foodiemate.utils
 
 import com.example.foodiemate.R
-import com.example.foodiemate.data.Product
+import com.example.foodiemate.data.models.Product
 
 object ProductUtils {
     fun getProductImage(product: Product): Int {

@@ -1,7 +1,7 @@
 package com.example.foodiemate.network
 
-import com.example.foodiemate.data.FridgeProduct
-import com.example.foodiemate.data.Product
+import com.example.foodiemate.data.models.FridgeProduct
+import com.example.foodiemate.data.models.Product
 import java.util.*
 
 object Mock {

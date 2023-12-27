@@ -1,5 +1,6 @@
 package com.example.foodiemate.ui.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -20,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodiemate.R
-import com.example.foodiemate.data.FridgeProduct
+import com.example.foodiemate.data.models.FridgeProduct
 import com.example.foodiemate.data.IndexObject
 import com.example.foodiemate.data.SearchData
 import com.example.foodiemate.network.Mock
@@ -30,6 +31,7 @@ import com.example.foodiemate.ui.theme.Blue300
 import com.example.foodiemate.ui.theme.Blue700
 import com.example.foodiemate.ui.theme.White
 
+@SuppressLint("UnnecessaryComposedModifier")
 @Composable
 fun FridgeScreen() {
     val products = Mock.mockFridgeProduct()

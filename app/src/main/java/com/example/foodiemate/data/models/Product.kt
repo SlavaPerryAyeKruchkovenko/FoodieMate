@@ -1,4 +1,4 @@
-package com.example.foodiemate.data
+package com.example.foodiemate.data.models
 
 data class Product(
     val id: String,

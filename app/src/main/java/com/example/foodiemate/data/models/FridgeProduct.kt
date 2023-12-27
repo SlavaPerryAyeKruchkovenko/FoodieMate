@@ -1,5 +1,6 @@
-package com.example.foodiemate.data
+package com.example.foodiemate.data.models
 
+import com.example.foodiemate.data.models.Product
 import java.util.*
 
 data class FridgeProduct(
