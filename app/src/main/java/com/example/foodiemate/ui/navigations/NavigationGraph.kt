@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.foodiemate.data.Screen
 import com.example.foodiemate.ui.screens.FridgeScreen
+import com.example.foodiemate.ui.screens.RecipeScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
@@ -15,7 +16,7 @@ fun NavigationGraph(navController: NavHostController) {
             FridgeScreen()
         }
         composable(Screen.Recipes.screenName) {
-            Text(text = "recipes")
+            RecipeScreen()
         }
         composable(Screen.None.screenName) {
             Text(text = "none")
