@@ -46,7 +46,6 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(64.dp)
-                .padding(top = 24.dp, start = 24.dp, end = 24.dp)
         ) {
             Text(
                 text = placeHolder,

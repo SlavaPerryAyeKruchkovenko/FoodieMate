@@ -44,6 +44,7 @@ fun FridgeScreen() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .padding(top = 24.dp, start = 16.dp, end = 16.dp)
                 .constrainAs(content) {
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
@@ -59,7 +60,7 @@ fun FridgeScreen() {
                 columns = GridCells.Fixed(2),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 12.dp, bottom = 80.dp, start = 16.dp, end = 16.dp)
+                    .padding(top = 12.dp, bottom = 80.dp)
             ) {
                 items(products.mapIndexed { i: Int, product: FridgeProduct ->
                     IndexObject(i, product)

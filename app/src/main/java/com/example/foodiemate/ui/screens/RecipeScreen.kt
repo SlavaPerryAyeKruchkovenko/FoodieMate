@@ -21,7 +21,7 @@ fun RecipeScreen() {
     val recipes = Mock.mockRecipes()
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxSize().background(White)
             .padding(top = 24.dp, start = 24.dp, end = 24.dp, bottom = 80.dp)
     ) {
         NavigationAppBar(
