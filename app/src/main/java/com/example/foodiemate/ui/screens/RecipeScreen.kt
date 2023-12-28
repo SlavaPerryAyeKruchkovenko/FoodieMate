@@ -34,6 +34,7 @@ import com.example.foodiemate.data.models.Recipe
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.navigations.NavigationAppBar
 import com.example.foodiemate.ui.product.FridgeProductView
+import com.example.foodiemate.ui.recipe.RecipeCardsView
 import com.example.foodiemate.ui.recipe.RecipeFilterView
 import com.example.foodiemate.ui.recipe.RecipeFiltersView
 import com.example.foodiemate.ui.theme.Blue400
@@ -53,6 +54,7 @@ fun RecipeScreen() {
             stringResource(id = R.string.recipes)
         )
         RecipeFiltersView(recipes.map { x -> x.category })
+        RecipeCardsView(recipes, R.string.follows_recipes)
     }
 }
 

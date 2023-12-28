@@ -11,4 +11,6 @@
     <string name="follows_recipes">Избранное:</string>
     <string name="popular_recipes">Популярное:</string>
     <string name="new_recipes">Новое:</string>
+    <string name="rating">рейтинг</string>
+    <string name="kcal">ккал</string>
 </resources>

@@ -11,4 +11,6 @@
     <string name="follows_recipes">Élite:</string>
     <string name="popular_recipes">Populaire:</string>
     <string name="new_recipes">Nouveaux:</string>
+    <string name="rating">classement</string>
+    <string name="kcal">kcal</string>
 </resources>
