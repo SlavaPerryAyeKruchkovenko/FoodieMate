@@ -12,4 +12,9 @@
     <string name="new_recipes">New:</string>
     <string name="rating">rating</string>
     <string name="kcal">kcal</string>
+    <string name="breakfast">breakfast</string>
+    <string name="dessert">dessert</string>
+    <string name="salad">salad</string>
+    <string name="drinks">drinks</string>
+    <string name="soups">soups</string>
 </resources>

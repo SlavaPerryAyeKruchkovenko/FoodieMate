@@ -8,13 +8,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -46,7 +49,7 @@ fun RecipeCardsView(recipes: List<Recipe>, title: Int) {
             rows = GridCells.Fixed(1),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(118.dp)
+                .height(140.dp)
                 .padding(top = 4.dp)
         ) {
             items(recipes.mapIndexed { i: Int, recipe: Recipe ->
@@ -54,7 +57,7 @@ fun RecipeCardsView(recipes: List<Recipe>, title: Int) {
             }) {
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.5f).fillMaxHeight()
+                        .width((LocalConfiguration.current.screenWidthDp / 2 - 12).dp)
                         .composed {
                             when (it.index) {
                                 0 -> Modifier.padding(

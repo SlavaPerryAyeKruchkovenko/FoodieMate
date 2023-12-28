@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -57,11 +58,11 @@ fun RecipeFilterView(recipeCategory: RecipeCategory, minWidth: Dp, maxWidth: Dp)
                 Image(
                     contentScale = ContentScale.Fit,
                     painter = painterResource(id = recipeCategory.img),
-                    contentDescription = recipeCategory.name,
+                    contentDescription = stringResource(id = recipeCategory.name),
                     modifier = Modifier.height(26.dp)
                 )
                 Text(
-                    recipeCategory.name,
+                    text = stringResource(id = recipeCategory.name),
                     modifier = Modifier.padding(top = 4.dp),
                     color = Orange,
                     fontSize = 12.sp,

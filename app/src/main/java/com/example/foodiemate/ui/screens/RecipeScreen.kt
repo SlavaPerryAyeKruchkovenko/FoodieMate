@@ -40,10 +40,15 @@ import com.example.foodiemate.ui.recipe.RecipeFiltersView
 import com.example.foodiemate.ui.theme.Blue400
 import com.example.foodiemate.ui.theme.Blue700
 import com.example.foodiemate.ui.theme.White
+import java.util.Calendar
+import java.util.GregorianCalendar
 
 @Composable
 fun RecipeScreen() {
     val recipes = Mock.mockRecipes()
+    val lastDate = GregorianCalendar().apply {
+        add(Calendar.DAY_OF_MONTH,-1)
+    }.time
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -54,7 +59,9 @@ fun RecipeScreen() {
             stringResource(id = R.string.recipes)
         )
         RecipeFiltersView(recipes.map { x -> x.category })
-        RecipeCardsView(recipes, R.string.follows_recipes)
+        RecipeCardsView(recipes.filter { x -> x.isFollow }, R.string.follows_recipes)
+        RecipeCardsView(recipes.filter { x -> x.score > 4 }, R.string.popular_recipes)
+        RecipeCardsView(recipes.filter { x -> x.date >  lastDate}, R.string.new_recipes)
     }
 }
 

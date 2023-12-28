@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -61,6 +62,8 @@ fun RecipeCardView(recipe: Recipe) {
             ) {
                 Text(
                     recipe.name,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                     color = Orange,
                     fontSize = 16.sp,
                     lineHeight = 24.sp
@@ -92,7 +95,7 @@ fun RecipeCardView(recipe: Recipe) {
                     )
                 ) {
                     Text(
-                        text = "#${recipe.category.name}", modifier = Modifier
+                        text = "#${stringResource(id = recipe.category.name)}", modifier = Modifier
                             .fillMaxWidth()
                             .padding(4.dp),
                         fontSize = 12.sp,
@@ -110,7 +113,7 @@ fun RecipeCardView(recipe: Recipe) {
             Column(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .weight(1f),
+                    .weight(0.8f),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Image(

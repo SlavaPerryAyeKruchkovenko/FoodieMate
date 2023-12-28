@@ -100,14 +100,14 @@ object Mock {
                 mockUser(),
                 mockKBZhU()[0],
                 mockCategory()[0],
-                "Яищница",
+                "Яичница",
                 4.2,
                 VisibleStatus.PUBLIC,
                 "Глазунья сделанная с душей",
                 "",
                 mockRecipeSteps(),
                 mockRecipeProduct(),
-                Date(),
+                date,
                 true,
             ),
             Recipe(
@@ -303,19 +303,19 @@ object Mock {
     fun mockCategory(): List<RecipeCategory> {
         return listOf(
             RecipeCategory(
-                "0", "Завтрак", R.drawable.breakfast
+                "0", R.string.breakfast, R.drawable.breakfast
             ),
             RecipeCategory(
-                "1", "Дисерт", R.drawable.cake
+                "1", R.string.dessert, R.drawable.cake
             ),
             RecipeCategory(
-                "2", "Салат", R.drawable.salad
+                "2", R.string.salad, R.drawable.salad
             ),
             RecipeCategory(
-                "3", "Напитки", R.drawable.soda
+                "3", R.string.drinks, R.drawable.soda
             ),
             RecipeCategory(
-                "4", "Супы", R.drawable.soup
+                "4", R.string.soups, R.drawable.soup
             )
         )
     }

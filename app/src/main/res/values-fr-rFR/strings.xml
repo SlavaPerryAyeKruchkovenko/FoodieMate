@@ -13,4 +13,9 @@
     <string name="new_recipes">Nouveaux:</string>
     <string name="rating">classement</string>
     <string name="kcal">kcal</string>
+    <string name="breakfast">Déjeuner</string>
+    <string name="dessert">Dessert</string>
+    <string name="salad">Salade</string>
+    <string name="drinks">Boissons</string>
+    <string name="soups">Soupes</string>
 </resources>
