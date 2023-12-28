@@ -46,6 +46,7 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(64.dp)
+                .padding(top = 24.dp, start = 16.dp, end = 16.dp)
         ) {
             Text(
                 text = placeHolder,
@@ -144,10 +145,9 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
                     }
                 }
                 BackHandler {
-                    if(queryString.isNotEmpty()){
+                    if (queryString.isNotEmpty()) {
                         queryString = ""
-                    }
-                    else{
+                    } else {
                         isActive = false
                     }
                 }

@@ -26,5 +26,9 @@ local.properties
 /hs_err_pid3856.log
 /hs_err_pid1340.log
 /.idea/.gitignore
+/.idea/migrations.xml
+/.idea/.gitignore
 /.idea/codeStyles/Project.xml
 /.idea/codeStyles/codeStyleConfig.xml
+/.idea/deploymentTargetDropDown.xml
+/.idea/kotlinc.xml

@@ -300,7 +300,7 @@ object Mock {
         )
     }
 
-    private fun mockCategory(): List<RecipeCategory> {
+    fun mockCategory(): List<RecipeCategory> {
         return listOf(
             RecipeCategory(
                 "0", "Завтрак", R.drawable.breakfast

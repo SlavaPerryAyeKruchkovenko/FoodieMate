@@ -6,4 +6,8 @@
     <string name="none">None</string>
     <string name="products">Products</string>
     <string name="search_more">Search…</string>
+    <string name="filters">Filters:</string>
+    <string name="follows_recipes">Follows:</string>
+    <string name="popular_recipes">Popular:</string>
+    <string name="new_recipes">New:</string>
 </resources>

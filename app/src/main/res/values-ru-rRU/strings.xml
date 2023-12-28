@@ -7,4 +7,8 @@
     <string name="none">Нету</string>
     <string name="products">Продукты</string>
     <string name="search_more">Поиск…</string>
+    <string name="filters">Фильтры:</string>
+    <string name="follows_recipes">Избранное:</string>
+    <string name="popular_recipes">Популярное:</string>
+    <string name="new_recipes">Новое:</string>
 </resources>
