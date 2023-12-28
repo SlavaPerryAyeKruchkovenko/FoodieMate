@@ -57,7 +57,10 @@ fun RecipeCardsView(recipes: List<Recipe>, title: Int) {
             }) {
                 Box(
                     modifier = Modifier
-                        .width((LocalConfiguration.current.screenWidthDp / 2 - 12).dp)
+                        .widthIn(
+                            (LocalConfiguration.current.screenWidthDp / 2 - 12).dp,
+                            (LocalConfiguration.current.screenWidthDp / 2 - 12).dp
+                        )
                         .composed {
                             when (it.index) {
                                 0 -> Modifier.padding(

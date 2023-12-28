@@ -15,6 +15,11 @@ import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
@@ -31,6 +36,7 @@ import com.example.foodiemate.data.IndexObject
 import com.example.foodiemate.data.SearchData
 import com.example.foodiemate.data.models.FridgeProduct
 import com.example.foodiemate.data.models.Recipe
+import com.example.foodiemate.data.models.RecipeCategory
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.navigations.NavigationAppBar
 import com.example.foodiemate.ui.product.FridgeProductView
@@ -46,9 +52,18 @@ import java.util.GregorianCalendar
 @Composable
 fun RecipeScreen() {
     val recipes = Mock.mockRecipes()
+    val categories = Mock.mockCategory()
     val lastDate = GregorianCalendar().apply {
-        add(Calendar.DAY_OF_MONTH,-1)
+        add(Calendar.DAY_OF_MONTH, -1)
     }.time
+    val category: MutableState<RecipeCategory?> = remember {
+        mutableStateOf(null)
+    }
+    val filteredRecipes = remember(category) {
+        recipes.filter {
+            category.value == null || it.category.id == category.value!!.id
+        }
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,10 +73,10 @@ fun RecipeScreen() {
             recipes.map { SearchData(it.id, it.name) },
             stringResource(id = R.string.recipes)
         )
-        RecipeFiltersView(recipes.map { x -> x.category })
-        RecipeCardsView(recipes.filter { x -> x.isFollow }, R.string.follows_recipes)
-        RecipeCardsView(recipes.filter { x -> x.score > 4 }, R.string.popular_recipes)
-        RecipeCardsView(recipes.filter { x -> x.date >  lastDate}, R.string.new_recipes)
+        RecipeFiltersView(categories, category)
+        RecipeCardsView(filteredRecipes.filter { x -> x.isFollow }, R.string.follows_recipes)
+        RecipeCardsView(filteredRecipes.filter { x -> x.score > 4 }, R.string.popular_recipes)
+        RecipeCardsView(filteredRecipes.filter { x -> x.date > lastDate }, R.string.new_recipes)
     }
 }
 

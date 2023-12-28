@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -34,7 +35,11 @@ import com.example.foodiemate.ui.theme.Blue700
 import com.example.foodiemate.ui.theme.Orange
 
 @Composable
-fun RecipeFilterView(recipeCategory: RecipeCategory, minWidth: Dp, maxWidth: Dp) {
+fun RecipeFilterView(
+    recipeCategory: RecipeCategory,
+    minWidth: Dp,
+    maxWidth: Dp
+) {
     Card(
         shape = RoundedCornerShape(8.dp),
         border = BorderStroke(1.dp, Blue700),
