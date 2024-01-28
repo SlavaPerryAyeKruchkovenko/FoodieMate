@@ -20,7 +20,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodiemate.R
-import com.example.foodiemate.data.SearchData
+import com.example.foodiemate.datasource.presentationModels.SearchData
 import com.example.foodiemate.ui.theme.Blue200
 import com.example.foodiemate.ui.theme.Blue400
 import com.example.foodiemate.ui.theme.Blue700

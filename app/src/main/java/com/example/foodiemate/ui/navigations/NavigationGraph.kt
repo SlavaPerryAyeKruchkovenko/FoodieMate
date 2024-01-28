@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.foodiemate.data.Screen
+import com.example.foodiemate.datasource.presentationModels.Screen
 import com.example.foodiemate.ui.screens.FridgeScreen
 import com.example.foodiemate.ui.screens.RecipeScreen
 

@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.foodiemate.data.Screen
+import com.example.foodiemate.datasource.presentationModels.Screen
 import com.example.foodiemate.ui.theme.Blue500
 import com.example.foodiemate.ui.theme.Blue900
 import com.example.foodiemate.ui.theme.White

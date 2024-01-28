@@ -6,15 +6,7 @@
     <string name="none">None</string>
     <string name="products">Products</string>
     <string name="search_more">Search…</string>
-    <string name="filters">Filters:</string>
-    <string name="follows_recipes">Follows:</string>
-    <string name="popular_recipes">Popular:</string>
-    <string name="new_recipes">New:</string>
-    <string name="rating">rating</string>
-    <string name="kcal">kcal</string>
-    <string name="breakfast">breakfast</string>
-    <string name="dessert">dessert</string>
-    <string name="salad">salad</string>
-    <string name="drinks">drinks</string>
-    <string name="soups">soups</string>
+    <string name="gram">gm</string>
+    <string name="liter">L</string>
+    <string name="piece">pcs</string>
 </resources>

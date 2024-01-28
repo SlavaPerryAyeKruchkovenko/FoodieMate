@@ -7,15 +7,7 @@
     <string name="none">Non</string>
     <string name="products">Produits</string>
     <string name="search_more">Recherche…</string>
-    <string name="filters">Filtres:</string>
-    <string name="follows_recipes">Élite:</string>
-    <string name="popular_recipes">Populaire:</string>
-    <string name="new_recipes">Nouveaux:</string>
-    <string name="rating">classement</string>
-    <string name="kcal">kcal</string>
-    <string name="breakfast">Déjeuner</string>
-    <string name="dessert">Dessert</string>
-    <string name="salad">Salade</string>
-    <string name="drinks">Boissons</string>
-    <string name="soups">Soupes</string>
+    <string name="gram">g</string>
+    <string name="liter">L</string>
+    <string name="piece">pcs</string>
 </resources>
