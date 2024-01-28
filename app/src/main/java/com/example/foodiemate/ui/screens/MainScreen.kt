@@ -10,7 +10,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.foodiemate.ui.navigations.NavigationBottomBar
 import com.example.foodiemate.ui.navigations.NavigationGraph
 import com.example.foodiemate.ui.theme.FoodieMateTheme
-import com.example.foodiemate.ui.theme.White
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -19,7 +18,7 @@ fun MainScreen() {
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
-        containerColor = White,
+        /*containerColor = White,*/
         bottomBar = {
             NavigationBottomBar(navController)
         },

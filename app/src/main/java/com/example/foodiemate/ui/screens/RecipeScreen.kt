@@ -9,14 +9,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.foodiemate.R
 import com.example.foodiemate.ui.navigations.NavigationAppBar
-import com.example.foodiemate.ui.theme.White
 
 @Composable
 fun RecipeScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(White)
+        /*.background(White)*/
     ) {
         NavigationAppBar(
             listOf(), stringResource(id = R.string.recipes)

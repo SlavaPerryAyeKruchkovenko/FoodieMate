@@ -17,23 +17,20 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.foodiemate.datasource.presentationModels.Screen
-import com.example.foodiemate.ui.theme.Blue500
-import com.example.foodiemate.ui.theme.Blue900
-import com.example.foodiemate.ui.theme.White
 
 @Composable
 fun NavigationBottomBar(navController: NavHostController) {
-    val navigationsBarItems = listOf(Screen.Fridge, Screen.Recipes, Screen.None, Screen.None)
+    val navigationBarItems = listOf(Screen.Fridge, Screen.Recipes, Screen.None, Screen.None)
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     NavigationBar(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
-        containerColor = Blue500,
-        contentColor = White,
+       /* containerColor = Blue500,*/
+        /*contentColor = White,*/
     ) {
-        navigationsBarItems.forEach { item ->
+        navigationBarItems.forEach { item ->
             NavigationBarItem(
                 modifier = Modifier,
                 selected = currentRoute == item.screenName,
@@ -43,7 +40,7 @@ fun NavigationBottomBar(navController: NavHostController) {
                 label = {
                     Text(
                         stringResource(id = item.label),
-                        color = White,
+                        /*color = White,*/
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -55,11 +52,11 @@ fun NavigationBottomBar(navController: NavHostController) {
                         modifier = Modifier
                             .width(24.dp)
                             .height(24.dp),
-                        tint = White
+                       /* tint = White*/
                     )
                 },
                 alwaysShowLabel = false,
-                colors = NavigationBarItemDefaults.colors(indicatorColor = Blue900)
+              /*  colors = NavigationBarItemDefaults.colors(indicatorColor = Blue900)*/
             )
         }
     }

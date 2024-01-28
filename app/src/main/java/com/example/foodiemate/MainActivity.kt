@@ -8,7 +8,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.example.foodiemate.ui.screens.MainScreen
 import com.example.foodiemate.ui.theme.FoodieMateTheme
-import com.example.foodiemate.ui.theme.White
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

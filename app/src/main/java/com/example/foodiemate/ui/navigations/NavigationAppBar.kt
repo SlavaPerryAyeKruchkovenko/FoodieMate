@@ -21,10 +21,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.SearchData
-import com.example.foodiemate.ui.theme.Blue200
-import com.example.foodiemate.ui.theme.Blue400
-import com.example.foodiemate.ui.theme.Blue700
-import com.example.foodiemate.ui.theme.White
 
 @Composable
 fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
@@ -50,7 +46,6 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
         ) {
             Text(
                 text = placeHolder,
-                color = Blue700,
                 fontSize = 28.sp,
                 style = TextStyle(lineHeight = 28.sp),
                 modifier = Modifier
@@ -61,14 +56,14 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
                 modifier = Modifier
                     .size(24.dp)
                     .clickable { isActive = true },
-                tint = Blue700
+/*                tint = Blue700*/
             )
         }
     } else {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Blue200)
+                /*.background(Blue200)*/
         ) {
             Column(
                 modifier = Modifier
@@ -84,12 +79,12 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
                         Text(
                             stringResource(id = R.string.search_more),
                             fontSize = 14.sp,
-                            color = Blue400
+                            /*color = Blue400*/
                         )
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .border(1.dp, Blue700, RoundedCornerShape(8.dp)),
+                        .border(1.dp, Color.Blue, RoundedCornerShape(8.dp)),//BLue700
                     shape = RoundedCornerShape(8.dp),
                     enabled = isActive,
                     textStyle = TextStyle(fontSize = 14.sp, lineHeight = 20.sp),
@@ -99,14 +94,14 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
                             contentDescription = null,
                             modifier = Modifier
                                 .size(24.dp),
-                            tint = Blue700
+        /*                    tint = Blue700*/
                         )
                     },
                     colors = TextFieldDefaults.colors(
-                        focusedTextColor = Blue700,
+                        /*focusedTextColor = Blue700,
                         focusedContainerColor = White,
                         disabledContainerColor = White,
-                        unfocusedContainerColor = White,
+                        unfocusedContainerColor = White,*/
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
                         disabledIndicatorColor = Color.Transparent
@@ -124,7 +119,7 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
                             .clickable { isSelected = true }// обычное изменение
                         val selectModifier = Modifier
                             .clip(RoundedCornerShape(8.dp))
-                            .background(Blue400) //Если по колонке нажали
+                            /*.background(Blue400) //Если по колонке нажали*/
                         Column(
                             modifier = defaultModifier.composed { if (isSelected) selectModifier else Modifier }
                         ) {
@@ -133,10 +128,10 @@ fun NavigationAppBar(searches: List<SearchData>, placeHolder: String) {
                                 modifier = Modifier
                                     .padding(vertical = 12.dp, horizontal = 8.dp)
                                     .fillMaxWidth(),
-                                color = Blue700
+                                /*color = Blue700*/
                             )
                             HorizontalDivider(
-                                color = if (!isSelected) Blue400 else Color.Transparent,
+                                /*color = if (!isSelected) Blue400 else Color.Transparent,*/
                                 modifier = Modifier
                                     .height(1.dp)
                                     .fillMaxWidth()

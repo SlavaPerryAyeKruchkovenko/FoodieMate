@@ -15,9 +15,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodiemate.network.Mock
-import com.example.foodiemate.ui.theme.Blue300
-import com.example.foodiemate.ui.theme.Blue700
-import com.example.foodiemate.ui.theme.White
 
 @SuppressLint("UnnecessaryComposedModifier")
 @Composable
@@ -26,7 +23,6 @@ fun FridgeScreen() {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
-            .background(White),
     ) {
         val (content, fab) = createRefs()
         Column(
@@ -49,11 +45,11 @@ fun FridgeScreen() {
                     end.linkTo(parent.end, margin = 24.dp)
                 },
             elevation = FloatingActionButtonDefaults.elevation(0.dp),
-            containerColor = Blue300,
+            /*containerColor = Blue300,*/
             shape = RoundedCornerShape(50),
             onClick = {}
         ) {
-            Icon(Icons.Filled.Add, "", tint = Blue700, modifier = Modifier.size(24.dp))
+            Icon(Icons.Filled.Add, "", /*tint = Blue700,*/ modifier = Modifier.size(24.dp))
         }
     }
 }
