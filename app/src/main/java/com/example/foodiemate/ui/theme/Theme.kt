@@ -57,7 +57,7 @@ fun FoodieMateTheme(
     )
     val layoutSize = CustomLayoutSize(
         mediumIconSize = 24.dp,
-        smallIconSize = 16.dp,
+        smallIconSize = 18.dp,
         productImageSize = 80.dp,
         navigationBottomBarHeight = 80.dp,
         addProductButtonSize = 64.dp
