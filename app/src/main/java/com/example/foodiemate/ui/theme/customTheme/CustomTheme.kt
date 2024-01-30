@@ -9,4 +9,10 @@ object CustomTheme {
     val shapeRadius: CustomShapeRadius
         @Composable
         get() = LocalCustomShapeRadius.current
+    val layoutSize: CustomLayoutSize
+        @Composable
+        get() = LocalCustomLayoutSize.current
+    val layoutPadding: CustomLayoutPadding
+        @Composable
+        get() = LocalCustomLayoutPadding.current
 }

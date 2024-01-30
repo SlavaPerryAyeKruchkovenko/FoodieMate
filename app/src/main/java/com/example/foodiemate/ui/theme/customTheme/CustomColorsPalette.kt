@@ -12,4 +12,8 @@ data class CustomColorsPalette(
     val bottomNavigationBackground: Color,
     val bottomNavigationText: Color,
     val navigationBarIndicatorColor: Color,
+    val addProductsButtonBackground: Color,
+    val addProductsIconTint: Color,
+    val removeProduct: Color,
+    val editProduct: Color
 )

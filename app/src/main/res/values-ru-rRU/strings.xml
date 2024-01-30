@@ -7,15 +7,11 @@
     <string name="none">Нету</string>
     <string name="products">Продукты</string>
     <string name="search_more">Поиск…</string>
-    <string name="filters">Фильтры:</string>
-    <string name="follows_recipes">Избранное:</string>
-    <string name="popular_recipes">Популярное:</string>
-    <string name="new_recipes">Новое:</string>
-    <string name="rating">рейтинг</string>
-    <string name="kcal">ккал</string>
-    <string name="breakfast">Завтрак</string>
-    <string name="dessert">Десерт</string>
-    <string name="salad">Салат</string>
-    <string name="drinks">Напитки</string>
-    <string name="soups">Супы</string>
+    <string name="gram">гр.</string>
+    <string name="liter">л.</string>
+    <string name="piece">шт.</string>
+    <string name="product_image">Изображение продукта</string>
+    <string name="add_products">Добавить продукты</string>
+    <string name="remove_product">Удалить продукт</string>
+    <string name="edit_product">Редактировать продукт</string>
 </resources>

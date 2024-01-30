@@ -9,4 +9,8 @@
     <string name="gram">gm</string>
     <string name="liter">L</string>
     <string name="piece">pcs</string>
+    <string name="product_image">product image</string>
+    <string name="add_products">add products</string>
+    <string name="remove_product">remove product</string>
+    <string name="edit_product">edit product</string>
 </resources>

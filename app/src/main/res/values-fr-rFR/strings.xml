@@ -10,4 +10,8 @@
     <string name="gram">g</string>
     <string name="liter">L</string>
     <string name="piece">pcs</string>
+    <string name="product_image">image du produit</string>
+    <string name="add_products">ajouter des produits</string>
+    <string name="remove_product">retirer le produit</string>
+    <string name="edit_product">éditer le produit</string>
 </resources>

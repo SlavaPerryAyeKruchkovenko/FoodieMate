@@ -12,13 +12,35 @@ val LocalCustomColorsPalette = staticCompositionLocalOf {
         secondaryBackground = Color.Unspecified,
         bottomNavigationBackground = Color.Unspecified,
         bottomNavigationText = Color.Unspecified,
-        navigationBarIndicatorColor = Color.Unspecified
+        navigationBarIndicatorColor = Color.Unspecified,
+        addProductsButtonBackground = Color.Unspecified,
+        addProductsIconTint = Color.Unspecified,
+        removeProduct = Color.Unspecified,
+        editProduct = Color.Unspecified
     )
 }
 
 val LocalCustomShapeRadius = staticCompositionLocalOf {
     CustomShapeRadius(
         default = Dp.Unspecified,
-        card = Dp.Unspecified
+        card = Dp.Unspecified,
+        navigationBottomBar = Dp.Unspecified
+    )
+}
+val LocalCustomLayoutSize = staticCompositionLocalOf {
+    CustomLayoutSize(
+        mediumIconSize = Dp.Unspecified,
+        smallIconSize = Dp.Unspecified,
+        productImageSize = Dp.Unspecified,
+        navigationBottomBarHeight = Dp.Unspecified,
+        addProductButtonSize = Dp.Unspecified
+    )
+}
+val LocalCustomLayoutPadding = staticCompositionLocalOf {
+    CustomLayoutPadding(
+        smallPadding = Dp.Unspecified,
+        mediumPadding = Dp.Unspecified,
+        largePadding = Dp.Unspecified,
+        cardTextPadding = Dp.Unspecified,
     )
 }

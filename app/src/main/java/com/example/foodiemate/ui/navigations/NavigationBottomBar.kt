@@ -1,8 +1,7 @@
 package com.example.foodiemate.ui.navigations
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -12,7 +11,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -27,7 +25,12 @@ fun NavigationBottomBar(navController: NavHostController) {
     NavigationBar(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
+            .clip(
+                RoundedCornerShape(
+                    topStart = CustomTheme.shapeRadius.navigationBottomBar,
+                    topEnd = CustomTheme.shapeRadius.navigationBottomBar
+                )
+            ),
         containerColor = CustomTheme.colors.bottomNavigationBackground,
         contentColor = CustomTheme.colors.bottomNavigationText,
     ) {
@@ -50,9 +53,7 @@ fun NavigationBottomBar(navController: NavHostController) {
                     Icon(
                         painter = painterResource(id = item.icon),
                         contentDescription = null,
-                        modifier = Modifier
-                            .width(24.dp)
-                            .height(24.dp),
+                        modifier = Modifier.size(CustomTheme.layoutSize.mediumIconSize),
                         tint = CustomTheme.colors.bottomNavigationText
                     )
                 },
