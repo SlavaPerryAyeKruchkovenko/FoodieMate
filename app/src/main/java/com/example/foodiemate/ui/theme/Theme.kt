@@ -15,7 +15,8 @@ private val darkColorScheme = CustomColorsPalette(
     secondaryText = Blue700,
     secondaryBackground = Blue200,
     bottomNavigationBackground = Blue500,
-    bottomNavigationText = White
+    bottomNavigationText = White,
+    navigationBarIndicatorColor = Blue900
 )
 
 private val lightColorScheme = CustomColorsPalette(
@@ -24,7 +25,8 @@ private val lightColorScheme = CustomColorsPalette(
     secondaryText = Blue700,
     secondaryBackground = Blue200,
     bottomNavigationBackground = Blue500,
-    bottomNavigationText = White
+    bottomNavigationText = White,
+    navigationBarIndicatorColor = Blue900
 )
 
 @Composable

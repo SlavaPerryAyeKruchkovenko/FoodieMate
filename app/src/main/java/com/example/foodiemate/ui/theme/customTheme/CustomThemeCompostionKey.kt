@@ -11,7 +11,8 @@ val LocalCustomColorsPalette = staticCompositionLocalOf {
         primaryBackground = Color.Unspecified,
         secondaryBackground = Color.Unspecified,
         bottomNavigationBackground = Color.Unspecified,
-        bottomNavigationText = Color.Unspecified
+        bottomNavigationText = Color.Unspecified,
+        navigationBarIndicatorColor = Color.Unspecified
     )
 }
 

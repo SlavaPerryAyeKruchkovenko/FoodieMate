@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.foodiemate.datasource.presentationModels.Screen
+import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
 fun NavigationBottomBar(navController: NavHostController) {
@@ -27,8 +28,8 @@ fun NavigationBottomBar(navController: NavHostController) {
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
-       /* containerColor = Blue500,*/
-        /*contentColor = White,*/
+        containerColor = CustomTheme.colors.bottomNavigationBackground,
+        contentColor = CustomTheme.colors.bottomNavigationText,
     ) {
         navigationBarItems.forEach { item ->
             NavigationBarItem(
@@ -40,7 +41,7 @@ fun NavigationBottomBar(navController: NavHostController) {
                 label = {
                     Text(
                         stringResource(id = item.label),
-                        /*color = White,*/
+                        color = CustomTheme.colors.bottomNavigationText,
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -52,11 +53,11 @@ fun NavigationBottomBar(navController: NavHostController) {
                         modifier = Modifier
                             .width(24.dp)
                             .height(24.dp),
-                       /* tint = White*/
+                        tint = CustomTheme.colors.bottomNavigationText
                     )
                 },
                 alwaysShowLabel = false,
-              /*  colors = NavigationBarItemDefaults.colors(indicatorColor = Blue900)*/
+                colors = NavigationBarItemDefaults.colors(indicatorColor = CustomTheme.colors.navigationBarIndicatorColor)
             )
         }
     }
