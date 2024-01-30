@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -61,18 +62,18 @@ fun FridgeProductView(product: FridgeProduct) {
                 ConstraintLayout(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(CustomTheme.layoutPadding.cardTextPadding)
                 ) {
-                    val (content, fab) = createRefs()
+                    val (comp1, comp2, comp3) = createRefs()
                     Text(
                         modifier = Modifier
-                            .constrainAs(content) {
+                            .constrainAs(comp1) {
                                 top.linkTo(parent.top)
                                 bottom.linkTo(parent.bottom)
                                 start.linkTo(parent.start)
                                 end.linkTo(parent.end)
                             }
                             .fillMaxWidth()
+                            .padding(CustomTheme.layoutPadding.cardTextPadding)
                             .heightIn(0.dp, CustomTheme.layoutSize.productImageSize),
                         style = TextStyle(
                             color = CustomTheme.colors.secondaryText,
@@ -86,7 +87,7 @@ fun FridgeProductView(product: FridgeProduct) {
                     Icon(
                         modifier = Modifier
                             .size(CustomTheme.layoutSize.smallIconSize)
-                            .constrainAs(fab) {
+                            .constrainAs(comp2) {
                                 top.linkTo(parent.top)
                                 end.linkTo(parent.end)
                             },
@@ -97,7 +98,7 @@ fun FridgeProductView(product: FridgeProduct) {
                     Icon(
                         modifier = Modifier
                             .size(CustomTheme.layoutSize.smallIconSize)
-                            .constrainAs(fab) {
+                            .constrainAs(comp3) {
                                 bottom.linkTo(parent.bottom)
                                 end.linkTo(parent.end)
                             },

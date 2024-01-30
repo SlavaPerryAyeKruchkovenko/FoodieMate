@@ -78,7 +78,7 @@ object Mock {
             Product(
                 "3",
                 mockProductCategory().first { it.id === "6" },
-                "Сыр рассольный Первый вкус Mozzarella Ciliegine 45 %",
+                "Сыр рассольный Первый вкус Mozzarella Ciliegine 45 % Сыр рассольный Первый вкус Mozzarella Ciliegine 45 %",
                 UnitOfMeasure.Gram
             ),
             Product(
