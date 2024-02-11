@@ -5,6 +5,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -20,6 +22,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -52,7 +55,14 @@ fun FridgeProductView(product: FridgeProduct) {
                 .fillMaxWidth()
                 .padding(CustomTheme.layoutPadding.cardTextPadding)
         ) {
-            Row(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(
+                        CustomTheme.layoutSize.productImageSize,
+                        CustomTheme.layoutSize.productImageSize
+                    )
+            ) {
                 Image(
                     modifier = Modifier.size(CustomTheme.layoutSize.productImageSize),
                     painter = painterResource(id = R.drawable.cheese),
@@ -61,7 +71,7 @@ fun FridgeProductView(product: FridgeProduct) {
                 )
                 ConstraintLayout(
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxSize()
                 ) {
                     val (comp1, comp2, comp3) = createRefs()
                     Text(
@@ -111,20 +121,10 @@ fun FridgeProductView(product: FridgeProduct) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(20.dp)
+                    .height(40.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Text(
-                    modifier = Modifier
-                        .heightIn(0.dp, 20.dp),
-                    text = product.count.toString() + " " + stringResource(
-                        id = product.product.unit.acronym
-                    ),
-                    style = TextStyle(
-                        fontSize = 18.sp,
-                        color = CustomTheme.colors.primaryText,
-                        lineHeight = 20.sp
-                    )
-                )
+                ProductUnit(product)
             }
         }
     }
