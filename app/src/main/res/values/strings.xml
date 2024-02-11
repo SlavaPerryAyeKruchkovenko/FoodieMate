@@ -13,4 +13,7 @@
     <string name="add_products">add products</string>
     <string name="remove_product">remove product</string>
     <string name="edit_product">edit product</string>
+    <string name="add">add</string>
+    <string name="reduce">reduce</string>
+    <string name="accept">accept</string>
 </resources>

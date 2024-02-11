@@ -15,5 +15,8 @@ data class CustomColorsPalette(
     val addProductsButtonBackground: Color,
     val addProductsIconTint: Color,
     val removeProduct: Color,
-    val editProduct: Color
+    val editProduct: Color,
+    val reduceColor: Color,
+    val addColor:Color,
+    val acceptColor: Color
 )

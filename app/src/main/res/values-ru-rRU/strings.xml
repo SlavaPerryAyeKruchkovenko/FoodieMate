@@ -14,4 +14,7 @@
     <string name="add_products">Добавить продукты</string>
     <string name="remove_product">Удалить продукт</string>
     <string name="edit_product">Редактировать продукт</string>
+    <string name="add">добавить</string>
+    <string name="reduce">убавить</string>
+    <string name="accept">принять</string>
 </resources>
