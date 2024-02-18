@@ -1,4 +1,4 @@
-package com.example.foodiemate.ui.product
+package com.example.foodiemate.ui.screens.fridge.views
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -23,7 +23,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -38,7 +37,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.network.Mock
-import com.example.foodiemate.ui.product.editor.ProductUnitEditor
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
@@ -79,7 +77,7 @@ fun FridgeProductView(product: FridgeProduct) {
                     modifier = Modifier
                         .fillMaxSize()
                 ) {
-                    val (comp1, comp2, comp3) = createRefs()
+                    val (comp1, comp2) = createRefs()
                     Text(
                         modifier = Modifier
                             .constrainAs(comp1) {
@@ -100,27 +98,14 @@ fun FridgeProductView(product: FridgeProduct) {
                         overflow = TextOverflow.Ellipsis,
                         text = product.product.name,
                     )
-                    ProductIcon(
-                        Icons.Filled.Close,
-                        R.string.remove_product,
-                        CustomTheme.colors.removeProduct,
-                        Modifier
-                            .constrainAs(comp2) {
-                                top.linkTo(parent.top)
-                                end.linkTo(parent.end)
-                            }
-                            .clickable {
-                                //ToDo Remove product from fridge
-                            }
-                    )
                     if (isEdit) {
                         ProductIcon(
                             Icons.Rounded.Check,
                             R.string.accept,
                             CustomTheme.colors.acceptColor,
                             Modifier
-                                .constrainAs(comp3) {
-                                    bottom.linkTo(parent.bottom)
+                                .constrainAs(comp2) {
+                                    top.linkTo(parent.top)
                                     end.linkTo(parent.end)
                                 }
                                 .clickable {
@@ -133,8 +118,8 @@ fun FridgeProductView(product: FridgeProduct) {
                             R.string.edit_product,
                             CustomTheme.colors.editProduct,
                             Modifier
-                                .constrainAs(comp3) {
-                                    bottom.linkTo(parent.bottom)
+                                .constrainAs(comp2) {
+                                    top.linkTo(parent.top)
                                     end.linkTo(parent.end)
                                 }
                                 .clickable {

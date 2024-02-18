@@ -1,6 +1,5 @@
-package com.example.foodiemate.ui.screens
+package com.example.foodiemate.ui.screens.recipe
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
