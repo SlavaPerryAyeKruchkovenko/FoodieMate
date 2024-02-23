@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.example.foodiemate.ui.navigations.NavigationGraph
+import com.example.foodiemate.ui.navigation.NavigationGraph
 import com.example.foodiemate.ui.theme.FoodieMateTheme
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 import dagger.hilt.android.AndroidEntryPoint

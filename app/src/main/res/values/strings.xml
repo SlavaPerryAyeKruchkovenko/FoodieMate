@@ -16,4 +16,5 @@
     <string name="add">add</string>
     <string name="reduce">reduce</string>
     <string name="accept">accept</string>
+    <string name="menu">Menu</string>
 </resources>

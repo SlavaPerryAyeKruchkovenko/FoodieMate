@@ -17,4 +17,5 @@
     <string name="add">ajouter</string>
     <string name="reduce">réduire</string>
     <string name="accept">accepter</string>
+    <string name="menu">Menu</string>
 </resources>

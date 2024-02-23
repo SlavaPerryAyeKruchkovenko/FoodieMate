@@ -1,4 +1,4 @@
-package com.example.foodiemate.ui.navigations
+package com.example.foodiemate.ui.navigation
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,8 +13,8 @@ import com.example.foodiemate.ui.screens.recipe.RecipeScreen
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
-    NavHost(navController, startDestination = Screen.Fridge.screenName) {
-        composable(Screen.Fridge.screenName) {
+    NavHost(navController, startDestination = Screen.Products.screenName) {
+        composable(Screen.Products.screenName) {
             val fridgeViewModel = hiltViewModel<FridgeViewModel>()
             FridgeScreen(navController, fridgeViewModel)
         }

@@ -10,5 +10,6 @@ data class CustomLayoutSize(
     val productImageSize: Dp,
     val navigationBottomBarHeight: Dp,
     val addProductButtonSize: Dp,
-    val productEditorSize: Dp
+    val productEditorSize: Dp,
+    val bottomBarDivider: Dp,
 )

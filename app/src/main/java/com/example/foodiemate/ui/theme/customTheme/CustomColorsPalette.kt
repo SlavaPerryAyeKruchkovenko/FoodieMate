@@ -11,6 +11,7 @@ data class CustomColorsPalette(
     val secondaryBackground: Color,
     val bottomNavigationBackground: Color,
     val bottomNavigationText: Color,
+    val bottomNavigationTextSelected: Color,
     val navigationBarIndicatorColor: Color,
     val addProductsButtonBackground: Color,
     val addProductsIconTint: Color,

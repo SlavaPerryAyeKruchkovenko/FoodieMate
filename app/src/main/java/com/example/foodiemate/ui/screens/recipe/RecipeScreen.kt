@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.foodiemate.R
-import com.example.foodiemate.ui.navigations.NavigationAppBar
+import com.example.foodiemate.ui.navigation.NavigationAppBar
 
 @Composable
 fun RecipeScreen() {
