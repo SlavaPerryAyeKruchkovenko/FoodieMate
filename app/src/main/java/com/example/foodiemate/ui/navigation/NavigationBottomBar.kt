@@ -19,6 +19,7 @@ fun NavigationBottomBar(navController: NavHostController) {
         modifier = Modifier.fillMaxWidth(),
         containerColor = CustomTheme.colors.bottomNavigationBackground,
         contentColor = CustomTheme.colors.bottomNavigationText,
+
     ) {
         navigationBarItems.forEach { item ->
             NavigationBottomBarItem(item, currentRoute)
