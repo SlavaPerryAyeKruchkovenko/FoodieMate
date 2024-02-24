@@ -3,7 +3,6 @@ package com.example.foodiemate.ui.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.foodiemate.ui.theme.customTheme.CustomColorsPalette
 import com.example.foodiemate.ui.theme.customTheme.CustomLayoutPadding
@@ -69,10 +68,12 @@ fun FoodieMateTheme(
         mediumIconSize = 24.dp,
         smallIconSize = 18.dp,
         productImageSize = 80.dp,
-        navigationBottomBarHeight = 80.dp,
+        navigationBottomBarHeight = 76.dp,
         addProductButtonSize = 64.dp,
         productEditorSize = 40.dp,
-        bottomBarDivider = 3.dp
+        bottomBarDividerHeight = 3.dp,
+        bottomBarDividerWidth = 42.dp,
+        bottomBarIcon = 28.dp
     )
     val layoutPadding = CustomLayoutPadding(
         smallPadding = 18.dp,
@@ -81,7 +82,9 @@ fun FoodieMateTheme(
         cardTextPadding = 10.dp,
         smallIconPadding = 2.dp,
         mediumIconPadding = 3.dp,
-        productEditorPadding = 4.dp
+        productEditorPadding = 4.dp,
+        verticalNavigationBarPadding = 8.dp,
+        horizontalNavigationBarPadding = 16.dp
     )
     CompositionLocalProvider(
         LocalCustomColorsPalette provides colors,

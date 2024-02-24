@@ -40,7 +40,9 @@ val LocalCustomLayoutSize = staticCompositionLocalOf {
         navigationBottomBarHeight = Dp.Unspecified,
         addProductButtonSize = Dp.Unspecified,
         productEditorSize = Dp.Unspecified,
-        bottomBarDivider = Dp.Unspecified
+        bottomBarDividerHeight = Dp.Unspecified,
+        bottomBarDividerWidth = Dp.Unspecified,
+        bottomBarIcon = Dp.Unspecified
     )
 }
 val LocalCustomLayoutPadding = staticCompositionLocalOf {
@@ -51,6 +53,8 @@ val LocalCustomLayoutPadding = staticCompositionLocalOf {
         cardTextPadding = Dp.Unspecified,
         smallIconPadding = Dp.Unspecified,
         mediumIconPadding = Dp.Unspecified,
-        productEditorPadding = Dp.Unspecified
+        productEditorPadding = Dp.Unspecified,
+        verticalNavigationBarPadding = Dp.Unspecified,
+        horizontalNavigationBarPadding = Dp.Unspecified
     )
 }

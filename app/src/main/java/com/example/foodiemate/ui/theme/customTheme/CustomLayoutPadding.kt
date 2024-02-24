@@ -11,5 +11,7 @@ data class CustomLayoutPadding(
     val cardTextPadding: Dp,
     val smallIconPadding: Dp,
     val mediumIconPadding: Dp,
-    val productEditorPadding: Dp
+    val productEditorPadding: Dp,
+    val verticalNavigationBarPadding: Dp,
+    val horizontalNavigationBarPadding: Dp
 )
