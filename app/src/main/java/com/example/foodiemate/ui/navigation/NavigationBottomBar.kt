@@ -33,7 +33,7 @@ fun NavigationBottomBar(navController: NavHostController) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         navigationBarItems.forEach { item ->
-            NavigationBottomBarItem(item, currentRoute)
+            NavigationBottomBarItem(item, currentRoute, navController)
         }
     }
 }
