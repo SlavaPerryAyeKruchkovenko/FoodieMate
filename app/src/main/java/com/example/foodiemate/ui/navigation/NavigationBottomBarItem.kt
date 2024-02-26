@@ -36,7 +36,7 @@ fun NavigationBottomBarItem(
         )
         Icon(
             painter = painterResource(id = screen.icon),
-            contentDescription = null,
+            contentDescription = stringResource(id = screen.label),
             modifier = Modifier.size(CustomTheme.layoutSize.bottomBarIcon),
             tint = contentColor
         )
