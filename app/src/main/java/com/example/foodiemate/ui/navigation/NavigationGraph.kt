@@ -18,7 +18,8 @@ fun NavigationGraph(navController: NavHostController) {
             FridgeScreen(navController, fridgeViewModel)
         }
         composable(Screen.Recipes.screenName) {
-            Text(text = "recipes")
+            val fridgeViewModel = hiltViewModel<FridgeViewModel>()
+            FridgeScreen(navController, fridgeViewModel)
         }
         composable(Screen.None.screenName) {
             Text(text = "none")
