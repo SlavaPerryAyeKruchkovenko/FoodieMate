@@ -1,8 +1,5 @@
 package com.example.foodiemate.ui.navigation
 
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,19 +30,17 @@ fun NavigationBottomBar(navController: NavHostController) {
         navigationBarItems.forEach { item ->
             val selected = currentRoute == item.screenName
             val color =
-                if (selected) CustomTheme.colors.bottomNavigationTextSelected else CustomTheme.colors.bottomNavigationText
-            val animatedColor by animateColorAsState(
+                if (selected) CustomTheme.colors.bottomNavigationTextSelected else CustomTheme.colors.bottomNavigationText/*val animatedColor by animateColorAsState(
                 targetValue = color,
                 animationSpec = TweenSpec(
                     durationMillis = 200,
                     easing = FastOutSlowInEasing
                 ), label = ""
-            )
-
+            )*/
             NavigationBarItem(modifier = Modifier, selected = selected, onClick = {
                 navController.navigate(item.screenName)
             }, icon = {
-                NavigationBottomBarItem(item, animatedColor)
+                NavigationBottomBarItem(item, color)
             }, colors = NavigationBarItemDefaults.colors(indicatorColor = backgroundColor)
             )
         }
