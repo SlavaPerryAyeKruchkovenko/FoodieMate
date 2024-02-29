@@ -69,12 +69,12 @@ fun FoodieMateTheme(
         smallIconSize = 18.dp,
         productImageSize = 80.dp,
         navigationBottomBarHeight = 76.dp,
-        addFABSize = 64.dp,
+        addFABSize = 56.dp,
         productEditorSize = 40.dp,
         bottomBarDividerHeight = 3.dp,
         bottomBarDividerWidth = 42.dp,
         bottomBarIcon = 28.dp,
-        addFABIconSize = 48.dp
+        addFABIconSize = 24.dp
     )
     val layoutPadding = CustomLayoutPadding(
         smallPadding = 18.dp,
@@ -85,7 +85,8 @@ fun FoodieMateTheme(
         mediumIconPadding = 3.dp,
         productEditorPadding = 4.dp,
         verticalNavigationBarPadding = 8.dp,
-        horizontalNavigationBarPadding = 16.dp
+        horizontalNavigationBarPadding = 16.dp,
+        addFABPadding = 16.dp
     )
     CompositionLocalProvider(
         LocalCustomColorsPalette provides colors,

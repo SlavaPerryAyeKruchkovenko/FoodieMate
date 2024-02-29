@@ -1,5 +1,7 @@
 package com.example.foodiemate.ui.screens.fridge
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +25,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -37,18 +40,16 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 @Composable
 fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
     val products = Mock.mockFridgeProduct()
-    var isAdd by remember {
+    var isFABMenuOpen by remember {
         mutableStateOf(false)
     }
-    val FABIcon = if(isAdd) Icons.Filled.Close else Icons.Filled.Add
     ConstraintLayout(
-        modifier = Modifier
-            .fillMaxSize()
+        modifier = Modifier.fillMaxSize()
     ) {
         val (fab) = createRefs()
+        val fabPadding = CustomTheme.layoutPadding.addFABPadding
         Column(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ) {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1), modifier = Modifier
@@ -74,25 +75,45 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
             }
 
         }
-        FloatingActionButton(modifier = Modifier
-            .size(CustomTheme.layoutSize.addFABSize)
-            .constrainAs(fab) {
-                bottom.linkTo(parent.bottom, margin = 16.dp)
-                end.linkTo(parent.end, margin = 16.dp)
-            },
-            elevation = FloatingActionButtonDefaults.elevation(0.dp),
-            containerColor = CustomTheme.colors.addFABBackground,
-            shape = RoundedCornerShape(50),
-            onClick = {
-                isAdd = !isAdd
-            }) {
-            Icon(
-                FABIcon,
-                stringResource(R.string.add_products),
-                tint = CustomTheme.colors.addFABIconTint,
-                modifier = Modifier.size(CustomTheme.layoutSize.addFABIconSize)
-            )
+        if (isFABMenuOpen) {
+            Box(modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.5f))
+                .clickable { isFABMenuOpen = false })
         }
+        ConstraintLayout(modifier = Modifier
+            .size(200.dp)
+            .constrainAs(fab) {
+                bottom.linkTo(parent.bottom)
+                end.linkTo(parent.end)
+            }
+            .background(
+                Color.Gray, RoundedCornerShape(
+                    topStartPercent = 100
+                )
+            )) {
+            val (mainFab) = createRefs()
+            FloatingActionButton(modifier = Modifier
+                .size(CustomTheme.layoutSize.addFABSize)
+                .constrainAs(mainFab) {
+                    bottom.linkTo(parent.bottom, margin = fabPadding)
+                    end.linkTo(parent.end, margin = fabPadding)
+                },
+                elevation = FloatingActionButtonDefaults.elevation(0.dp),
+                containerColor = CustomTheme.colors.addFABBackground,
+                shape = RoundedCornerShape(50),
+                onClick = {
+                    isFABMenuOpen = !isFABMenuOpen
+                }) {
+                Icon(
+                    if (isFABMenuOpen) Icons.Filled.Close else Icons.Filled.Add,
+                    stringResource(R.string.add_products),
+                    tint = CustomTheme.colors.addFABIconTint,
+                    modifier = Modifier.size(CustomTheme.layoutSize.addFABIconSize)
+                )
+            }
+        }
+
     }
 
 }

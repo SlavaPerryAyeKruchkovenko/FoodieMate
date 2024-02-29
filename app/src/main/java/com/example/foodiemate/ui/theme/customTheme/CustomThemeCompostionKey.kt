@@ -56,6 +56,7 @@ val LocalCustomLayoutPadding = staticCompositionLocalOf {
         mediumIconPadding = Dp.Unspecified,
         productEditorPadding = Dp.Unspecified,
         verticalNavigationBarPadding = Dp.Unspecified,
-        horizontalNavigationBarPadding = Dp.Unspecified
+        horizontalNavigationBarPadding = Dp.Unspecified,
+        addFABPadding = Dp.Unspecified
     )
 }
