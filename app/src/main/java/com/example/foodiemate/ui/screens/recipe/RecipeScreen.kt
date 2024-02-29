@@ -4,10 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.foodiemate.R
-import com.example.foodiemate.ui.navigation.NavigationAppBar
 
 @Composable
 fun RecipeScreen() {
@@ -16,9 +13,9 @@ fun RecipeScreen() {
             .fillMaxSize()
         /*.background(White)*/
     ) {
-        NavigationAppBar(
+        /*NavigationAppBar(
             listOf(), stringResource(id = R.string.recipes)
-        )
+        )*/
     }
 }
 

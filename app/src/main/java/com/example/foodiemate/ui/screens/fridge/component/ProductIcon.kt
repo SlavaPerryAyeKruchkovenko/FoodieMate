@@ -1,4 +1,4 @@
-package com.example.foodiemate.ui.screens.fridge.views
+package com.example.foodiemate.ui.screens.fridge.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding

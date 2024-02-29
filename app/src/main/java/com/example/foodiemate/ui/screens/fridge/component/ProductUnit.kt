@@ -1,4 +1,4 @@
-package com.example.foodiemate.ui.screens.fridge.views
+package com.example.foodiemate.ui.screens.fridge.component
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.heightIn
