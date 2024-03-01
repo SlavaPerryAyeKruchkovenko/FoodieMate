@@ -2,6 +2,7 @@ package com.example.foodiemate.ui.screens.fridge
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -76,10 +77,17 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
 
         }
         if (isFABMenuOpen) {
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Black.copy(alpha = 0.5f))
-                .clickable { isFABMenuOpen = false })
+            val interactionSource = remember { MutableInteractionSource() }
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.Black.copy(alpha = 0.5f))
+                    .clickable(
+                        indication = null,
+                        interactionSource = interactionSource,
+                        enabled = true
+                    ) {}
+            )
         }
         ConstraintLayout(modifier = Modifier
             .size(200.dp)
