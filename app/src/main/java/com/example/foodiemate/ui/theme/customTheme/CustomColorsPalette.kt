@@ -18,6 +18,8 @@ data class CustomColorsPalette(
     val removeProduct: Color,
     val editProduct: Color,
     val reduceColor: Color,
-    val addColor:Color,
-    val acceptColor: Color
+    val addColor: Color,
+    val acceptColor: Color,
+    val darkScreen: Color,
+    val FABBoxBackground: Color
 )

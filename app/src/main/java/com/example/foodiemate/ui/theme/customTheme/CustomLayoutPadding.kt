@@ -14,5 +14,7 @@ data class CustomLayoutPadding(
     val productEditorPadding: Dp,
     val verticalNavigationBarPadding: Dp,
     val horizontalNavigationBarPadding: Dp,
-    val addFABPadding: Dp
+    val addFABPadding: Dp,
+    val addFABEdgePadding: Dp,
+    val addFABCenterPadding: Dp
 )

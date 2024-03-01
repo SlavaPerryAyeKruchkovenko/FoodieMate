@@ -18,4 +18,7 @@
     <string name="reduce">убавить</string>
     <string name="accept">принять</string>
     <string name="menu">Меню</string>
+    <string name="add_by_mail">Добавить через почту</string>
+    <string name="add_by_qr_code">Добавить через qr code</string>
+    <string name="add_manually">Добавить вручную</string>
 </resources>

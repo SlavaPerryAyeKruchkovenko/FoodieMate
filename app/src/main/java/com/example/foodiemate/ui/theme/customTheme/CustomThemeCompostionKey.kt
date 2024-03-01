@@ -21,6 +21,8 @@ val LocalCustomColorsPalette = staticCompositionLocalOf {
         reduceColor = Color.Unspecified,
         addColor = Color.Unspecified,
         acceptColor = Color.Unspecified,
+        darkScreen = Color.Unspecified,
+        FABBoxBackground = Color.Unspecified
     )
 }
 
@@ -43,7 +45,10 @@ val LocalCustomLayoutSize = staticCompositionLocalOf {
         bottomBarDividerHeight = Dp.Unspecified,
         bottomBarDividerWidth = Dp.Unspecified,
         bottomBarIcon = Dp.Unspecified,
-        addFABIconSize = Dp.Unspecified
+        addFABIconSize = Dp.Unspecified,
+        addFABSmallSize = Dp.Unspecified,
+        addSmallFABIconSize = Dp.Unspecified,
+        addFABBoxSize = Dp.Unspecified
     )
 }
 val LocalCustomLayoutPadding = staticCompositionLocalOf {
@@ -57,6 +62,8 @@ val LocalCustomLayoutPadding = staticCompositionLocalOf {
         productEditorPadding = Dp.Unspecified,
         verticalNavigationBarPadding = Dp.Unspecified,
         horizontalNavigationBarPadding = Dp.Unspecified,
-        addFABPadding = Dp.Unspecified
+        addFABPadding = Dp.Unspecified,
+        addFABEdgePadding = Dp.Unspecified,
+        addFABCenterPadding = Dp.Unspecified
     )
 }

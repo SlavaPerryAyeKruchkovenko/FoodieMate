@@ -29,6 +29,8 @@ private val darkColorScheme = CustomColorsPalette(
     reduceColor = Red,
     addColor = Green,
     acceptColor = Green,
+    darkScreen = Dark,
+    FABBoxBackground = LightPurple900,
 )
 
 private val lightColorScheme = CustomColorsPalette(
@@ -46,7 +48,9 @@ private val lightColorScheme = CustomColorsPalette(
     editProduct = Orange,
     reduceColor = Red,
     addColor = Green,
-    acceptColor = Green
+    acceptColor = Green,
+    darkScreen = Dark,
+    FABBoxBackground = LightPurple900
 )
 
 @Composable
@@ -74,7 +78,10 @@ fun FoodieMateTheme(
         bottomBarDividerHeight = 3.dp,
         bottomBarDividerWidth = 42.dp,
         bottomBarIcon = 28.dp,
-        addFABIconSize = 24.dp
+        addFABIconSize = 24.dp,
+        addFABSmallSize = 40.dp,
+        addSmallFABIconSize = 18.dp,
+        addFABBoxSize = 200.dp
     )
     val layoutPadding = CustomLayoutPadding(
         smallPadding = 18.dp,
@@ -86,7 +93,9 @@ fun FoodieMateTheme(
         productEditorPadding = 4.dp,
         verticalNavigationBarPadding = 8.dp,
         horizontalNavigationBarPadding = 16.dp,
-        addFABPadding = 16.dp
+        addFABPadding = 16.dp,
+        addFABEdgePadding = 24.dp,
+        addFABCenterPadding = 64.dp
     )
     CompositionLocalProvider(
         LocalCustomColorsPalette provides colors,
