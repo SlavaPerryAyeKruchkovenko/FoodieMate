@@ -1,5 +1,6 @@
 package com.example.foodiemate.ui.screens.fridge
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -38,7 +39,9 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
         mutableStateOf(false)
     }
     ConstraintLayout(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .animateContentSize()
     ) {
         val (fab, fabBox) = createRefs()
         val fabPadding = CustomTheme.layoutPadding.addFABPadding
@@ -69,12 +72,13 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
             }
 
         }
-        if (isFABMenuOpen) {
-            AddFABMenu(modifier = Modifier.constrainAs(fabBox) {
-                bottom.linkTo(parent.bottom)
-                end.linkTo(parent.end)
-            })
-        }
+        AddFABMenu(
+            modifier = Modifier
+                .constrainAs(fabBox) {
+                    bottom.linkTo(parent.bottom)
+                    end.linkTo(parent.end)
+                }, isFABMenuOpen
+        )
         AddFABLargeIcon(
             Modifier.constrainAs(fab) {
                 bottom.linkTo(parent.bottom, margin = fabPadding)
