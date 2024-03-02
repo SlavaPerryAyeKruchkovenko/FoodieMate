@@ -1,6 +1,6 @@
 package com.example.foodiemate.ui.screens.fridge
 
-import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -41,7 +41,7 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
-            .animateContentSize()
+            .background(CustomTheme.colors.primaryBackground)
     ) {
         val (fab, fabBox) = createRefs()
         val fabPadding = CustomTheme.layoutPadding.addFABPadding

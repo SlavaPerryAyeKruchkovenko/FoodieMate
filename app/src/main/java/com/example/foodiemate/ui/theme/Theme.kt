@@ -15,9 +15,9 @@ import com.example.foodiemate.ui.theme.customTheme.LocalCustomShapeRadius
 
 private val darkColorScheme = CustomColorsPalette(
     primaryText = Blue700,
-    primaryBackground = White,
-    secondaryText = Blue700,
-    secondaryBackground = Blue200,
+    primaryBackground = RebeccaPurple,
+    secondaryText = Black,
+    secondaryBackground = BrightLavender,
     bottomNavigationBackground = Purple900,
     bottomNavigationText = Purple500,
     bottomNavigationTextSelected = White,
@@ -25,7 +25,7 @@ private val darkColorScheme = CustomColorsPalette(
     addFABBackground = Purple900,
     addFABIconTint = White,
     removeProduct = Red,
-    editProduct = Orange,
+    editProduct = Black,
     reduceColor = Red,
     addColor = Green,
     acceptColor = Green,
@@ -35,9 +35,9 @@ private val darkColorScheme = CustomColorsPalette(
 
 private val lightColorScheme = CustomColorsPalette(
     primaryText = Blue700,
-    primaryBackground = White,
-    secondaryText = Blue700,
-    secondaryBackground = Blue200,
+    primaryBackground = RebeccaPurple,
+    secondaryText = Black,
+    secondaryBackground = BrightLavender,
     bottomNavigationBackground = Purple900,
     bottomNavigationText = Purple500,
     bottomNavigationTextSelected = White,
@@ -45,7 +45,7 @@ private val lightColorScheme = CustomColorsPalette(
     addFABBackground = Purple900,
     addFABIconTint = White,
     removeProduct = Red,
-    editProduct = Orange,
+    editProduct = Black,
     reduceColor = Red,
     addColor = Green,
     acceptColor = Green,
@@ -64,14 +64,15 @@ fun FoodieMateTheme(
     }
     val shapeRadius = CustomShapeRadius(
         default = 0.dp,
-        card = 6.dp,
+        card = 12.dp,
         navigationBottomBar = 16.dp,
         iconBorderShape = 8.dp
     )
     val layoutSize = CustomLayoutSize(
         mediumIconSize = 24.dp,
         smallIconSize = 18.dp,
-        productImageSize = 80.dp,
+        productImageSize = 96.dp,
+        productTextSize = 58.dp,
         navigationBottomBarHeight = 76.dp,
         addFABSize = 56.dp,
         productEditorSize = 40.dp,
@@ -87,8 +88,11 @@ fun FoodieMateTheme(
         smallPadding = 18.dp,
         mediumPadding = 24.dp,
         largePadding = 36.dp,
-        cardTextPadding = 10.dp,
-        smallIconPadding = 2.dp,
+        cardPadding = 8.dp,
+        cardTextPadding = 4.dp,
+        cardTextBoxPadding = 4.dp,
+        endCardTextPadding = 28.dp,
+        smallIconPadding = 4.dp,
         mediumIconPadding = 3.dp,
         productEditorPadding = 4.dp,
         verticalNavigationBarPadding = 8.dp,

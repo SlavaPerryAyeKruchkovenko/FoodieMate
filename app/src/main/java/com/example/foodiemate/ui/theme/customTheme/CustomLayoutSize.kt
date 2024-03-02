@@ -8,6 +8,7 @@ data class CustomLayoutSize(
     val mediumIconSize: Dp,
     val smallIconSize: Dp,
     val productImageSize: Dp,
+    val productTextSize: Dp,
     val navigationBottomBarHeight: Dp,
     val addFABIconSize: Dp,
     val addSmallFABIconSize: Dp,

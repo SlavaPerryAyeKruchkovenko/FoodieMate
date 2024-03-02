@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -40,66 +41,72 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
 fun FridgeProductView(product: FridgeProduct) {
+    val cardSize = CustomTheme.layoutSize.productImageSize
+    val textSizeBox = CustomTheme.layoutSize.productTextSize
+    val cardTextPadding = CustomTheme.layoutPadding.cardTextPadding
     var isEdit: Boolean by remember { mutableStateOf(false) }
     var productCount: Number by remember {
         mutableStateOf(product.count)
     }
     Card(
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         border = BorderStroke(1.dp, CustomTheme.colors.secondaryText),
         shape = RoundedCornerShape(CustomTheme.shapeRadius.card),
         colors = CardDefaults.cardColors(
             containerColor = CustomTheme.colors.secondaryBackground,
         )
     ) {
-        Column(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(CustomTheme.layoutPadding.cardTextPadding)
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(
-                        CustomTheme.layoutSize.productImageSize,
-                        CustomTheme.layoutSize.productImageSize
-                    )
-            ) {
-                Image(
-                    modifier = Modifier.size(CustomTheme.layoutSize.productImageSize),
-                    painter = painterResource(id = R.drawable.cheese),
-                    contentDescription = stringResource(R.string.product_image),
-                    contentScale = ContentScale.Fit,
+                .padding(CustomTheme.layoutPadding.cardPadding)
+                .heightIn(
+                    cardSize, cardSize
                 )
+        ) {
+            Image(
+                modifier = Modifier.size(CustomTheme.layoutSize.productImageSize),
+                painter = painterResource(id = R.drawable.cheese),
+                contentDescription = stringResource(R.string.product_image),
+                contentScale = ContentScale.Fit,
+            )
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(start = CustomTheme.layoutPadding.cardTextBoxPadding)
+            ) {
                 ConstraintLayout(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
+                        .height(textSizeBox)
                 ) {
                     val (comp1, comp2) = createRefs()
                     Text(
                         modifier = Modifier
                             .constrainAs(comp1) {
                                 top.linkTo(parent.top)
-                                bottom.linkTo(parent.bottom)
                                 start.linkTo(parent.start)
                                 end.linkTo(parent.end)
                             }
                             .fillMaxWidth()
-                            .padding(CustomTheme.layoutPadding.cardTextPadding)
-                            .heightIn(0.dp, CustomTheme.layoutSize.productImageSize),
+                            .padding(
+                                top = cardTextPadding,
+                                bottom = cardTextPadding,
+                                start = cardTextPadding,
+                                end = CustomTheme.layoutPadding.endCardTextPadding
+                            )
+                            .heightIn(0.dp, textSizeBox),
                         style = TextStyle(
                             color = CustomTheme.colors.secondaryText,
-                            fontSize = 18.sp,
+                            fontSize = 16.sp,
                             fontFamily = FontFamily.SansSerif,
-                            lineHeight = 20.sp,
+                            lineHeight = 16.sp,
                         ),
                         overflow = TextOverflow.Ellipsis,
                         text = product.product.name,
                     )
                     if (isEdit) {
-                        ProductIcon(
-                            Icons.Rounded.Check,
+                        ProductIcon(Icons.Rounded.Check,
                             R.string.accept,
                             CustomTheme.colors.acceptColor,
                             Modifier
@@ -109,11 +116,9 @@ fun FridgeProductView(product: FridgeProduct) {
                                 }
                                 .clickable {
                                     isEdit = false
-                                }
-                        )
+                                })
                     } else {
-                        ProductIcon(
-                            Icons.Rounded.Edit,
+                        ProductIcon(Icons.Rounded.Edit,
                             R.string.edit_product,
                             CustomTheme.colors.editProduct,
                             Modifier
@@ -123,22 +128,9 @@ fun FridgeProductView(product: FridgeProduct) {
                                 }
                                 .clickable {
                                     isEdit = true
-                                }
-                        )
+                                })
                     }
-
                 }
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(
-                        CustomTheme.layoutSize.productEditorSize,
-                        CustomTheme.layoutSize.productEditorSize
-                    )
-                    .padding(top = CustomTheme.layoutPadding.productEditorPadding),
-
-                ) {
                 if (isEdit) {
                     ProductUnitEditor(
                         value = productCount,

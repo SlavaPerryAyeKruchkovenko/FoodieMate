@@ -24,20 +24,17 @@ class MainActivity : ComponentActivity() {
         setContent {
             FoodieMateTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-
-                    color = CustomTheme.colors.primaryBackground
+                    modifier = Modifier
+                        .fillMaxSize()
                 ) {
                     val navController = rememberNavController()
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
                         floatingActionButtonPosition = FabPosition.End,
-                        floatingActionButton = {
-
-                        },
                         bottomBar = {
                             NavigationBottomBar(navController)
                         },
+                        contentColor = CustomTheme.colors.primaryBackground
                     ) { paddingValues ->
                         NavigationGraph(
                             navController = navController,
