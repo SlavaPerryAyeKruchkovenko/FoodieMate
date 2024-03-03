@@ -14,7 +14,7 @@ import com.example.foodiemate.ui.theme.customTheme.LocalCustomLayoutSize
 import com.example.foodiemate.ui.theme.customTheme.LocalCustomShapeRadius
 
 private val darkColorScheme = CustomColorsPalette(
-    primaryText = Blue700,
+    primaryText = Black,
     primaryBackground = RebeccaPurple,
     secondaryText = Black,
     secondaryBackground = BrightLavender,
@@ -31,10 +31,11 @@ private val darkColorScheme = CustomColorsPalette(
     acceptColor = Green,
     darkScreen = Dark,
     FABBoxBackground = LightPurple900,
+    editorBackground = PurpleHeart
 )
 
 private val lightColorScheme = CustomColorsPalette(
-    primaryText = Blue700,
+    primaryText = Black,
     primaryBackground = RebeccaPurple,
     secondaryText = Black,
     secondaryBackground = BrightLavender,
@@ -50,7 +51,8 @@ private val lightColorScheme = CustomColorsPalette(
     addColor = Green,
     acceptColor = Green,
     darkScreen = Dark,
-    FABBoxBackground = LightPurple900
+    FABBoxBackground = LightPurple900,
+    editorBackground = PurpleHeart
 )
 
 @Composable
@@ -66,7 +68,8 @@ fun FoodieMateTheme(
         default = 0.dp,
         card = 12.dp,
         navigationBottomBar = 16.dp,
-        iconBorderShape = 8.dp
+        iconBorderShape = 8.dp,
+        editorCorner = 9.dp
     )
     val layoutSize = CustomLayoutSize(
         mediumIconSize = 24.dp,
@@ -93,8 +96,8 @@ fun FoodieMateTheme(
         cardTextBoxPadding = 4.dp,
         endCardTextPadding = 28.dp,
         smallIconPadding = 4.dp,
-        mediumIconPadding = 3.dp,
-        productEditorPadding = 4.dp,
+        mediumIconPadding = 3.dp,//useless
+        productEditorPadding = 4.dp,//useless
         verticalNavigationBarPadding = 8.dp,
         horizontalNavigationBarPadding = 16.dp,
         addFABPadding = 16.dp,

@@ -1,9 +1,6 @@
 package com.example.foodiemate.ui.screens.fridge.component
 
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Icon
@@ -13,7 +10,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.foodiemate.R
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
@@ -26,12 +22,6 @@ fun ProductEditorIcon(
 ) {
     Icon(
         modifier = Modifier
-            .border(
-                1.dp,
-                tint,
-                RoundedCornerShape(CustomTheme.layoutSize.mediumIconSize)
-            )
-            .padding(CustomTheme.layoutPadding.mediumIconPadding)
             .size(CustomTheme.layoutSize.mediumIconSize)
             .then(modifier),
         imageVector = imageVector,
@@ -39,8 +29,9 @@ fun ProductEditorIcon(
         tint = tint
     )
 }
+
 @Preview
 @Composable
-fun ProductEditorIconPreview(){
+fun ProductEditorIconPreview() {
     ProductEditorIcon(Icons.Filled.Add, R.string.remove_product, CustomTheme.colors.removeProduct)
 }

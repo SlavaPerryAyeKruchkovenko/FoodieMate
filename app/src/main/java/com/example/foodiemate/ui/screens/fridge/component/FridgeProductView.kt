@@ -49,12 +49,13 @@ fun FridgeProductView(product: FridgeProduct) {
         mutableStateOf(product.count)
     }
     Card(
-        modifier = Modifier.fillMaxWidth(),
-        border = BorderStroke(1.dp, CustomTheme.colors.secondaryText),
+        modifier = Modifier
+            .fillMaxWidth(),
         shape = RoundedCornerShape(CustomTheme.shapeRadius.card),
+        border = BorderStroke(1.dp, CustomTheme.colors.secondaryText),
         colors = CardDefaults.cardColors(
             containerColor = CustomTheme.colors.secondaryBackground,
-        )
+        ),
     ) {
         Row(
             modifier = Modifier
@@ -135,7 +136,12 @@ fun FridgeProductView(product: FridgeProduct) {
                     ProductUnitEditor(
                         value = productCount,
                         { v -> productCount = v },
-                        modifier = Modifier.padding(top = CustomTheme.layoutPadding.productEditorPadding)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .heightIn(
+                                CustomTheme.layoutSize.productEditorSize,
+                                CustomTheme.layoutSize.productEditorSize
+                            )
                     )
                 } else {
                     ProductUnit(
