@@ -88,7 +88,8 @@ fun FoodieMateTheme(
         addFABIconSize = 24.dp,
         addFABSmallSize = 40.dp,
         addSmallFABIconSize = 18.dp,
-        addFABBoxSize = 200.dp
+        addFABBoxSize = 200.dp,
+        loaderSize = 200.dp
     )
     val layoutPadding = CustomLayoutPadding(
         smallPadding = 18.dp,

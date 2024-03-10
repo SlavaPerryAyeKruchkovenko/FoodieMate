@@ -19,4 +19,5 @@ data class CustomLayoutSize(
     val bottomBarDividerWidth: Dp,
     val bottomBarIcon: Dp,
     val addFABBoxSize: Dp,
+    val loaderSize: Dp,
 )

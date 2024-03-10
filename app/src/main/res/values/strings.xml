@@ -10,6 +10,7 @@
     <string name="liter">L</string>
     <string name="piece">pcs</string>
     <string name="product_image">product image</string>
+    <string name="loading">loading</string>
     <string name="add_products">add products</string>
     <string name="add_by_mail">add by mail</string>
     <string name="add_by_qr_code">add by qr code</string>
