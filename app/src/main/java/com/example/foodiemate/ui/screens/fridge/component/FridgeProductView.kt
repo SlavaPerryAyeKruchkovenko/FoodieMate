@@ -13,8 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Check
 import androidx.compose.material.icons.rounded.Edit
+import androidx.compose.material.icons.twotone.Check
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -107,7 +107,7 @@ fun FridgeProductView(product: FridgeProduct) {
                         text = product.product.name,
                     )
                     if (isEdit) {
-                        ProductIcon(Icons.Rounded.Check,
+                        ProductIcon(Icons.TwoTone.Check,
                             R.string.accept,
                             CustomTheme.colors.acceptColor,
                             Modifier
@@ -135,7 +135,7 @@ fun FridgeProductView(product: FridgeProduct) {
                 if (isEdit) {
                     ProductUnitEditor(
                         value = productCount,
-                        { v -> productCount = v },
+                        { value -> productCount = value },
                         modifier = Modifier
                             .fillMaxWidth()
                             .heightIn(

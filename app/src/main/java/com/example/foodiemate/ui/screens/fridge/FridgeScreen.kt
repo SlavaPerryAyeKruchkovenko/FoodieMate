@@ -78,7 +78,7 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
                     bottom.linkTo(parent.bottom)
                     end.linkTo(parent.end)
                 }, isFABMenuOpen
-        )
+        )//Menu after click on Floating Action Button
         AddFABLargeIcon(
             Modifier.constrainAs(fab) {
                 bottom.linkTo(parent.bottom, margin = fabPadding)
@@ -89,7 +89,7 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
             },
             if (isFABMenuOpen) Icons.Filled.Close else Icons.Filled.Add,
             stringResource(R.string.add_products)
-        )
+        )// Large floating action button
 
     }
 
