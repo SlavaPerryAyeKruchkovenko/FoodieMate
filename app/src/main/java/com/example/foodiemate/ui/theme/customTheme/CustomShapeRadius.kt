@@ -9,5 +9,6 @@ data class CustomShapeRadius(
     val card: Dp,
     val navigationBottomBar: Dp,
     val iconBorderShape: Dp,
-    val editorCorner: Dp
+    val editorCorner: Dp,
+    val editorIconCorner: Dp
 )

@@ -22,5 +22,6 @@ data class CustomColorsPalette(
     val acceptColor: Color,
     val darkScreen: Color,
     val FABBoxBackground: Color,
-    val editorBackground: Color
+    val editorBackground: Color,
+    val editorIconBackground: Color
 )

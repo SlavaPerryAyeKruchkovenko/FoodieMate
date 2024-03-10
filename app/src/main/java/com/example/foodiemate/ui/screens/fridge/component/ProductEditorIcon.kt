@@ -1,6 +1,8 @@
 package com.example.foodiemate.ui.screens.fridge.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Icon
@@ -23,6 +25,10 @@ fun ProductEditorIcon(
     Icon(
         modifier = Modifier
             .size(CustomTheme.layoutSize.mediumIconSize)
+            .background(
+                CustomTheme.colors.editorIconBackground,
+                RoundedCornerShape(CustomTheme.shapeRadius.editorIconCorner)
+            )
             .then(modifier),
         imageVector = imageVector,
         contentDescription = stringResource(description),

@@ -23,7 +23,8 @@ val LocalCustomColorsPalette = staticCompositionLocalOf {
         acceptColor = Color.Unspecified,
         darkScreen = Color.Unspecified,
         FABBoxBackground = Color.Unspecified,
-        editorBackground = Color.Unspecified
+        editorBackground = Color.Unspecified,
+        editorIconBackground = Color.Unspecified
     )
 }
 
@@ -33,7 +34,8 @@ val LocalCustomShapeRadius = staticCompositionLocalOf {
         card = Dp.Unspecified,
         navigationBottomBar = Dp.Unspecified,
         iconBorderShape = Dp.Unspecified,
-        editorCorner = Dp.Unspecified
+        editorCorner = Dp.Unspecified,
+        editorIconCorner = Dp.Unspecified
     )
 }
 val LocalCustomLayoutSize = staticCompositionLocalOf {

@@ -4,7 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -30,8 +31,8 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 fun ProductUnitEditor(
     value: Number, changeValue: (value: Number) -> Unit, modifier: Modifier = Modifier
 ) {
-    val unitValue by remember {
-        mutableStateOf(value)
+    var unitValue by remember {
+        mutableStateOf(value.toString())
     }
     Row(
         modifier = Modifier
@@ -49,22 +50,34 @@ fun ProductUnitEditor(
             tint = CustomTheme.colors.reduceColor,
             modifier = Modifier.clickable {
                 if (value is Double) {
-                    changeValue(value.toDouble() - 1)
+                    val calculateValue = value.toDouble() - 1
+                    unitValue = (calculateValue).toString()
+                    changeValue(calculateValue)
                 } else {
-                    changeValue(value.toInt() - 1)
+                    val calculateValue = value.toInt() - 1
+                    unitValue = (calculateValue).toString()
+                    changeValue(calculateValue)
                 }
             })
         BasicTextField(
             modifier = Modifier.weight(1f),
-            value = value.toString(),
+            value = unitValue,
             onValueChange = {
                 val decimalCount = it.substringAfter(".").length
                 val parsedDouble = it.toDoubleOrNull()
                 parsedDouble.toString().split('.')
-                if (parsedDouble != null && parsedDouble < 1000 && decimalCount < 4) {
-                    changeValue(parsedDouble)
+                if (parsedDouble != null && parsedDouble < 1000 && decimalCount > 0 && decimalCount < 4) {
+                    unitValue = it
+                    if (parsedDouble % 1 == 0.0) {
+                        changeValue(parsedDouble.toInt())
+                    } else {
+                        changeValue(parsedDouble)
+                    }
                 } else if (it.isEmpty()) {
+                    unitValue = "0"
                     changeValue(0)
+                } else if (it.contains(".") && decimalCount == 0) {
+                    unitValue = it
                 }
             },
             textStyle = TextStyle(
@@ -83,11 +96,15 @@ fun ProductUnitEditor(
             modifier = Modifier
                 .clickable {
                     if (value is Double) {
-                        changeValue(value.toDouble() + 1)
+                        val calculateValue = value.toDouble() + 1
+                        unitValue = (calculateValue).toString()
+                        changeValue(calculateValue)
                     } else {
-                        changeValue(value.toInt() + 1)
+                        val calculateValue = value.toInt() + 1
+                        unitValue = (calculateValue).toString()
+                        changeValue(calculateValue)
                     }
                 }
-                .fillMaxWidth(1f))
+                .fillMaxHeight(1f))
     }
 }

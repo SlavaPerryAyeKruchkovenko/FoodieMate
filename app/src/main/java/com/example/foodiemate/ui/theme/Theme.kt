@@ -31,7 +31,8 @@ private val darkColorScheme = CustomColorsPalette(
     acceptColor = Green,
     darkScreen = Dark,
     FABBoxBackground = LightPurple900,
-    editorBackground = PurpleHeart
+    editorBackground = PurpleHeart,
+    editorIconBackground = TransGray
 )
 
 private val lightColorScheme = CustomColorsPalette(
@@ -52,7 +53,8 @@ private val lightColorScheme = CustomColorsPalette(
     acceptColor = Green,
     darkScreen = Dark,
     FABBoxBackground = LightPurple900,
-    editorBackground = PurpleHeart
+    editorBackground = PurpleHeart,
+    editorIconBackground = TransGray
 )
 
 @Composable
@@ -69,7 +71,8 @@ fun FoodieMateTheme(
         card = 12.dp,
         navigationBottomBar = 16.dp,
         iconBorderShape = 8.dp,
-        editorCorner = 9.dp
+        editorCorner = 9.dp,
+        editorIconCorner = 5.dp
     )
     val layoutSize = CustomLayoutSize(
         mediumIconSize = 24.dp,
