@@ -5,7 +5,6 @@ import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.Product
 import com.example.foodiemate.datasource.presentationModels.models.ProductCategory
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
-import java.util.*
 
 object Mock {
     fun mockFridgeProduct(): List<FridgeProduct> {
@@ -13,7 +12,7 @@ object Mock {
             FridgeProduct(
                 "1",
                 mockProducts().first { it.id === "1" },
-                1240,
+                124,
                 mockFamily,
             ),
             FridgeProduct(

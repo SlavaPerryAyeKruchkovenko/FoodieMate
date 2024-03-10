@@ -97,7 +97,7 @@ fun FoodieMateTheme(
         endCardTextPadding = 28.dp,
         smallIconPadding = 4.dp,
         mediumIconPadding = 3.dp,//useless
-        productEditorPadding = 4.dp,//useless
+        productEditorPadding = 5.dp,
         verticalNavigationBarPadding = 8.dp,
         horizontalNavigationBarPadding = 16.dp,
         addFABPadding = 16.dp,
