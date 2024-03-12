@@ -37,8 +37,6 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
 
     private fun reduce(event: FridgeEvent, state: FridgeViewState.Display) {
         when (event) {
-            is FridgeEvent.EditProductCount -> editProductCount(event.product)
-            is FridgeEvent.DisableEditProduct -> editProductCount(null)
             is FridgeEvent.ChangeProductCount -> changeProductCount(event.product, event.value)
             else -> {}
         }
@@ -55,11 +53,8 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
         }
     }
 
-    private fun editProductCount(product: FridgeProduct?) {
-
-    }
-
     private fun changeProductCount(product: FridgeProduct, value: Number) {
+        
         product.count = value
     }
 }

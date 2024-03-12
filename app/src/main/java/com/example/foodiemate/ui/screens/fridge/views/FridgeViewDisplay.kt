@@ -33,7 +33,10 @@ import com.example.foodiemate.ui.theme.component.AddFABMenu
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
-fun FridgeViewDisplay(items: List<FridgeProduct>) {
+fun FridgeViewDisplay(
+    items: List<FridgeProduct>,
+    editProductCount: (product: FridgeProduct, value: Number) -> Unit
+) {
     var editableProduct: FridgeProduct? by remember {
         mutableStateOf(null)
     }
@@ -61,22 +64,25 @@ fun FridgeViewDisplay(items: List<FridgeProduct>) {
             ) {
                 items(items.mapIndexed { i: Int, product: FridgeProduct ->
                     IndexObject(i, product)
-                }) {
+                }) { (_, product) ->
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(top = 8.dp)
                     ) {
-                        val isEdit = editableProduct != null && editableProduct == it.value
+                        val isEdit = editableProduct != null && editableProduct == product
                         FridgeProductView(
-                            product = it.value,
+                            product = product,
                             isEdit = isEdit,
-                            onEditProduct = {
-                                editableProduct = it.value
+                            onEnableEditProduct = {
+                                editableProduct = product
                             },
-                            editProductCount = {
-                                
+                            onEditProduct = { it ->
+                                editProductCount(product, it)
+                            },
+                            onDisableEditProduct = {
+                                editableProduct = null
                             })
                     }
                 }
@@ -107,5 +113,5 @@ fun FridgeViewDisplay(items: List<FridgeProduct>) {
 @Preview
 @Composable
 fun FridgeViewDisplayPreview() {
-    FridgeViewDisplay(items = Mock.mockFridgeProduct())
+    FridgeViewDisplay(items = Mock.mockFridgeProduct()) { _, _ -> }
 }

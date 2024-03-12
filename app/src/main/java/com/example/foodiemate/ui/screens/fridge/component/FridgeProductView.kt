@@ -43,8 +43,9 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 fun FridgeProductView(
     product: FridgeProduct,
     isEdit: Boolean,
-    onEditProduct: () -> Unit,
-    editProductCount: (newValue: Number) -> Unit
+    onEnableEditProduct: () -> Unit,
+    onEditProduct: (newValue: Number) -> Unit,
+    onDisableEditProduct: () -> Unit
 ) {
     val cardSize = CustomTheme.layoutSize.productImageSize
     val textSizeBox = CustomTheme.layoutSize.productTextSize
@@ -120,7 +121,7 @@ fun FridgeProductView(
                                     end.linkTo(parent.end)
                                 }
                                 .clickable {
-                                    onEditProduct()
+                                    onDisableEditProduct()
                                 })
                     } else {
                         ProductIcon(Icons.Rounded.Edit,
@@ -132,14 +133,17 @@ fun FridgeProductView(
                                     end.linkTo(parent.end)
                                 }
                                 .clickable {
-                                    onEditProduct()
+                                    onEnableEditProduct()
                                 })
                     }
                 }
                 if (isEdit) {
                     ProductUnitEditor(
                         value = productCount,
-                        editProductCount,
+                        {
+                            productCount = it
+                            onEditProduct(it)
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .heightIn(
@@ -171,5 +175,5 @@ private fun FridgeProductViewPreview() {
     }
     FridgeProductView(mockProducts.first(), isEdit, {
         isEdit = true
-    }, {})
+    }, {}, {})
 }

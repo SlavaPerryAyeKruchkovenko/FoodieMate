@@ -34,6 +34,7 @@ fun ProductUnitEditor(
     var unitValue by remember {
         mutableStateOf(value.toString())
     }
+    val maxValue = 100000
     Row(
         modifier = Modifier
             .then(modifier)
@@ -51,22 +52,29 @@ fun ProductUnitEditor(
             modifier = Modifier.clickable {
                 if (value is Double) {
                     val calculateValue = value.toDouble() - 1
-                    unitValue = (calculateValue).toString()
-                    changeValue(calculateValue)
+                    if (calculateValue >= 0) {
+                        unitValue = (calculateValue).toString()
+                        changeValue(calculateValue)
+                    }
                 } else {
                     val calculateValue = value.toInt() - 1
-                    unitValue = (calculateValue).toString()
-                    changeValue(calculateValue)
+                    if (calculateValue >= 0) {
+                        unitValue = (calculateValue).toString()
+                        changeValue(calculateValue)
+                    }
                 }
             })
         BasicTextField(
             modifier = Modifier.weight(1f),
             value = unitValue,
             onValueChange = {
-                val decimalCount = it.substringAfter(".").length
+                val decimalCount = if (it.contains(".")) {
+                    it.substringAfter(".").length
+                } else {
+                    1
+                }
                 val parsedDouble = it.toDoubleOrNull()
-                parsedDouble.toString().split('.')
-                if (parsedDouble != null && parsedDouble < 1000 && decimalCount > 0 && decimalCount < 4) {
+                if (parsedDouble != null && parsedDouble < maxValue && decimalCount > 0 && decimalCount < 4) {
                     unitValue = it
                     if (parsedDouble % 1 == 0.0) {
                         changeValue(parsedDouble.toInt())
@@ -74,7 +82,7 @@ fun ProductUnitEditor(
                         changeValue(parsedDouble)
                     }
                 } else if (it.isEmpty()) {
-                    unitValue = "0"
+                    unitValue = ""
                     changeValue(0)
                 } else if (it.contains(".") && decimalCount == 0) {
                     unitValue = it
@@ -97,12 +105,18 @@ fun ProductUnitEditor(
                 .clickable {
                     if (value is Double) {
                         val calculateValue = value.toDouble() + 1
+                        if (calculateValue < maxValue) {
+                            unitValue = (calculateValue).toString()
+                            changeValue(calculateValue)
+                        }
                         unitValue = (calculateValue).toString()
                         changeValue(calculateValue)
                     } else {
                         val calculateValue = value.toInt() + 1
-                        unitValue = (calculateValue).toString()
-                        changeValue(calculateValue)
+                        if (calculateValue < maxValue) {
+                            unitValue = (calculateValue).toString()
+                            changeValue(calculateValue)
+                        }
                     }
                 }
                 .fillMaxHeight(1f))
