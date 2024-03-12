@@ -18,9 +18,7 @@ import javax.inject.Inject
 class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEvent> {
     private val _fridgeViewState: MutableLiveData<FridgeViewState> =
         MutableLiveData(FridgeViewState.Loading)
-    private val _editableProduct: MutableLiveData<FridgeProduct?> = MutableLiveData(null)
     val fridgeViewState: LiveData<FridgeViewState> = _fridgeViewState
-    val editableProduct: LiveData<FridgeProduct?> = _editableProduct
     override fun obtainEvent(event: FridgeEvent) {
         when (val currentState = _fridgeViewState.value) {
             is FridgeViewState.Loading -> reduce(event, currentState)
@@ -58,7 +56,7 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
     }
 
     private fun editProductCount(product: FridgeProduct?) {
-        _editableProduct.value = product
+
     }
 
     private fun changeProductCount(product: FridgeProduct, value: Number) {

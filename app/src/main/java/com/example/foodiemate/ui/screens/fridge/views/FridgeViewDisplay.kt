@@ -34,6 +34,9 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
 fun FridgeViewDisplay(items: List<FridgeProduct>) {
+    var editableProduct: FridgeProduct? by remember {
+        mutableStateOf(null)
+    }
     var isFABMenuOpen by remember {
         mutableStateOf(false)
     }
@@ -65,7 +68,16 @@ fun FridgeViewDisplay(items: List<FridgeProduct>) {
                             .fillMaxSize()
                             .padding(top = 8.dp)
                     ) {
-                        FridgeProductView(product = it.value)
+                        val isEdit = editableProduct != null && editableProduct == it.value
+                        FridgeProductView(
+                            product = it.value,
+                            isEdit = isEdit,
+                            onEditProduct = {
+                                editableProduct = it.value
+                            },
+                            editProductCount = {
+                                
+                            })
                     }
                 }
             }

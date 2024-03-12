@@ -40,11 +40,15 @@ import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
-fun FridgeProductView(product: FridgeProduct) {
+fun FridgeProductView(
+    product: FridgeProduct,
+    isEdit: Boolean,
+    onEditProduct: () -> Unit,
+    editProductCount: (newValue: Number) -> Unit
+) {
     val cardSize = CustomTheme.layoutSize.productImageSize
     val textSizeBox = CustomTheme.layoutSize.productTextSize
     val cardTextPadding = CustomTheme.layoutPadding.cardTextPadding
-    var isEdit: Boolean by remember { mutableStateOf(false) }
     var productCount: Number by remember {
         mutableStateOf(product.count)
     }
@@ -116,7 +120,7 @@ fun FridgeProductView(product: FridgeProduct) {
                                     end.linkTo(parent.end)
                                 }
                                 .clickable {
-                                    isEdit = false
+                                    onEditProduct()
                                 })
                     } else {
                         ProductIcon(Icons.Rounded.Edit,
@@ -128,14 +132,14 @@ fun FridgeProductView(product: FridgeProduct) {
                                     end.linkTo(parent.end)
                                 }
                                 .clickable {
-                                    isEdit = true
+                                    onEditProduct()
                                 })
                     }
                 }
                 if (isEdit) {
                     ProductUnitEditor(
                         value = productCount,
-                        { value -> productCount = value },
+                        editProductCount,
                         modifier = Modifier
                             .fillMaxWidth()
                             .heightIn(
@@ -162,5 +166,10 @@ fun FridgeProductView(product: FridgeProduct) {
 @Composable
 private fun FridgeProductViewPreview() {
     val mockProducts = Mock.mockFridgeProduct()
-    FridgeProductView(mockProducts.first())
+    var isEdit by remember {
+        mutableStateOf(false)
+    }
+    FridgeProductView(mockProducts.first(), isEdit, {
+        isEdit = true
+    }, {})
 }

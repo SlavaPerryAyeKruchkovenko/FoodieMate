@@ -14,7 +14,10 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
     val viewState = viewModel.fridgeViewState.observeAsState()
     when (val state = viewState.value) {
         is FridgeViewState.Loading -> FridgeViewLoading()
-        is FridgeViewState.Display -> FridgeViewDisplay(items = state.items)
+        is FridgeViewState.Display -> FridgeViewDisplay(
+            items = state.items,
+        )
+
         else -> throw NotImplementedError("Unexpected daily state")
     }
     LaunchedEffect(key1 = viewState, block = {
