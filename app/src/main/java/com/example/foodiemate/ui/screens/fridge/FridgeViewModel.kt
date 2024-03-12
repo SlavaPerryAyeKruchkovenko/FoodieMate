@@ -3,11 +3,15 @@ package com.example.foodiemate.ui.screens.fridge
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.foodiemate.base.EventHandler
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
+import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.screens.fridge.model.FridgeEvent
 import com.example.foodiemate.ui.screens.fridge.model.FridgeViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,7 +31,10 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
     }
 
     private fun reduce(event: FridgeEvent, state: FridgeViewState.Loading) {
-        //Todo add events for loading page
+        when (event) {
+            FridgeEvent.EnterScreen -> fetchProducts()
+            else -> {}
+        }
     }
 
     private fun reduce(event: FridgeEvent, state: FridgeViewState.Display) {
@@ -35,11 +42,19 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
             is FridgeEvent.EditProductCount -> editProductCount(event.product)
             is FridgeEvent.DisableEditProduct -> editProductCount(null)
             is FridgeEvent.ChangeProductCount -> changeProductCount(event.product, event.value)
+            else -> {}
         }
     }
 
     private fun reduce(event: FridgeEvent, state: FridgeViewState.NoItems) {
         //Todo add events for noItems page
+    }
+
+    private fun fetchProducts() {
+        viewModelScope.launch {
+            delay(2000)
+            _fridgeViewState.value = FridgeViewState.Display(Mock.mockFridgeProduct())
+        }
     }
 
     private fun editProductCount(product: FridgeProduct?) {
