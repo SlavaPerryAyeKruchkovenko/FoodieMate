@@ -4,5 +4,5 @@ data class Product(
     val id: String,
     val category: ProductCategory,
     val name: String,
-    val unit: UnitOfMeasure
+    var unit: UnitOfMeasure
 )

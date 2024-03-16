@@ -22,4 +22,6 @@
     <string name="add_by_qr_code">ajouter par code qr</string>
     <string name="add_manually">Ajouter manuellementmodifier</string>
     <string name="loading">chargement</string>
+    <string name="kilogram">kg</string>
+    <string name="milliliter">ml</string>
 </resources>

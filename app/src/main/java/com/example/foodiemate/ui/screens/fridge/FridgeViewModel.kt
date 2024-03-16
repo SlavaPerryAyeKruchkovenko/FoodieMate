@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.foodiemate.base.EventHandler
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
+import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.screens.fridge.model.FridgeEvent
 import com.example.foodiemate.ui.screens.fridge.model.FridgeViewState
@@ -54,7 +55,32 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
     }
 
     private fun changeProductCount(product: FridgeProduct, value: Number) {
-        
+        val productCount = value.toDouble()
+        if (productCount >= 1000) {
+            when (product.product.unit) {
+                UnitOfMeasure.Gram -> {
+                    product.product.unit = UnitOfMeasure.Kilogram
+                }
+
+                UnitOfMeasure.Milliliter -> {
+                    product.product.unit = UnitOfMeasure.Liter
+                }
+
+                else -> {}
+            }
+        } else if (productCount < 1 && productCount > 0) {
+            when (product.product.unit) {
+                UnitOfMeasure.Kilogram -> {
+                    product.product.unit = UnitOfMeasure.Gram
+                }
+
+                UnitOfMeasure.Liter -> {
+                    product.product.unit = UnitOfMeasure.Milliliter
+                }
+
+                else -> {}
+            }
+        }
         product.count = value
     }
 }

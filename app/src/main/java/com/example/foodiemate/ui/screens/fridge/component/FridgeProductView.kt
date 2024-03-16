@@ -1,5 +1,6 @@
 package com.example.foodiemate.ui.screens.fridge.component
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -39,6 +40,7 @@ import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun FridgeProductView(
     product: FridgeProduct,
@@ -50,9 +52,7 @@ fun FridgeProductView(
     val cardSize = CustomTheme.layoutSize.productImageSize
     val textSizeBox = CustomTheme.layoutSize.productTextSize
     val cardTextPadding = CustomTheme.layoutPadding.cardTextPadding
-    var productCount: Number by remember {
-        mutableStateOf(product.count)
-    }
+    var productCount = mutableStateOf(product.count)
     Card(
         modifier = Modifier
             .fillMaxWidth(),
@@ -139,9 +139,9 @@ fun FridgeProductView(
                 }
                 if (isEdit) {
                     ProductUnitEditor(
-                        value = productCount,
+                        value = productCount.value,
                         {
-                            productCount = it
+                            productCount.value = it
                             onEditProduct(it)
                         },
                         modifier = Modifier

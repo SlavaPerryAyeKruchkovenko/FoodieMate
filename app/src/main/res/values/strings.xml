@@ -7,7 +7,9 @@
     <string name="products">Products</string>
     <string name="search_more">Search…</string>
     <string name="gram">gm</string>
+    <string name="kilogram">kg</string>
     <string name="liter">L</string>
+    <string name="milliliter">ml</string>
     <string name="piece">pcs</string>
     <string name="product_image">product image</string>
     <string name="loading">loading</string>

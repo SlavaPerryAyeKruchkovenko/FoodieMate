@@ -22,4 +22,6 @@
     <string name="add_by_qr_code">Добавить через qr code</string>
     <string name="add_manually">Добавить вручную</string>
     <string name="loading">загрузка</string>
+    <string name="kilogram">кг.</string>
+    <string name="milliliter">мл.</string>
 </resources>
