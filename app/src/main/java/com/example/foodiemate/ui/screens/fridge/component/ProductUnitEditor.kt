@@ -25,16 +25,26 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.example.foodiemate.R
+import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
+import com.example.foodiemate.utils.NumberUtils.isInt
 
 @Composable
 fun ProductUnitEditor(
-    value: Number, changeValue: (value: Number) -> Unit, modifier: Modifier = Modifier
+    value: Number,
+    changeValue: (value: Number) -> Unit,
+    unit: UnitOfMeasure,
+    modifier: Modifier = Modifier
 ) {
-    var unitValue by remember {
+    var productCount by remember {
         mutableStateOf(value.toString())
     }
-    val maxValue = 100000
+    val unitMaxValue = when (unit) {
+        UnitOfMeasure.Piece -> 1000
+        UnitOfMeasure.Liter -> 1000
+        UnitOfMeasure.Kilogram -> 1000
+        else -> 100000
+    }
     Row(
         modifier = Modifier
             .then(modifier)
@@ -50,23 +60,18 @@ fun ProductUnitEditor(
             description = R.string.reduce,
             tint = CustomTheme.colors.reduceColor,
             modifier = Modifier.clickable {
-                if (value is Double) {
-                    val calculateValue = value.toDouble() - 1
-                    if (calculateValue >= 0) {
-                        unitValue = (calculateValue).toString()
-                        changeValue(calculateValue)
-                    }
-                } else {
-                    val calculateValue = value.toInt() - 1
-                    if (calculateValue >= 0) {
-                        unitValue = (calculateValue).toString()
-                        changeValue(calculateValue)
-                    }
+                val parsedDouble = value.toDouble()
+                val calculateValue = isInt(parsedDouble, {
+                    value.toInt() - 1
+                }, { parsedDouble - 1 })
+                if (parsedDouble - 1 >= 0) {
+                    productCount = calculateValue.toString()
+                    changeValue(calculateValue)
                 }
             })
         BasicTextField(
             modifier = Modifier.weight(1f),
-            value = unitValue,
+            value = productCount,
             onValueChange = {
                 val decimalCount = if (it.contains(".")) {
                     it.substringAfter(".").length
@@ -74,18 +79,18 @@ fun ProductUnitEditor(
                     1
                 }
                 val parsedDouble = it.toDoubleOrNull()
-                if (parsedDouble != null && parsedDouble < maxValue && decimalCount > 0 && decimalCount < 4) {
-                    unitValue = it
-                    if (parsedDouble % 1 == 0.0) {
+                if (parsedDouble != null && parsedDouble < unitMaxValue && decimalCount > 0 && decimalCount < 4) {
+                    productCount = it
+                    isInt(parsedDouble, {
                         changeValue(parsedDouble.toInt())
-                    } else {
+                    }, {
                         changeValue(parsedDouble)
-                    }
+                    })
                 } else if (it.isEmpty()) {
-                    unitValue = ""
+                    productCount = ""
                     changeValue(0)
                 } else if (it.contains(".") && decimalCount == 0) {
-                    unitValue = it
+                    productCount = it
                 }
             },
             textStyle = TextStyle(
@@ -103,20 +108,13 @@ fun ProductUnitEditor(
             tint = CustomTheme.colors.addColor,
             modifier = Modifier
                 .clickable {
-                    if (value is Double) {
-                        val calculateValue = value.toDouble() + 1
-                        if (calculateValue < maxValue) {
-                            unitValue = (calculateValue).toString()
-                            changeValue(calculateValue)
-                        }
-                        unitValue = (calculateValue).toString()
+                    val parsedDouble = value.toDouble()
+                    val calculateValue = isInt(parsedDouble, {
+                        value.toInt() + 1
+                    }, { parsedDouble + 1 })
+                    if (parsedDouble + 1 < unitMaxValue) {
+                        productCount = calculateValue.toString()
                         changeValue(calculateValue)
-                    } else {
-                        val calculateValue = value.toInt() + 1
-                        if (calculateValue < maxValue) {
-                            unitValue = (calculateValue).toString()
-                            changeValue(calculateValue)
-                        }
                     }
                 }
                 .fillMaxHeight(1f))

@@ -1,6 +1,5 @@
 package com.example.foodiemate.ui.screens.fridge
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +10,7 @@ import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.screens.fridge.model.FridgeEvent
 import com.example.foodiemate.ui.screens.fridge.model.FridgeViewState
+import com.example.foodiemate.utils.NumberUtils.isInt
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -75,7 +75,6 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
                 else -> {}
             }
         } else if (productCount < 1 && productCount > 0) {
-            Log.d("change unit", product.product.unit.toString())
             when (unit) {
                 UnitOfMeasure.Kilogram -> {
                     productCount *= 1000
@@ -90,11 +89,6 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
                 else -> {}
             }
         }
-        product.count = if (value is Int && productCount - value.toInt() == 0.0) {
-            productCount.toInt()
-        } else {
-            productCount
-        }
-
+        product.count = isInt(productCount, { productCount.toInt() }, { productCount })
     }
 }

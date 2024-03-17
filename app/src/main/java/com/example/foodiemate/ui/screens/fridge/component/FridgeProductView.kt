@@ -40,6 +40,8 @@ import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
+import com.example.foodiemate.utils.NumberUtils.isInt
+import com.example.foodiemate.utils.ProductUtils.convertCountByUnit
 
 @Composable
 fun FridgeProductView(
@@ -59,19 +61,12 @@ fun FridgeProductView(
     LaunchedEffect(product.product.unit) {
         if (unit != product.product.unit) {
             unit = product.product.unit
-            var count = productCount.toDouble()
-            when (product.product.unit) {
-                UnitOfMeasure.Kilogram -> count /= 1000
-                UnitOfMeasure.Liter -> count /= 1000
-                UnitOfMeasure.Gram -> count *= 1000
-                UnitOfMeasure.Milliliter -> count *= 1000
-                else -> {}
-            }
-            productCount = if (productCount is Int && count - productCount.toInt() == 0.0) {
+            val count = convertCountByUnit(productCount.toDouble(), product.product.unit)
+            productCount = isInt<Number>(count, {
                 count.toInt()
-            } else {
+            }, {
                 count
-            }
+            })
         }
 
     }
@@ -163,7 +158,7 @@ fun FridgeProductView(
                         value = productCount, {
                             onEditProduct(it, unit)
                             productCount = it
-                        }, modifier = Modifier
+                        }, unit, modifier = Modifier
                             .fillMaxWidth()
                             .heightIn(
                                 CustomTheme.layoutSize.productEditorSize,
