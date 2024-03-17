@@ -38,7 +38,8 @@ class MainActivity : ComponentActivity() {
                     ) { paddingValues ->
                         NavigationGraph(
                             navController = navController,
-                            modifier = Modifier.padding(bottom = paddingValues.calculateBottomPadding())
+                            modifier = Modifier
+                                .padding(bottom = paddingValues.calculateBottomPadding())
                         )
                     }
                 }

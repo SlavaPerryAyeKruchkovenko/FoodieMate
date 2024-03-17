@@ -29,6 +29,7 @@ import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.screens.fridge.component.FridgeProductView
+import com.example.foodiemate.ui.screens.fridge.component.ProductSearchBar
 import com.example.foodiemate.ui.theme.component.AddFABLargeIcon
 import com.example.foodiemate.ui.theme.component.AddFABMenu
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
@@ -46,17 +47,21 @@ fun FridgeViewDisplay(
     }
     ConstraintLayout(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .background(CustomTheme.colors.primaryBackground)
     ) {
         val (fab, fabBox) = createRefs()
         val fabPadding = CustomTheme.layoutPadding.addFABPadding
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxWidth()
         ) {
+            ProductSearchBar(
+                modifier = Modifier, items
+            )
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1), modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxSize()
                     .padding(
                         top = 12.dp,
                         start = CustomTheme.layoutPadding.smallPadding,
@@ -73,8 +78,7 @@ fun FridgeViewDisplay(
                             .padding(top = 8.dp)
                     ) {
                         val isEdit = editableProduct != null && editableProduct == product
-                        FridgeProductView(
-                            product = product,
+                        FridgeProductView(product = product,
                             isEdit = isEdit,
                             onEnableEditProduct = {
                                 editableProduct = product
@@ -91,11 +95,10 @@ fun FridgeViewDisplay(
 
         }
         AddFABMenu(
-            modifier = Modifier
-                .constrainAs(fabBox) {
-                    bottom.linkTo(parent.bottom)
-                    end.linkTo(parent.end)
-                }, isFABMenuOpen
+            modifier = Modifier.constrainAs(fabBox) {
+                bottom.linkTo(parent.bottom)
+                end.linkTo(parent.end)
+            }, isFABMenuOpen
         )//Menu after click on Floating Action Button
         AddFABLargeIcon(
             Modifier.constrainAs(fab) {

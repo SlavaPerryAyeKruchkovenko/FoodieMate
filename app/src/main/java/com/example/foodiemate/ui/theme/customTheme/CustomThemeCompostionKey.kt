@@ -35,7 +35,8 @@ val LocalCustomShapeRadius = staticCompositionLocalOf {
         navigationBottomBar = Dp.Unspecified,
         iconBorderShape = Dp.Unspecified,
         editorCorner = Dp.Unspecified,
-        editorIconCorner = Dp.Unspecified
+        editorIconCorner = Dp.Unspecified,
+        searchBarCorner = Dp.Unspecified
     )
 }
 val LocalCustomLayoutSize = staticCompositionLocalOf {
@@ -54,7 +55,8 @@ val LocalCustomLayoutSize = staticCompositionLocalOf {
         addFABSmallSize = Dp.Unspecified,
         addSmallFABIconSize = Dp.Unspecified,
         addFABBoxSize = Dp.Unspecified,
-        loaderSize = Dp.Unspecified
+        loaderSize = Dp.Unspecified,
+        productAppBarIcon = Dp.Unspecified
     )
 }
 val LocalCustomLayoutPadding = staticCompositionLocalOf {
@@ -73,6 +75,7 @@ val LocalCustomLayoutPadding = staticCompositionLocalOf {
         horizontalNavigationBarPadding = Dp.Unspecified,
         addFABPadding = Dp.Unspecified,
         addFABEdgePadding = Dp.Unspecified,
-        addFABCenterPadding = Dp.Unspecified
+        addFABCenterPadding = Dp.Unspecified,
+        appBarPadding = Dp.Unspecified
     )
 }

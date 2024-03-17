@@ -53,7 +53,7 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
 
     private fun fetchProducts() {
         viewModelScope.launch {
-            delay(2000)
+            delay(100)
             _fridgeViewState.value = FridgeViewState.Display(Mock.mockFridgeProduct())
         }
     }
