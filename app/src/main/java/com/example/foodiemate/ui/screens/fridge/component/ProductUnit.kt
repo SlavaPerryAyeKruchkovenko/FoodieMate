@@ -17,9 +17,11 @@ import androidx.compose.ui.unit.sp
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.network.Mock.mockFridgeProduct
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
+import com.example.foodiemate.utils.ProductUtils.getProductCountTitle
 
 @Composable
 fun ProductUnit(product: FridgeProduct, modifier: Modifier = Modifier) {
+    val productCount = getProductCountTitle(product.count, product.product.unit)
     Row(
         modifier = Modifier
             .then(modifier)
@@ -33,9 +35,7 @@ fun ProductUnit(product: FridgeProduct, modifier: Modifier = Modifier) {
         Text(
             modifier = Modifier
                 .heightIn(0.dp, 20.dp),
-            text = "${product.count} " + stringResource(
-                id = product.product.unit.acronym
-            ),
+            text = "$productCount ${stringResource(id = product.product.unit.acronym)}",
             style = TextStyle(
                 fontSize = 18.sp,
                 color = CustomTheme.colors.primaryText,

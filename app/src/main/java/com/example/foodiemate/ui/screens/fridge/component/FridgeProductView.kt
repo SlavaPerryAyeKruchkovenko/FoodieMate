@@ -62,13 +62,8 @@ fun FridgeProductView(
         if (unit != product.product.unit) {
             unit = product.product.unit
             val count = convertCountByUnit(productCount.toDouble(), product.product.unit)
-            productCount = isInt<Number>(count, {
-                count.toInt()
-            }, {
-                count
-            })
+            productCount = isInt<Number>(count, { count.toInt() }, { count })
         }
-
     }
     Card(
         modifier = Modifier.fillMaxWidth(),

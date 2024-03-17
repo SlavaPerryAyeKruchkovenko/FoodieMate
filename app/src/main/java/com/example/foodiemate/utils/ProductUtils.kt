@@ -12,4 +12,13 @@ object ProductUtils {
             else -> count
         }
     }
+
+    fun getProductCountTitle(count: Number, unit: UnitOfMeasure): String {
+        val allowedUnits = listOf(UnitOfMeasure.Kilogram, UnitOfMeasure.Liter, UnitOfMeasure.Piece)
+        return if (count.toDouble() >= 100 && unit in allowedUnits) {
+            "+99"
+        } else {
+            count.toString()
+        }
+    }
 }
