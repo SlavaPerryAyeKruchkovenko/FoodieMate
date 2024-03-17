@@ -1,6 +1,5 @@
 package com.example.foodiemate.ui.screens.fridge.component
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -42,7 +41,6 @@ import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
-@SuppressLint("UnrememberedMutableState")
 @Composable
 fun FridgeProductView(
     product: FridgeProduct,
