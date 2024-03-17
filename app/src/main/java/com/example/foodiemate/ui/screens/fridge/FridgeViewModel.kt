@@ -1,5 +1,6 @@
 package com.example.foodiemate.ui.screens.fridge
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,7 +39,10 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
 
     private fun reduce(event: FridgeEvent, state: FridgeViewState.Display) {
         when (event) {
-            is FridgeEvent.ChangeProductCount -> changeProductCount(event.product, event.value)
+            is FridgeEvent.ChangeProductCount -> changeProductCount(
+                event.product, event.value, event.unit
+            )
+
             else -> {}
         }
     }
@@ -54,33 +58,43 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
         }
     }
 
-    private fun changeProductCount(product: FridgeProduct, value: Number) {
-        val productCount = value.toDouble()
+    private fun changeProductCount(product: FridgeProduct, value: Number, unit: UnitOfMeasure) {
+        var productCount = value.toDouble()
         if (productCount >= 1000) {
-            when (product.product.unit) {
+            when (unit) {
                 UnitOfMeasure.Gram -> {
+                    productCount /= 1000
                     product.product.unit = UnitOfMeasure.Kilogram
                 }
 
                 UnitOfMeasure.Milliliter -> {
+                    productCount /= 1000
                     product.product.unit = UnitOfMeasure.Liter
                 }
 
                 else -> {}
             }
         } else if (productCount < 1 && productCount > 0) {
-            when (product.product.unit) {
+            Log.d("change unit", product.product.unit.toString())
+            when (unit) {
                 UnitOfMeasure.Kilogram -> {
+                    productCount *= 1000
                     product.product.unit = UnitOfMeasure.Gram
                 }
 
                 UnitOfMeasure.Liter -> {
+                    productCount *= 1000
                     product.product.unit = UnitOfMeasure.Milliliter
                 }
 
                 else -> {}
             }
         }
-        product.count = value
+        product.count = if (value is Int && productCount - value.toInt() == 0.0) {
+            productCount.toInt()
+        } else {
+            productCount
+        }
+
     }
 }

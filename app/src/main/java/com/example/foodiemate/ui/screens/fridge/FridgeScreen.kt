@@ -16,8 +16,8 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
         is FridgeViewState.Loading -> FridgeViewLoading()
         is FridgeViewState.Display -> FridgeViewDisplay(
             items = state.items,
-            editProductCount = { product, value ->
-                viewModel.obtainEvent(FridgeEvent.ChangeProductCount(product, value))
+            editProductCount = { product, value, unit ->
+                viewModel.obtainEvent(FridgeEvent.ChangeProductCount(product, value, unit))
             }
         )
 

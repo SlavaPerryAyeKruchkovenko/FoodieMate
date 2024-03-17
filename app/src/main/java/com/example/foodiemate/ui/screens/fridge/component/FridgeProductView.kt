@@ -20,6 +20,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
+import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
@@ -46,16 +48,37 @@ fun FridgeProductView(
     product: FridgeProduct,
     isEdit: Boolean,
     onEnableEditProduct: () -> Unit,
-    onEditProduct: (newValue: Number) -> Unit,
+    onEditProduct: (newValue: Number, newUnit: UnitOfMeasure) -> Unit,
     onDisableEditProduct: () -> Unit
 ) {
     val cardSize = CustomTheme.layoutSize.productImageSize
     val textSizeBox = CustomTheme.layoutSize.productTextSize
     val cardTextPadding = CustomTheme.layoutPadding.cardTextPadding
-    var productCount = mutableStateOf(product.count)
+    var unit by remember { mutableStateOf(product.product.unit) }
+    var productCount by remember {
+        mutableStateOf(product.count)
+    }
+    LaunchedEffect(product.product.unit) {
+        if (unit != product.product.unit) {
+            unit = product.product.unit
+            var count = productCount.toDouble()
+            when (product.product.unit) {
+                UnitOfMeasure.Kilogram -> count /= 1000
+                UnitOfMeasure.Liter -> count /= 1000
+                UnitOfMeasure.Gram -> count *= 1000
+                UnitOfMeasure.Milliliter -> count *= 1000
+                else -> {}
+            }
+            productCount = if (productCount is Int && count - productCount.toInt() == 0.0) {
+                count.toInt()
+            } else {
+                count
+            }
+        }
+
+    }
     Card(
-        modifier = Modifier
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(CustomTheme.shapeRadius.card),
         border = BorderStroke(1.dp, CustomTheme.colors.secondaryText),
         colors = CardDefaults.cardColors(
@@ -139,12 +162,10 @@ fun FridgeProductView(
                 }
                 if (isEdit) {
                     ProductUnitEditor(
-                        value = productCount.value,
-                        {
-                            productCount.value = it
-                            onEditProduct(it)
-                        },
-                        modifier = Modifier
+                        value = productCount, {
+                            onEditProduct(it, unit)
+                            productCount = it
+                        }, modifier = Modifier
                             .fillMaxWidth()
                             .heightIn(
                                 CustomTheme.layoutSize.productEditorSize,
@@ -175,5 +196,5 @@ private fun FridgeProductViewPreview() {
     }
     FridgeProductView(mockProducts.first(), isEdit, {
         isEdit = true
-    }, {}, {})
+    }, { _, _ -> }, {})
 }

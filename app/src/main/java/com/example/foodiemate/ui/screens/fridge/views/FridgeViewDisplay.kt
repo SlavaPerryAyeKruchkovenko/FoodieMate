@@ -26,6 +26,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.IndexObject
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
+import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.screens.fridge.component.FridgeProductView
 import com.example.foodiemate.ui.theme.component.AddFABLargeIcon
@@ -35,7 +36,7 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 @Composable
 fun FridgeViewDisplay(
     items: List<FridgeProduct>,
-    editProductCount: (product: FridgeProduct, value: Number) -> Unit
+    editProductCount: (product: FridgeProduct, value: Number, unit: UnitOfMeasure) -> Unit
 ) {
     var editableProduct: FridgeProduct? by remember {
         mutableStateOf(null)
@@ -78,8 +79,8 @@ fun FridgeViewDisplay(
                             onEnableEditProduct = {
                                 editableProduct = product
                             },
-                            onEditProduct = { it ->
-                                editProductCount(product, it)
+                            onEditProduct = { value, unit ->
+                                editProductCount(product, value, unit)
                             },
                             onDisableEditProduct = {
                                 editableProduct = null
@@ -113,5 +114,5 @@ fun FridgeViewDisplay(
 @Preview
 @Composable
 fun FridgeViewDisplayPreview() {
-    FridgeViewDisplay(items = Mock.mockFridgeProduct()) { _, _ -> }
+    FridgeViewDisplay(items = Mock.mockFridgeProduct()) { _, _, _ -> }
 }
