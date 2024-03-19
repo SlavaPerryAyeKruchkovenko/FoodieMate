@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,7 +39,7 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
 fun FridgeViewDisplay(
-    items: List<FridgeProduct>,
+    items: State<List<FridgeProduct>>,
     navController: NavHostController,
     editProductCount: (product: FridgeProduct, value: Number, unit: UnitOfMeasure) -> Unit,
     onSearch: (query: String) -> Unit
@@ -72,7 +73,7 @@ fun FridgeViewDisplay(
                         end = CustomTheme.layoutPadding.smallPadding
                     )
             ) {
-                items(items.mapIndexed { i: Int, product: FridgeProduct ->
+                items(items.value.mapIndexed { i: Int, product: FridgeProduct ->
                     IndexObject(i, product)
                 }) { (_, product) ->
                     Box(
@@ -121,6 +122,9 @@ fun FridgeViewDisplay(
 @Preview
 @Composable
 fun FridgeViewDisplayPreview() {
+    val products = remember {
+        mutableStateOf(Mock.mockFridgeProduct())
+    }
     val navController = rememberNavController()
-    FridgeViewDisplay(items = Mock.mockFridgeProduct(), navController, { _, _, _ -> }, {})
+    FridgeViewDisplay(items = products, navController, { _, _, _ -> }, {})
 }

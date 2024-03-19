@@ -12,7 +12,14 @@ import com.example.foodiemate.ui.screens.fridge.model.FridgeEvent
 import com.example.foodiemate.ui.screens.fridge.model.FridgeViewState
 import com.example.foodiemate.utils.NumberUtils.isInt
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,6 +28,8 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
     private val _fridgeViewState: MutableLiveData<FridgeViewState> =
         MutableLiveData(FridgeViewState.Loading)
     val fridgeViewState: LiveData<FridgeViewState> = _fridgeViewState
+    private val _searchText = MutableStateFlow("")
+    private val searchText = _searchText.asStateFlow()
     override fun obtainEvent(event: FridgeEvent) {
         when (val currentState = _fridgeViewState.value) {
             is FridgeViewState.Loading -> reduce(event, currentState)
@@ -52,11 +61,32 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
         //Todo add events for noItems page
     }
 
+    @OptIn(FlowPreview::class)
     private fun fetchProducts() {
         viewModelScope.launch {
             delay(2000)
             val products = Mock.mockFridgeProduct()
-            _fridgeViewState.value = FridgeViewState.Display(products, MutableLiveData(products))
+            val productsFlow = MutableStateFlow(products)
+            val displayProducts = searchText.debounce(1000L)
+                .combine(productsFlow) { text, items ->
+                    if (text.isBlank()) {
+                        items
+                    } else {
+                        val nameSearched = items.filter {
+                            it.product.name.lowercase().contains(text)
+                        }
+                        val finallySearched = items.filter {
+                            it.count.toString().contains(text) && !nameSearched.contains(it)
+                        } + nameSearched
+                        finallySearched
+                    }
+                }
+                .stateIn(
+                    viewModelScope,
+                    SharingStarted.WhileSubscribed(1000),
+                    productsFlow.value
+                )
+            _fridgeViewState.value = FridgeViewState.Display(products, displayProducts)
         }
     }
 
@@ -95,17 +125,6 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
     }
 
     private fun searchProducts(query: String, state: FridgeViewState.Display) {
-        val lowerQuery = query.lowercase()
-        state.displayItems.value = if (lowerQuery.isNotEmpty()) {
-            val nameSearched = state.items.filter {
-                it.product.name.lowercase().contains(lowerQuery)
-            }
-            val finallySearched = state.items.filter {
-                it.count.toString().contains(lowerQuery) && !nameSearched.contains(it)
-            } + nameSearched
-            finallySearched
-        } else {
-            state.items
-        }
+        _searchText.value = query.lowercase()
     }
 }
