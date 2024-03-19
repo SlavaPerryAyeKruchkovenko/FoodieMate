@@ -43,6 +43,7 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
                 event.product, event.value, event.unit
             )
 
+            is FridgeEvent.SearchProducts -> searchProducts(event.query, state)
             else -> {}
         }
     }
@@ -53,8 +54,9 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
 
     private fun fetchProducts() {
         viewModelScope.launch {
-            delay(100)
-            _fridgeViewState.value = FridgeViewState.Display(Mock.mockFridgeProduct())
+            delay(2000)
+            val products = Mock.mockFridgeProduct()
+            _fridgeViewState.value = FridgeViewState.Display(products, products)
         }
     }
 
@@ -90,5 +92,15 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
             }
         }
         product.count = isInt(productCount, { productCount.toInt() }, { productCount })
+    }
+
+    private fun searchProducts(query: String, state: FridgeViewState.Display) {
+        val nameSearched = state.items.filter {
+            it.product.name.contains(query)
+        }
+        val finallySearched = state.items.filter {
+            it.count.toString().contains(query) && !nameSearched.contains(it)
+        }
+        state.displayItems = finallySearched
     }
 }

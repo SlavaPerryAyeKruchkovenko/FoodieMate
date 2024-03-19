@@ -6,6 +6,7 @@ sealed class FridgeViewState {
     object Loading : FridgeViewState()
     data class Display(
         val items: List<FridgeProduct>,
+        var displayItems: List<FridgeProduct>,
     ) : FridgeViewState()
 
     object NoItems : FridgeViewState()

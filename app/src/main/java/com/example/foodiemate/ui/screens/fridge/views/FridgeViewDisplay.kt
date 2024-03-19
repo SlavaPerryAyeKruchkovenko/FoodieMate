@@ -37,7 +37,8 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 @Composable
 fun FridgeViewDisplay(
     items: List<FridgeProduct>,
-    editProductCount: (product: FridgeProduct, value: Number, unit: UnitOfMeasure) -> Unit
+    editProductCount: (product: FridgeProduct, value: Number, unit: UnitOfMeasure) -> Unit,
+    onSearch: (query: String) -> Unit
 ) {
     var editableProduct: FridgeProduct? by remember {
         mutableStateOf(null)
@@ -57,7 +58,7 @@ fun FridgeViewDisplay(
                 .fillMaxWidth()
         ) {
             ProductSearchBar(
-                modifier = Modifier, items
+                modifier = Modifier, onSearch
             )
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1), modifier = Modifier
@@ -117,5 +118,5 @@ fun FridgeViewDisplay(
 @Preview
 @Composable
 fun FridgeViewDisplayPreview() {
-    FridgeViewDisplay(items = Mock.mockFridgeProduct()) { _, _, _ -> }
+    FridgeViewDisplay(items = Mock.mockFridgeProduct(), { _, _, _ -> }, {})
 }

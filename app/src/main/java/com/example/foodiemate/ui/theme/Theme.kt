@@ -16,7 +16,7 @@ import com.example.foodiemate.ui.theme.customTheme.LocalCustomShapeRadius
 private val darkColorScheme = CustomColorsPalette(
     primaryText = Black,
     primaryBackground = RebeccaPurple,
-    secondaryText = Black,
+    secondaryText = White,
     secondaryBackground = BrightLavender,
     bottomNavigationBackground = Purple900,
     bottomNavigationText = Purple500,
@@ -38,7 +38,7 @@ private val darkColorScheme = CustomColorsPalette(
 private val lightColorScheme = CustomColorsPalette(
     primaryText = Black,
     primaryBackground = RebeccaPurple,
-    secondaryText = Black,
+    secondaryText = White,
     secondaryBackground = BrightLavender,
     bottomNavigationBackground = Purple900,
     bottomNavigationText = Purple500,
@@ -86,6 +86,7 @@ fun FoodieMateTheme(
         bottomBarDividerHeight = 3.dp,
         bottomBarDividerWidth = 42.dp,
         bottomBarIcon = 28.dp,
+        searchBarIcon = 28.dp,
         addFABIconSize = 24.dp,
         addFABSmallSize = 40.dp,
         addSmallFABIconSize = 18.dp,

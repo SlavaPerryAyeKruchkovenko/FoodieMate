@@ -7,6 +7,7 @@
     <string name="none">Нету</string>
     <string name="products">Продукты</string>
     <string name="search_more">Поиск…</string>
+    <string name="search">поиск</string>
     <string name="gram">гр.</string>
     <string name="liter">л.</string>
     <string name="piece">шт.</string>
@@ -24,4 +25,5 @@
     <string name="loading">загрузка</string>
     <string name="kilogram">кг.</string>
     <string name="milliliter">мл.</string>
+    <string name="back">назад</string>
 </resources>

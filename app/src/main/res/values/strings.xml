@@ -6,6 +6,8 @@
     <string name="none">None</string>
     <string name="products">Products</string>
     <string name="search_more">Search…</string>
+    <string name="search">search</string>
+    <string name="back">back</string>
     <string name="gram">gm</string>
     <string name="kilogram">kg</string>
     <string name="liter">L</string>

@@ -68,7 +68,7 @@ fun FridgeProductView(
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(CustomTheme.shapeRadius.card),
-        border = BorderStroke(1.dp, CustomTheme.colors.secondaryText),
+        border = BorderStroke(1.dp, CustomTheme.colors.primaryText),
         colors = CardDefaults.cardColors(
             containerColor = CustomTheme.colors.secondaryBackground,
         ),
@@ -114,7 +114,7 @@ fun FridgeProductView(
                             )
                             .heightIn(0.dp, textSizeBox),
                         style = TextStyle(
-                            color = CustomTheme.colors.secondaryText,
+                            color = CustomTheme.colors.primaryText,
                             fontSize = 16.sp,
                             fontFamily = FontFamily.SansSerif,
                             lineHeight = 16.sp,

@@ -7,6 +7,7 @@
     <string name="none">Non</string>
     <string name="products">Produits</string>
     <string name="search_more">Recherche…</string>
+    <string name="search">recherche</string>
     <string name="gram">g</string>
     <string name="liter">L</string>
     <string name="piece">pcs</string>
@@ -24,4 +25,5 @@
     <string name="loading">chargement</string>
     <string name="kilogram">kg</string>
     <string name="milliliter">ml</string>
+    <string name="back">retour</string>
 </resources>

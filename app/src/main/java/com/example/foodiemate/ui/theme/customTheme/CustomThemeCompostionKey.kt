@@ -51,6 +51,7 @@ val LocalCustomLayoutSize = staticCompositionLocalOf {
         bottomBarDividerHeight = Dp.Unspecified,
         bottomBarDividerWidth = Dp.Unspecified,
         bottomBarIcon = Dp.Unspecified,
+        searchBarIcon = Dp.Unspecified,
         addFABIconSize = Dp.Unspecified,
         addFABSmallSize = Dp.Unspecified,
         addSmallFABIconSize = Dp.Unspecified,
