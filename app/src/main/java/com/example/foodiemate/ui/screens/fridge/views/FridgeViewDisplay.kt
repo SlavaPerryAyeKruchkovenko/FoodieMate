@@ -23,6 +23,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.IndexObject
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
@@ -37,6 +39,7 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 @Composable
 fun FridgeViewDisplay(
     items: List<FridgeProduct>,
+    navController: NavHostController,
     editProductCount: (product: FridgeProduct, value: Number, unit: UnitOfMeasure) -> Unit,
     onSearch: (query: String) -> Unit
 ) {
@@ -58,7 +61,7 @@ fun FridgeViewDisplay(
                 .fillMaxWidth()
         ) {
             ProductSearchBar(
-                modifier = Modifier, onSearch
+                modifier = Modifier, navController, onSearch
             )
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1), modifier = Modifier
@@ -118,5 +121,6 @@ fun FridgeViewDisplay(
 @Preview
 @Composable
 fun FridgeViewDisplayPreview() {
-    FridgeViewDisplay(items = Mock.mockFridgeProduct(), { _, _, _ -> }, {})
+    val navController = rememberNavController()
+    FridgeViewDisplay(items = Mock.mockFridgeProduct(), navController, { _, _, _ -> }, {})
 }

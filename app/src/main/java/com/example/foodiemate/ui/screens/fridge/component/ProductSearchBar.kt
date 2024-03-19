@@ -2,6 +2,7 @@ package com.example.foodiemate.ui.screens.fridge.component
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,11 +35,17 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.foodiemate.R
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
-fun ProductSearchBar(modifier: Modifier, onSearch: (query: String) -> Unit) {
+fun ProductSearchBar(
+    modifier: Modifier,
+    navController: NavHostController,
+    onSearch: (query: String) -> Unit
+) {
     Row(
         modifier = Modifier
             .then(modifier)
@@ -51,9 +58,14 @@ fun ProductSearchBar(modifier: Modifier, onSearch: (query: String) -> Unit) {
         var query by remember { mutableStateOf("") }
         val productsLabel = stringResource(id = R.string.products)
         Icon(
-            modifier = Modifier.weight(0.1f),
+            modifier = Modifier
+                .weight(0.1f)
+                .clickable {
+                    navController.popBackStack()
+                },
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-            contentDescription = stringResource(id = R.string.back)
+            contentDescription = stringResource(id = R.string.back),
+            tint = CustomTheme.colors.secondaryText
         )
         BasicTextField(
             modifier = Modifier.weight(0.7f),
@@ -125,7 +137,8 @@ fun ProductSearchBar(modifier: Modifier, onSearch: (query: String) -> Unit) {
 @Preview
 @Composable
 fun ProductSearchBarPreview() {
-    ProductSearchBar(Modifier) {
+    val navController = rememberNavController()
+    ProductSearchBar(Modifier, navController) {
         Log.d("value", it)
     }
 }

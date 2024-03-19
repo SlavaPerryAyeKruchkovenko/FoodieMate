@@ -56,7 +56,7 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
         viewModelScope.launch {
             delay(2000)
             val products = Mock.mockFridgeProduct()
-            _fridgeViewState.value = FridgeViewState.Display(products, products)
+            _fridgeViewState.value = FridgeViewState.Display(products, MutableLiveData(products))
         }
     }
 
@@ -95,12 +95,17 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
     }
 
     private fun searchProducts(query: String, state: FridgeViewState.Display) {
-        val nameSearched = state.items.filter {
-            it.product.name.contains(query)
+        val lowerQuery = query.lowercase()
+        state.displayItems.value = if (lowerQuery.isNotEmpty()) {
+            val nameSearched = state.items.filter {
+                it.product.name.lowercase().contains(lowerQuery)
+            }
+            val finallySearched = state.items.filter {
+                it.count.toString().contains(lowerQuery) && !nameSearched.contains(it)
+            } + nameSearched
+            finallySearched
+        } else {
+            state.items
         }
-        val finallySearched = state.items.filter {
-            it.count.toString().contains(query) && !nameSearched.contains(it)
-        }
-        state.displayItems = finallySearched
     }
 }

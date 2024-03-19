@@ -15,14 +15,14 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
     when (val state = viewState.value) {
         is FridgeViewState.Loading -> FridgeViewLoading()
         is FridgeViewState.Display -> FridgeViewDisplay(
-            items = state.displayItems,
+            items = state.displayItems.observeAsState().value ?: listOf(),
+            navController = navController,
             editProductCount = { product, value, unit ->
                 viewModel.obtainEvent(FridgeEvent.ChangeProductCount(product, value, unit))
             },
             onSearch = {
                 viewModel.obtainEvent(FridgeEvent.SearchProducts(it))
             }
-
         )
 
         else -> throw NotImplementedError("Unexpected daily state")
