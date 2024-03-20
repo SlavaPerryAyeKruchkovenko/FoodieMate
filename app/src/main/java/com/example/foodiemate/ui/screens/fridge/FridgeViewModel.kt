@@ -19,7 +19,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,6 +32,7 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
     val fridgeViewState: LiveData<FridgeViewState> = _fridgeViewState
     private val _searchText = MutableStateFlow("")
     private val searchText = _searchText.asStateFlow()
+
     override fun obtainEvent(event: FridgeEvent) {
         when (val currentState = _fridgeViewState.value) {
             is FridgeViewState.Loading -> reduce(event, currentState)
@@ -65,13 +68,16 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
     private fun fetchProducts() {
         viewModelScope.launch {
             delay(2000)
+            val isSearching = MutableStateFlow(false)
             val products = Mock.mockFridgeProduct()
             val productsFlow = MutableStateFlow(products)
             val displayProducts = searchText.debounce(1000L)
+                .onEach { isSearching.update { true } }
                 .combine(productsFlow) { text, items ->
                     if (text.isBlank()) {
                         items
                     } else {
+                        delay(1000L)
                         val nameSearched = items.filter {
                             it.product.name.lowercase().contains(text)
                         }
@@ -81,12 +87,14 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
                         finallySearched
                     }
                 }
+                .onEach { isSearching.update { false } }
                 .stateIn(
                     viewModelScope,
                     SharingStarted.WhileSubscribed(1000),
                     productsFlow.value
                 )
-            _fridgeViewState.value = FridgeViewState.Display(products, displayProducts)
+            _fridgeViewState.value =
+                FridgeViewState.Display(products, displayProducts, isSearching.asStateFlow())
         }
     }
 

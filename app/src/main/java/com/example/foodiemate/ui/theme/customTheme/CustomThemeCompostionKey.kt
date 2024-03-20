@@ -57,7 +57,8 @@ val LocalCustomLayoutSize = staticCompositionLocalOf {
         addSmallFABIconSize = Dp.Unspecified,
         addFABBoxSize = Dp.Unspecified,
         loaderSize = Dp.Unspecified,
-        productAppBarIcon = Dp.Unspecified
+        productAppBarIcon = Dp.Unspecified,
+        searchLoaderSize = Dp.Unspecified
     )
 }
 val LocalCustomLayoutPadding = staticCompositionLocalOf {

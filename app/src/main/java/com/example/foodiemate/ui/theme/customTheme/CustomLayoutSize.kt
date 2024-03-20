@@ -21,5 +21,6 @@ data class CustomLayoutSize(
     val searchBarIcon: Dp,
     val addFABBoxSize: Dp,
     val loaderSize: Dp,
-    val productAppBarIcon: Dp
+    val productAppBarIcon: Dp,
+    val searchLoaderSize: Dp
 )
