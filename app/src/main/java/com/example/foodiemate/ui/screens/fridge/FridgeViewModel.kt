@@ -71,8 +71,7 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
             val isSearching = MutableStateFlow(false)
             val products = Mock.mockFridgeProduct()
             val productsFlow = MutableStateFlow(products)
-            val displayProducts = searchText.debounce(1000L)
-                .onEach { isSearching.update { true } }
+            val displayProducts = searchText.debounce(1000L).onEach { isSearching.update { true } }
                 .combine(productsFlow) { text, items ->
                     if (text.isBlank()) {
                         items
@@ -81,17 +80,13 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
                         val nameSearched = items.filter {
                             it.product.name.lowercase().contains(text)
                         }
-                        val finallySearched = items.filter {
+                        val countSearch = items.filter {
                             it.count.toString().contains(text) && !nameSearched.contains(it)
-                        } + nameSearched
-                        finallySearched
+                        }
+                        nameSearched + countSearch
                     }
-                }
-                .onEach { isSearching.update { false } }
-                .stateIn(
-                    viewModelScope,
-                    SharingStarted.WhileSubscribed(1000),
-                    productsFlow.value
+                }.onEach { isSearching.update { false } }.stateIn(
+                    viewModelScope, SharingStarted.WhileSubscribed(1000), productsFlow.value
                 )
             _fridgeViewState.value =
                 FridgeViewState.Display(products, displayProducts, isSearching.asStateFlow())
