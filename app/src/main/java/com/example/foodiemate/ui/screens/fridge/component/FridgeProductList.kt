@@ -33,8 +33,7 @@ fun FridgeProductList(
     val firstItemMargin = CustomTheme.layoutPadding.firstProductMarginTop
     val itemMargin = CustomTheme.layoutPadding.productCardMargin
     LazyVerticalGrid(
-        columns = GridCells.Fixed(1), modifier = Modifier
-            .fillMaxSize()
+        columns = GridCells.Fixed(1), modifier = Modifier.fillMaxSize()
     ) {
         items(items.value.mapIndexed { i: Int, product: FridgeProduct ->
             IndexObject(i, product)
@@ -47,8 +46,7 @@ fun FridgeProductList(
                         index, items.value.size, firstItemMargin, lastItemMargin, itemMargin
                     )
                 ), state = state, backgroundContent = {
-                    val isDelete = state.dismissDirection == SwipeToDismissBoxValue.StartToEnd
-                    if (isDelete) {
+                    if (state.dismissDirection == SwipeToDismissBoxValue.StartToEnd) {
                         FridgeRemoveProduct()
                     }
                 }, enableDismissFromEndToStart = false
