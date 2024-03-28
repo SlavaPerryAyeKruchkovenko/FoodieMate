@@ -39,5 +39,8 @@ fun ProductEditorIcon(
 @Preview
 @Composable
 fun ProductEditorIconPreview() {
-    ProductEditorIcon(Icons.Filled.Add, R.string.remove_product, CustomTheme.colors.removeProduct)
+    ProductEditorIcon(
+        Icons.Filled.Add, description = R.string.add,
+        tint = CustomTheme.colors.addColor,
+    )
 }

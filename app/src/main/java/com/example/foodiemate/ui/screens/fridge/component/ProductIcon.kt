@@ -2,7 +2,7 @@ package com.example.foodiemate.ui.screens.fridge.component
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.twotone.Check
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,10 +15,7 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
 fun ProductIcon(
-    imageVector: ImageVector,
-    description: Int,
-    tint: Color,
-    modifier: Modifier = Modifier
+    imageVector: ImageVector, description: Int, tint: Color, modifier: Modifier = Modifier
 ) {
     Icon(
         modifier = Modifier
@@ -33,5 +30,7 @@ fun ProductIcon(
 @Preview
 @Composable
 fun ProductIconPreview() {
-    ProductIcon(Icons.Filled.Close, R.string.remove_product, CustomTheme.colors.removeProduct)
+    ProductIcon(
+        Icons.TwoTone.Check, R.string.accept, CustomTheme.colors.acceptColor
+    )
 }

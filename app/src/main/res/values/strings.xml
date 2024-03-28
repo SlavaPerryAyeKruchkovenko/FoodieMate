@@ -20,6 +20,7 @@
     <string name="add_by_qr_code">add by qr code</string>
     <string name="add_manually">Add manually</string>
     <string name="remove_product">remove product</string>
+    <string name="remove">Remove</string>
     <string name="edit_product">edit product</string>
     <string name="add">add</string>
     <string name="reduce">reduce</string>

@@ -14,6 +14,7 @@
     <string name="product_image">image du produit</string>
     <string name="add_products">ajouter des produits</string>
     <string name="remove_product">retirer le produit</string>
+    <string name="remove">Retirer</string>
     <string name="edit_product">éditer le produit</string>
     <string name="add">ajouter</string>
     <string name="reduce">réduire</string>

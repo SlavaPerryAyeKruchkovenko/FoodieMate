@@ -15,7 +15,7 @@ data class CustomColorsPalette(
     val navigationBarIndicatorColor: Color,
     val addFABBackground: Color,
     val addFABIconTint: Color,
-    val removeProduct: Color,
+    val removeProductBackgroud: Color,
     val editProduct: Color,
     val reduceColor: Color,
     val addColor: Color,
