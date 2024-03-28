@@ -46,7 +46,7 @@ private val lightColorScheme = CustomColorsPalette(
     navigationBarIndicatorColor = Blue900,
     addFABBackground = Purple900,
     addFABIconTint = White,
-    removeProductBackgroud = Red,//legacy
+    removeProductBackgroud = LightRed,
     editProduct = Black,
     reduceColor = Red,
     addColor = Green,
@@ -111,7 +111,9 @@ fun FoodieMateTheme(
         addFABPadding = 16.dp,
         addFABEdgePadding = 24.dp,
         addFABCenterPadding = 64.dp,
-        appBarPadding = 12.dp
+        appBarPadding = 12.dp,
+        productCardMargin = 8.dp,
+        firstProductMarginTop = 12.dp
     )
     CompositionLocalProvider(
         LocalCustomColorsPalette provides colors,

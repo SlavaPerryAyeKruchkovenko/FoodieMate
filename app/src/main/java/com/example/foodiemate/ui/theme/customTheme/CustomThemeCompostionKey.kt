@@ -78,6 +78,8 @@ val LocalCustomLayoutPadding = staticCompositionLocalOf {
         addFABPadding = Dp.Unspecified,
         addFABEdgePadding = Dp.Unspecified,
         addFABCenterPadding = Dp.Unspecified,
-        appBarPadding = Dp.Unspecified
+        appBarPadding = Dp.Unspecified,
+        productCardMargin = Dp.Unspecified,
+        firstProductMarginTop = Dp.Unspecified
     )
 }

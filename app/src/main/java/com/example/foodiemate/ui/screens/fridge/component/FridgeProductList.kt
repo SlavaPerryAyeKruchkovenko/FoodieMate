@@ -15,11 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.example.foodiemate.datasource.presentationModels.IndexObject
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
+import com.example.foodiemate.utils.ProductUtils
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,13 +28,13 @@ fun FridgeProductList(
     editableProduct: MutableState<FridgeProduct?>,
     editProductCount: (product: FridgeProduct, value: Number, unit: UnitOfMeasure) -> Unit
 ) {
-    val lastProductPadding =
+    val lastItemMargin =
         CustomTheme.layoutSize.addFABSize + CustomTheme.layoutPadding.addFABPadding * 2
-
+    val firstItemMargin = CustomTheme.layoutPadding.firstProductMarginTop
+    val itemMargin = CustomTheme.layoutPadding.productCardMargin
     LazyVerticalGrid(
         columns = GridCells.Fixed(1), modifier = Modifier
             .fillMaxSize()
-            .padding(top = 12.dp)
     ) {
         items(items.value.mapIndexed { i: Int, product: FridgeProduct ->
             IndexObject(i, product)
@@ -43,14 +43,9 @@ fun FridgeProductList(
             val isEdit = editableProduct.value != null && editableProduct.value == product
             SwipeToDismissBox(
                 modifier = Modifier.then(
-                    if (index == items.value.size - 1) {
-                        Modifier.padding(
-                            top = 8.dp,
-                            bottom = lastProductPadding,
-                        )
-                    } else {
-                        Modifier.padding(top = 8.dp)
-                    }
+                    ProductUtils.getModifierWithPaddingForCard(
+                        index, items.value.size, firstItemMargin, lastItemMargin, itemMargin
+                    )
                 ), state = state, backgroundContent = {
                     val isDelete = state.dismissDirection == SwipeToDismissBoxValue.StartToEnd
                     if (isDelete) {
