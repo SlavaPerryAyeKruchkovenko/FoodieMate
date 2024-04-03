@@ -33,12 +33,20 @@ fun FridgeProductList(
     val firstItemMargin = CustomTheme.layoutPadding.firstProductMarginTop
     val itemMargin = CustomTheme.layoutPadding.productCardMargin
     LazyVerticalGrid(
-        columns = GridCells.Fixed(1), modifier = Modifier.fillMaxSize()
+        columns = GridCells.Fixed(1), modifier = Modifier
+            .fillMaxSize()
+            .padding(
+                start = CustomTheme.layoutPadding.smallPadding,
+                end = CustomTheme.layoutPadding.smallPadding,
+            )
     ) {
         items(items.value.mapIndexed { i: Int, product: FridgeProduct ->
             IndexObject(i, product)
         }) { (index, product) ->
-            val state = rememberSwipeToDismissBoxState()
+            val state = rememberSwipeToDismissBoxState(confirmValueChange = {
+                //ToDo remove product
+                false
+            })
             val isEdit = editableProduct.value != null && editableProduct.value == product
             SwipeToDismissBox(
                 modifier = Modifier.then(
@@ -52,12 +60,7 @@ fun FridgeProductList(
                 }, enableDismissFromEndToStart = false
             ) {
                 Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(
-                            start = CustomTheme.layoutPadding.smallPadding,
-                            end = CustomTheme.layoutPadding.smallPadding,
-                        )
+                    modifier = Modifier.fillMaxSize()
                 ) {
                     FridgeProductView(product = product, isEdit = isEdit, onEnableEditProduct = {
                         editableProduct.value = product
