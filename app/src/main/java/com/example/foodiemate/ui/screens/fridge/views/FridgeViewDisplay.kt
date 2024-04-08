@@ -28,6 +28,7 @@ import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
+import com.example.foodiemate.ui.screens.fridge.component.FridgeNotFoundItems
 import com.example.foodiemate.ui.screens.fridge.component.FridgeProductList
 import com.example.foodiemate.ui.screens.fridge.component.ProductSearchBar
 import com.example.foodiemate.ui.theme.component.AddFABLargeIcon
@@ -72,12 +73,16 @@ fun FridgeViewDisplay(
                     )
                 }
             } else {
-                FridgeProductList(
-                    items = items,
-                    editableProduct = editableProduct,
-                    editProductCount = editProductCount,
-                    removeProduct
-                )
+                if (items.value.isEmpty()) {
+                    FridgeNotFoundItems()
+                } else {
+                    FridgeProductList(
+                        items = items,
+                        editableProduct = editableProduct,
+                        editProductCount = editProductCount,
+                        removeProduct
+                    )
+                }
             }
         }
         AddFABMenu(

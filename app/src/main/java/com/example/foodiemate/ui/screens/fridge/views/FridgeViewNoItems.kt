@@ -8,7 +8,7 @@ import com.example.foodiemate.ui.theme.component.NotFoundBox
 
 @Composable
 fun FridgeViewNoItems() {
-    NotFoundBox(stringResource(id = R.string.fridge_is_empty) + stringResource(id = R.string.sad_smile))
+    NotFoundBox("${stringResource(id = R.string.fridge_is_empty)} ${stringResource(id = R.string.sad_smile)}")
 }
 
 @Preview

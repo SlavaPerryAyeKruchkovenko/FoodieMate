@@ -10,6 +10,7 @@ import com.example.foodiemate.ui.screens.fridge.model.FridgeEvent
 import com.example.foodiemate.ui.screens.fridge.model.FridgeViewState
 import com.example.foodiemate.ui.screens.fridge.views.FridgeViewDisplay
 import com.example.foodiemate.ui.screens.fridge.views.FridgeViewLoading
+import com.example.foodiemate.ui.screens.fridge.views.FridgeViewNoItems
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
@@ -32,6 +33,7 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
             }
         )
 
+        is FridgeViewState.NoItems -> FridgeViewNoItems()
         else -> throw NotImplementedError("Unexpected daily state")
     }
     LaunchedEffect(key1 = viewState, block = {

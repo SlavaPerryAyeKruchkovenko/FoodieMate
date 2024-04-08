@@ -6,7 +6,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
@@ -58,7 +58,7 @@ fun FridgeProductList(
                         },
                         dialogTitle = stringResource(id = R.string.remove_product),
                         dialogText = stringResource(id = R.string.remove_fridge_product),
-                        icon = Icons.Filled.Build,
+                        icon = Icons.Filled.Warning,
                     )
                 }
             }
