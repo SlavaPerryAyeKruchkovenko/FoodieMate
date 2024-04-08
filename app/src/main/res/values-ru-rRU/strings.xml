@@ -30,4 +30,5 @@
     <string name="dismiss">Отклонить</string>
     <string name="confirm">Подтвердить</string>
     <string name="remove_fridge_product">Вы действительно хотите удалить продукт из холодильника</string>
+    <string name="fridge_is_empty">Ваш холодильник пуст</string>
 </resources>

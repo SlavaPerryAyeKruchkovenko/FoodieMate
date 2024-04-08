@@ -125,7 +125,8 @@ fun FoodieMateTheme(
     )
     val fontSize = CustomFontSize(
         dialogTitleFont = 18.sp,
-        dialogTextFont = 16.sp
+        dialogTextFont = 16.sp,
+        noItemsFont = 32.sp
     )
     CompositionLocalProvider(
         LocalCustomColorsPalette provides colors,

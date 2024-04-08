@@ -33,7 +33,8 @@ val LocalCustomColorsPalette = staticCompositionLocalOf {
 val LocalCustomFontSize = staticCompositionLocalOf {
     CustomFontSize(
         dialogTextFont = TextUnit.Unspecified,
-        dialogTitleFont = TextUnit.Unspecified
+        dialogTitleFont = TextUnit.Unspecified,
+        noItemsFont = TextUnit.Unspecified
     )
 }
 val LocalCustomShapeRadius = staticCompositionLocalOf {

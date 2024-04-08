@@ -6,5 +6,6 @@ import androidx.compose.ui.unit.TextUnit
 @Immutable
 data class CustomFontSize(
     val dialogTitleFont: TextUnit,
-    val dialogTextFont: TextUnit
+    val dialogTextFont: TextUnit,
+    val noItemsFont: TextUnit
 )

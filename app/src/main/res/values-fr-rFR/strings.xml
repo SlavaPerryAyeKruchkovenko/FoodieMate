@@ -30,4 +30,5 @@
     <string name="dismiss">Rejeter</string>
     <string name="confirm">Confirmer</string>
     <string name="remove_fridge_product">Voulez-vous vraiment retirer le produit du réfrigérateur ?</string>
+    <string name="fridge_is_empty">Votre réfrigérateur est vide</string>
 </resources>

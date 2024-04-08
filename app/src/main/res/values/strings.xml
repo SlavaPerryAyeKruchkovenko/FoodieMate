@@ -29,4 +29,6 @@
     <string name="dismiss">Dismiss</string>
     <string name="confirm">Confirm</string>
     <string name="remove_fridge_product">Do you really want to remove the product from the refrigerator</string>
+    <string name="fridge_is_empty">Your refrigerator is empty</string>
+    <string name="sad_smile" translatable="false">:(</string>
 </resources>
