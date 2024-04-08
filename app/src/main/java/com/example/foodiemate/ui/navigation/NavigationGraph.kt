@@ -18,6 +18,9 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier) {
             val fridgeViewModel = hiltViewModel<FridgeViewModel>()
             FridgeScreen(navController, fridgeViewModel)
         }
+        composable(Screen.Basket.screenName) {
+            Text(text = "basket")
+        }
         composable(Screen.Recipes.screenName) {
             val recipeViewModel = hiltViewModel<FridgeViewModel>()
             FridgeScreen(navController, recipeViewModel)
@@ -25,11 +28,8 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier) {
         composable(Screen.None.screenName) {
             Text(text = "none")
         }
-        composable(Screen.Main.screenName) {
-            Text(text = "main")
-        }
-        composable(Screen.Menu.screenName) {
-            Text(text = "Menu")
+        composable(Screen.Tinder.screenName) {
+            Text(text = "tinder")
         }
     }
 }

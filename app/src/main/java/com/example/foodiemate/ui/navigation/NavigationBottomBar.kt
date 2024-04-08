@@ -16,7 +16,7 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
 fun NavigationBottomBar(navController: NavHostController) {
-    val navigationBarItems = listOf(Screen.Main, Screen.Recipes, Screen.Products, Screen.Menu)
+    val navigationBarItems = listOf(Screen.Products, Screen.Basket, Screen.Recipes, Screen.Tinder)
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     val backgroundColor = CustomTheme.colors.bottomNavigationBackground
@@ -30,13 +30,7 @@ fun NavigationBottomBar(navController: NavHostController) {
         navigationBarItems.forEach { item ->
             val selected = currentRoute == item.screenName
             val color =
-                if (selected) CustomTheme.colors.bottomNavigationTextSelected else CustomTheme.colors.bottomNavigationText/*val animatedColor by animateColorAsState(
-                targetValue = color,
-                animationSpec = TweenSpec(
-                    durationMillis = 200,
-                    easing = FastOutSlowInEasing
-                ), label = ""
-            )*/
+                if (selected) CustomTheme.colors.bottomNavigationTextSelected else CustomTheme.colors.bottomNavigationText
             NavigationBarItem(modifier = Modifier, selected = selected, onClick = {
                 navController.navigate(item.screenName)
             }, icon = {

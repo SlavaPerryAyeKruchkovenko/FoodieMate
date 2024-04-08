@@ -12,10 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 import com.example.foodiemate.datasource.presentationModels.Screen
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
@@ -35,7 +35,7 @@ fun NavigationBottomBarItem(
             color = contentColor
         )
         Icon(
-            painter = painterResource(id = screen.icon),
+            imageVector = ImageVector.vectorResource(id = screen.icon),
             contentDescription = stringResource(id = screen.label),
             modifier = Modifier.size(CustomTheme.layoutSize.bottomBarIcon),
             tint = contentColor
@@ -43,7 +43,7 @@ fun NavigationBottomBarItem(
         Text(
             stringResource(id = screen.label),
             color = contentColor,
-            fontSize = 15.sp,
+            fontSize = CustomTheme.fontSize.bottomBarItemFont,
             fontWeight = FontWeight.Bold
         )
     }

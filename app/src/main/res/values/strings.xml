@@ -26,6 +26,8 @@
     <string name="reduce">reduce</string>
     <string name="accept">accept</string>
     <string name="menu">Menu</string>
+    <string name="basket">Basket</string>
+    <string name="tinder">Tinder</string>
     <string name="dismiss">Dismiss</string>
     <string name="confirm">Confirm</string>
     <string name="remove_fridge_product">Do you really want to remove the product from the refrigerator</string>

@@ -32,4 +32,6 @@
     <string name="remove_fridge_product">Вы действительно хотите удалить продукт из холодильника</string>
     <string name="fridge_is_empty">В вашем холодильнике пусто</string>
     <string name="products_not_found">Продукты не найдены</string>
+    <string name="basket">Корзина</string>
+    <string name="tinder">Тиндер</string>
 </resources>
