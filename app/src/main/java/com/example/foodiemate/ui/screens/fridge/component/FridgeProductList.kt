@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SwipeToDismissBox
 import androidx.compose.material3.SwipeToDismissBoxValue
@@ -14,10 +16,15 @@ import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.example.foodiemate.datasource.presentationModels.IndexObject
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
+import com.example.foodiemate.ui.theme.component.ConfirmDialog
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 import com.example.foodiemate.utils.ProductUtils
 
@@ -32,6 +39,22 @@ fun FridgeProductList(
         CustomTheme.layoutSize.addFABSize + CustomTheme.layoutPadding.addFABPadding * 2
     val firstItemMargin = CustomTheme.layoutPadding.firstProductMarginTop
     val itemMargin = CustomTheme.layoutPadding.productCardMargin
+    var openAlertDialog by remember { mutableStateOf(false) }
+    when {
+        openAlertDialog -> {
+            ConfirmDialog(
+                onDismissRequest = { openAlertDialog = false },
+                onConfirmation = {
+                    openAlertDialog = false
+
+                },
+                dialogTitle = "Alert dialog example",
+                dialogText = "This is an example of an alert dialog with buttons.",
+                icon = Icons.Filled.Build,
+                iconDescription = null
+            )
+        }
+    }
     LazyVerticalGrid(
         columns = GridCells.Fixed(1), modifier = Modifier
             .fillMaxSize()
@@ -44,7 +67,7 @@ fun FridgeProductList(
             IndexObject(i, product)
         }) { (index, product) ->
             val state = rememberSwipeToDismissBoxState(confirmValueChange = {
-                //ToDo remove product
+                openAlertDialog = true
                 false
             })
             val isEdit = editableProduct.value != null && editableProduct.value == product
@@ -70,7 +93,6 @@ fun FridgeProductList(
                         editableProduct.value = null
                     })
                 }
-
             }
         }
     }

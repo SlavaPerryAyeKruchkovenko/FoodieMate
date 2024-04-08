@@ -30,7 +30,7 @@ fun FridgeRemoveProduct() {
             .border(0.dp, Color.Red, RoundedCornerShape(0.dp))
             .fillMaxSize(),
         colors = CardDefaults.cardColors(
-            CustomTheme.colors.removeProductBackgroud,
+            CustomTheme.colors.removeProductBackground,
         ),
         shape = RoundedCornerShape(CustomTheme.shapeRadius.card),
     ) {

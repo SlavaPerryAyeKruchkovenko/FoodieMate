@@ -4,11 +4,14 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.foodiemate.ui.theme.customTheme.CustomColorsPalette
+import com.example.foodiemate.ui.theme.customTheme.CustomFontSize
 import com.example.foodiemate.ui.theme.customTheme.CustomLayoutPadding
 import com.example.foodiemate.ui.theme.customTheme.CustomLayoutSize
 import com.example.foodiemate.ui.theme.customTheme.CustomShapeRadius
 import com.example.foodiemate.ui.theme.customTheme.LocalCustomColorsPalette
+import com.example.foodiemate.ui.theme.customTheme.LocalCustomFontSize
 import com.example.foodiemate.ui.theme.customTheme.LocalCustomLayoutPadding
 import com.example.foodiemate.ui.theme.customTheme.LocalCustomLayoutSize
 import com.example.foodiemate.ui.theme.customTheme.LocalCustomShapeRadius
@@ -24,7 +27,7 @@ private val darkColorScheme = CustomColorsPalette(
     navigationBarIndicatorColor = Blue900,
     addFABBackground = Purple900,
     addFABIconTint = White,
-    removeProductBackgroud = Red,
+    removeProductBackground = Red,
     editProduct = Black,
     reduceColor = Red,
     addColor = Green,
@@ -32,7 +35,9 @@ private val darkColorScheme = CustomColorsPalette(
     darkScreen = Dark,
     FABBoxBackground = LightPurple900,
     editorBackground = PurpleHeart,
-    editorIconBackground = TransGray
+    editorIconBackground = TransGray,
+    dialogBackground = LightAmethyst,
+    dialogButtonColor = Purple900
 )
 
 private val lightColorScheme = CustomColorsPalette(
@@ -46,7 +51,7 @@ private val lightColorScheme = CustomColorsPalette(
     navigationBarIndicatorColor = Blue900,
     addFABBackground = Purple900,
     addFABIconTint = White,
-    removeProductBackgroud = LightRed,
+    removeProductBackground = LightRed,
     editProduct = Black,
     reduceColor = Red,
     addColor = Green,
@@ -54,7 +59,9 @@ private val lightColorScheme = CustomColorsPalette(
     darkScreen = Dark,
     FABBoxBackground = LightPurple900,
     editorBackground = PurpleHeart,
-    editorIconBackground = TransGray
+    editorIconBackground = TransGray,
+    dialogBackground = LightAmethyst,
+    dialogButtonColor = Purple900
 )
 
 @Composable
@@ -93,7 +100,8 @@ fun FoodieMateTheme(
         addFABBoxSize = 200.dp,
         loaderSize = 200.dp,
         productAppBarIcon = 56.dp,
-        searchLoaderSize = 56.dp
+        searchLoaderSize = 56.dp,
+        dialogIcon = 18.dp
     )
     val layoutPadding = CustomLayoutPadding(
         smallPadding = 18.dp,
@@ -115,11 +123,16 @@ fun FoodieMateTheme(
         productCardMargin = 8.dp,
         firstProductMarginTop = 12.dp
     )
+    val fontSize = CustomFontSize(
+        dialogTitleFont = 18.sp,
+        dialogTextFont = 16.sp
+    )
     CompositionLocalProvider(
         LocalCustomColorsPalette provides colors,
         LocalCustomShapeRadius provides shapeRadius,
         LocalCustomLayoutSize provides layoutSize,
         LocalCustomLayoutPadding provides layoutPadding,
+        LocalCustomFontSize provides fontSize,
         content = content
     )
 }

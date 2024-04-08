@@ -15,4 +15,7 @@ object CustomTheme {
     val layoutPadding: CustomLayoutPadding
         @Composable
         get() = LocalCustomLayoutPadding.current
+    val fontSize: CustomFontSize
+        @Composable
+        get() = LocalCustomFontSize.current
 }

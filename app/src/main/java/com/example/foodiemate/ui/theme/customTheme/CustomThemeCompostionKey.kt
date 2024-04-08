@@ -3,6 +3,7 @@ package com.example.foodiemate.ui.theme.customTheme
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 
 val LocalCustomColorsPalette = staticCompositionLocalOf {
     CustomColorsPalette(
@@ -16,7 +17,7 @@ val LocalCustomColorsPalette = staticCompositionLocalOf {
         navigationBarIndicatorColor = Color.Unspecified,
         addFABBackground = Color.Unspecified,
         addFABIconTint = Color.Unspecified,
-        removeProductBackgroud = Color.Unspecified,
+        removeProductBackground = Color.Unspecified,
         editProduct = Color.Unspecified,
         reduceColor = Color.Unspecified,
         addColor = Color.Unspecified,
@@ -24,10 +25,17 @@ val LocalCustomColorsPalette = staticCompositionLocalOf {
         darkScreen = Color.Unspecified,
         FABBoxBackground = Color.Unspecified,
         editorBackground = Color.Unspecified,
-        editorIconBackground = Color.Unspecified
+        editorIconBackground = Color.Unspecified,
+        dialogBackground = Color.Unspecified,
+        dialogButtonColor = Color.Unspecified
     )
 }
-
+val LocalCustomFontSize = staticCompositionLocalOf {
+    CustomFontSize(
+        dialogTextFont = TextUnit.Unspecified,
+        dialogTitleFont = TextUnit.Unspecified
+    )
+}
 val LocalCustomShapeRadius = staticCompositionLocalOf {
     CustomShapeRadius(
         default = Dp.Unspecified,
@@ -58,7 +66,8 @@ val LocalCustomLayoutSize = staticCompositionLocalOf {
         addFABBoxSize = Dp.Unspecified,
         loaderSize = Dp.Unspecified,
         productAppBarIcon = Dp.Unspecified,
-        searchLoaderSize = Dp.Unspecified
+        searchLoaderSize = Dp.Unspecified,
+        dialogIcon = Dp.Unspecified
     )
 }
 val LocalCustomLayoutPadding = staticCompositionLocalOf {
