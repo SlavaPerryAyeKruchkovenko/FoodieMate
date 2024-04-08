@@ -19,11 +19,14 @@
     <string name="add_by_mail">add by mail</string>
     <string name="add_by_qr_code">add by qr code</string>
     <string name="add_manually">Add manually</string>
-    <string name="remove_product">remove product</string>
+    <string name="remove_product">Remove product</string>
     <string name="remove">Remove</string>
     <string name="edit_product">edit product</string>
     <string name="add">add</string>
     <string name="reduce">reduce</string>
     <string name="accept">accept</string>
     <string name="menu">Menu</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="confirm">Confirm</string>
+    <string name="remove_fridge_product">Do you really want to remove the product from the refrigerator</string>
 </resources>

@@ -13,7 +13,7 @@
     <string name="piece">pcs</string>
     <string name="product_image">image du produit</string>
     <string name="add_products">ajouter des produits</string>
-    <string name="remove_product">retirer le produit</string>
+    <string name="remove_product">Retirer le produit</string>
     <string name="remove">Retirer</string>
     <string name="edit_product">éditer le produit</string>
     <string name="add">ajouter</string>
@@ -27,4 +27,7 @@
     <string name="kilogram">kg</string>
     <string name="milliliter">ml</string>
     <string name="back">retour</string>
+    <string name="dismiss">Rejeter</string>
+    <string name="confirm">Confirmer</string>
+    <string name="remove_fridge_product">Voulez-vous vraiment retirer le produit du réfrigérateur ?</string>
 </resources>

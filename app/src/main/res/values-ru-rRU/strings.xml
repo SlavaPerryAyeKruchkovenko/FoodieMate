@@ -27,4 +27,7 @@
     <string name="kilogram">кг.</string>
     <string name="milliliter">мл.</string>
     <string name="back">назад</string>
+    <string name="dismiss">Отклонить</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="remove_fridge_product">Вы действительно хотите удалить продукт из холодильника</string>
 </resources>

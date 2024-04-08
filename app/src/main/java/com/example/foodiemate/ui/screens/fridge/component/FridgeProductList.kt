@@ -1,7 +1,5 @@
 package com.example.foodiemate.ui.screens.fridge.component
 
-//noinspection UsingMaterialAndMaterial3Libraries
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -9,10 +7,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.SwipeToDismissBox
-import androidx.compose.material3.SwipeToDismissBoxValue
-import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
@@ -21,6 +15,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.IndexObject
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
@@ -28,7 +24,7 @@ import com.example.foodiemate.ui.theme.component.ConfirmDialog
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 import com.example.foodiemate.utils.ProductUtils
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun FridgeProductList(
     items: State<List<FridgeProduct>>,
@@ -46,12 +42,10 @@ fun FridgeProductList(
                 onDismissRequest = { openAlertDialog = false },
                 onConfirmation = {
                     openAlertDialog = false
-
                 },
-                dialogTitle = "Alert dialog example",
-                dialogText = "This is an example of an alert dialog with buttons.",
+                dialogTitle = stringResource(id = R.string.remove_product),
+                dialogText = stringResource(id = R.string.remove_fridge_product),
                 icon = Icons.Filled.Build,
-                iconDescription = null
             )
         }
     }
@@ -66,34 +60,17 @@ fun FridgeProductList(
         items(items.value.mapIndexed { i: Int, product: FridgeProduct ->
             IndexObject(i, product)
         }) { (index, product) ->
-            val state = rememberSwipeToDismissBoxState(confirmValueChange = {
-                openAlertDialog = true
-                false
-            })
-            val isEdit = editableProduct.value != null && editableProduct.value == product
-            SwipeToDismissBox(
-                modifier = Modifier.then(
-                    ProductUtils.getModifierWithPaddingForCard(
-                        index, items.value.size, firstItemMargin, lastItemMargin, itemMargin
-                    )
-                ), state = state, backgroundContent = {
-                    if (state.dismissDirection == SwipeToDismissBoxValue.StartToEnd) {
-                        FridgeRemoveProduct()
-                    }
-                }, enableDismissFromEndToStart = false
-            ) {
-                Box(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    FridgeProductView(product = product, isEdit = isEdit, onEnableEditProduct = {
-                        editableProduct.value = product
-                    }, onEditProduct = { value, unit ->
-                        editProductCount(product, value, unit)
-                    }, onDisableEditProduct = {
-                        editableProduct.value = null
-                    })
+            FridgeSwipeProduct(
+                modifier = ProductUtils.getModifierWithPaddingForCard(
+                    index, items.value.size, firstItemMargin, lastItemMargin, itemMargin
+                ),
+                product = product,
+                editableProduct = editableProduct,
+                editProductCount = editProductCount,
+                onSwipe = {
+                    openAlertDialog = true
                 }
-            }
+            )
         }
     }
 }

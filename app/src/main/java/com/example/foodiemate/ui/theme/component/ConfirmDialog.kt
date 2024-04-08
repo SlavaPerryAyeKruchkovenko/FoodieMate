@@ -1,6 +1,7 @@
 package com.example.foodiemate.ui.theme.component
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,9 +14,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.foodiemate.R
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
@@ -23,9 +26,9 @@ fun ConfirmDialog(
     onDismissRequest: () -> Unit,
     onConfirmation: () -> Unit,
     dialogTitle: String,
-    dialogText: String?,
+    dialogText: String? = null,
     icon: ImageVector,
-    iconDescription: String?
+    iconDescription: String? = null
 ) {
     val textSize = CustomTheme.fontSize.dialogTextFont
     AlertDialog(containerColor = CustomTheme.colors.dialogBackground, title = {
@@ -61,22 +64,26 @@ fun ConfirmDialog(
     }, onDismissRequest = {
         onDismissRequest()
     }, confirmButton = {
-        TextButton(onClick = {
+        TextButton(contentPadding = PaddingValues(
+            start = 16.dp, end = 0.dp, top = 0.dp, bottom = 0.dp
+        ), onClick = {
             onConfirmation()
         }) {
             Text(
                 fontSize = textSize,
-                text = "Confirm",
+                text = stringResource(id = R.string.confirm),
                 color = CustomTheme.colors.dialogButtonColor
             )
         }
     }, dismissButton = {
-        TextButton(onClick = {
+        TextButton(contentPadding = PaddingValues(
+            0.dp
+        ), onClick = {
             onDismissRequest()
         }) {
             Text(
                 fontSize = textSize,
-                text = "Dismiss",
+                text = stringResource(id = R.string.dismiss),
                 color = CustomTheme.colors.dialogButtonColor
             )
         }
