@@ -1,5 +1,6 @@
 package com.example.foodiemate.ui.screens.fridge
 
+import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -55,6 +56,7 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
                 event.product, event.value, event.unit
             )
 
+            is FridgeEvent.RemoveProduct -> removeProduct(state, event.product)
             is FridgeEvent.SearchProducts -> searchProducts(event.query, state)
             else -> {}
         }
@@ -69,10 +71,9 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
         viewModelScope.launch {
             delay(2000)
             val isSearching = MutableStateFlow(false)
-            val products = Mock.mockFridgeProduct()
-            val productsFlow = MutableStateFlow(products)
+            val products = MutableStateFlow(Mock.mockFridgeProduct())
             val displayProducts = searchText.debounce(1000L).onEach { isSearching.update { true } }
-                .combine(productsFlow) { text, items ->
+                .combine(products) { text, items ->
                     if (text.isBlank()) {
                         items
                     } else {
@@ -86,10 +87,18 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
                         nameSearched + countSearch
                     }
                 }.onEach { isSearching.update { false } }.stateIn(
-                    viewModelScope, SharingStarted.WhileSubscribed(1000), productsFlow.value
+                    viewModelScope, SharingStarted.WhileSubscribed(1000), products.value
                 )
             _fridgeViewState.value =
                 FridgeViewState.Display(products, displayProducts, isSearching.asStateFlow())
+        }
+    }
+
+    private fun removeProduct(state: FridgeViewState.Display, product: FridgeProduct) {
+        state.items.update { list ->
+            list.toMutableStateList().apply {
+                removeIf { it.id == product.id }
+            }
         }
     }
 

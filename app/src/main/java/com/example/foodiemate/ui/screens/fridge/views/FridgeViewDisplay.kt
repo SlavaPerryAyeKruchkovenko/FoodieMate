@@ -40,7 +40,8 @@ fun FridgeViewDisplay(
     navController: NavHostController,
     editProductCount: (product: FridgeProduct, value: Number, unit: UnitOfMeasure) -> Unit,
     onSearch: (query: String) -> Unit,
-    isSearching: State<Boolean>
+    isSearching: State<Boolean>,
+    removeProduct: (product: FridgeProduct) -> Unit
 ) {
     val editableProduct: MutableState<FridgeProduct?> = remember {
         mutableStateOf(null)
@@ -74,7 +75,8 @@ fun FridgeViewDisplay(
                 FridgeProductList(
                     items = items,
                     editableProduct = editableProduct,
-                    editProductCount = editProductCount
+                    editProductCount = editProductCount,
+                    removeProduct
                 )
             }
         }
@@ -108,5 +110,5 @@ fun FridgeViewDisplayPreview() {
         mutableStateOf(false)
     }
     val navController = rememberNavController()
-    FridgeViewDisplay(items = products, navController, { _, _, _ -> }, {}, isSearch)
+    FridgeViewDisplay(items = products, navController, { _, _, _ -> }, {}, isSearch, {})
 }

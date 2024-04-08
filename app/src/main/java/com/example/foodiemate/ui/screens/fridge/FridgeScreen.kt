@@ -26,7 +26,10 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
             onSearch = {
                 viewModel.obtainEvent(FridgeEvent.SearchProducts(it))
             },
-            isSearching = state.isSearch.collectAsState()
+            isSearching = state.isSearch.collectAsState(),
+            removeProduct = {
+                viewModel.obtainEvent(FridgeEvent.RemoveProduct(it))
+            }
         )
 
         else -> throw NotImplementedError("Unexpected daily state")

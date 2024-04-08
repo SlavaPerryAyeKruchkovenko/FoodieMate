@@ -12,4 +12,6 @@ sealed class FridgeEvent {
     data class ChangeProductCount(
         val product: FridgeProduct, val value: Number, val unit: UnitOfMeasure
     ) : FridgeEvent()
+
+    data class RemoveProduct(val product: FridgeProduct) : FridgeEvent()
 }
