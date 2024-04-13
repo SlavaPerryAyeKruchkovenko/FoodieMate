@@ -1,6 +1,5 @@
 package com.example.foodiemate.ui.screens.fridge
 
-import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -12,7 +11,6 @@ import com.example.foodiemate.ui.screens.fridge.views.FridgeViewDisplay
 import com.example.foodiemate.ui.screens.fridge.views.FridgeViewLoading
 import com.example.foodiemate.ui.screens.fridge.views.FridgeViewNoItems
 
-@SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
     val viewState = viewModel.fridgeViewState.observeAsState()
