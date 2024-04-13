@@ -83,9 +83,8 @@ fun ProductSearchBar(
                     )
                     .padding(vertical = 4.dp, horizontal = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.Start
             ) {
-                it()
                 Icon(
                     modifier = Modifier
                         .size(CustomTheme.layoutSize.searchBarIcon)
@@ -94,6 +93,7 @@ fun ProductSearchBar(
                     contentDescription = stringResource(id = R.string.search),
                     tint = CustomTheme.colors.secondaryText
                 )
+                it()
             }
         }
     }

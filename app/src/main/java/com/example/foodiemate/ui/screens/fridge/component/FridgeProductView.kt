@@ -1,6 +1,5 @@
 package com.example.foodiemate.ui.screens.fridge.component
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -66,9 +65,9 @@ fun FridgeProductView(
         }
     }
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth(),
         shape = RoundedCornerShape(CustomTheme.shapeRadius.card),
-        border = BorderStroke(1.dp, CustomTheme.colors.primaryText),
         colors = CardDefaults.cardColors(
             containerColor = CustomTheme.colors.secondaryBackground,
         ),
