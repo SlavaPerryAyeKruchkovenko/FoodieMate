@@ -18,7 +18,7 @@ import com.example.foodiemate.ui.theme.customTheme.LocalCustomShapeRadius
 
 private val darkColorScheme = CustomColorsPalette(
     primaryText = Black,
-    primaryBackground = RebeccaPurple,
+    primaryBackground = RebeccaPurpleLight,
     secondaryText = White,
     secondaryBackground = BrightLavender,
     bottomNavigationBackground = Purple900,
@@ -44,7 +44,7 @@ private val darkColorScheme = CustomColorsPalette(
 
 private val lightColorScheme = CustomColorsPalette(
     primaryText = Black,
-    primaryBackground = RebeccaPurple,
+    primaryBackground = RebeccaPurpleLight,
     secondaryText = White,
     secondaryBackground = BrightLavender,
     bottomNavigationBackground = Purple900,
