@@ -8,7 +8,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -20,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
 import com.example.foodiemate.R
-import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.ui.screens.fridge.component.ProductSearchBar
 import com.example.foodiemate.ui.screens.fridge.model.FridgeEvent
 import com.example.foodiemate.ui.screens.fridge.model.FridgeViewState
@@ -34,9 +32,6 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 @Composable
 fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
     val viewState = viewModel.fridgeViewState.observeAsState()
-    val editableProduct: MutableState<FridgeProduct?> = remember {
-        mutableStateOf(null)
-    }
     var isFABMenuOpen by remember {
         mutableStateOf(false)
     }
