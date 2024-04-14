@@ -8,6 +8,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.foodiemate.datasource.presentationModels.Screen
+import com.example.foodiemate.ui.screens.basket.BasketScreen
+import com.example.foodiemate.ui.screens.basket.BasketViewModel
 import com.example.foodiemate.ui.screens.fridge.FridgeScreen
 import com.example.foodiemate.ui.screens.fridge.FridgeViewModel
 
@@ -19,7 +21,8 @@ fun NavigationGraph(navController: NavHostController, modifier: Modifier) {
             FridgeScreen(navController, fridgeViewModel)
         }
         composable(Screen.Basket.screenName) {
-            Text(text = "basket")
+            val basketViewModel = hiltViewModel<BasketViewModel>()
+            BasketScreen(navController = navController, viewModel = basketViewModel)
         }
         composable(Screen.Recipes.screenName) {
             val recipeViewModel = hiltViewModel<FridgeViewModel>()
