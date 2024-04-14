@@ -23,5 +23,7 @@ data class CustomLayoutSize(
     val loaderSize: Dp,
     val productAppBarIcon: Dp,
     val searchLoaderSize: Dp,
-    val dialogIcon: Dp
+    val dialogIcon: Dp,
+    val basketTab: Dp,
+    val tabIcon: Dp
 )

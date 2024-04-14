@@ -37,7 +37,9 @@ private val darkColorScheme = CustomColorsPalette(
     editorBackground = PurpleHeart,
     editorIconBackground = TransGray,
     dialogBackground = LightAmethyst,
-    dialogButtonColor = Purple900
+    dialogButtonColor = Purple900,
+    tabSelected = BrightLavenderDark,
+    tabIndicator = Purple900
 )
 
 private val lightColorScheme = CustomColorsPalette(
@@ -61,7 +63,9 @@ private val lightColorScheme = CustomColorsPalette(
     editorBackground = PurpleHeart,
     editorIconBackground = TransGray,
     dialogBackground = LightAmethyst,
-    dialogButtonColor = Purple900
+    dialogButtonColor = Purple900,
+    tabSelected = BrightLavenderDark,
+    tabIndicator = Purple900
 )
 
 @Composable
@@ -80,7 +84,8 @@ fun FoodieMateTheme(
         iconBorderShape = 8.dp,
         editorCorner = 9.dp,
         editorIconCorner = 5.dp,
-        searchBarCorner = 10.dp
+        searchBarCorner = 10.dp,
+        basketCorner = 8.dp
     )
     val layoutSize = CustomLayoutSize(
         mediumIconSize = 24.dp,
@@ -101,7 +106,9 @@ fun FoodieMateTheme(
         loaderSize = 200.dp,
         productAppBarIcon = 56.dp,
         searchLoaderSize = 56.dp,
-        dialogIcon = 18.dp
+        dialogIcon = 18.dp,
+        basketTab = 30.dp,
+        tabIcon = 20.dp
     )
     val layoutPadding = CustomLayoutPadding(
         smallPadding = 18.dp,
@@ -127,7 +134,9 @@ fun FoodieMateTheme(
         dialogTitleFont = 18.sp,
         dialogTextFont = 16.sp,
         noItemsFont = 32.sp,
-        bottomBarItemFont = 15.sp
+        bottomBarItemFont = 15.sp,
+        basketTabFont = 18.sp,
+        basketTabLineHeight = 20.sp
     )
     CompositionLocalProvider(
         LocalCustomColorsPalette provides colors,

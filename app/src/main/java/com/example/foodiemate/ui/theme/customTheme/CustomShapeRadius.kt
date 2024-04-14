@@ -11,5 +11,6 @@ data class CustomShapeRadius(
     val iconBorderShape: Dp,
     val editorCorner: Dp,
     val editorIconCorner: Dp,
-    val searchBarCorner: Dp
+    val searchBarCorner: Dp,
+    val basketCorner: Dp
 )

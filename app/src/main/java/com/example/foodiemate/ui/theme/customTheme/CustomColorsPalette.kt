@@ -25,5 +25,7 @@ data class CustomColorsPalette(
     val editorBackground: Color,
     val editorIconBackground: Color,
     val dialogBackground: Color,
-    val dialogButtonColor: Color
+    val dialogButtonColor: Color,
+    val tabSelected: Color,
+    val tabIndicator: Color
 )

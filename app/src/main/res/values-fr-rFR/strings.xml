@@ -34,4 +34,6 @@
     <string name="products_not_found">Aucun produit trouvé</string>
     <string name="basket">Panier</string>
     <string name="tinder">Tinder</string>
+    <string name="family_basket">panier familial</string>
+    <string name="personal_basket">panier personnel</string>
 </resources>

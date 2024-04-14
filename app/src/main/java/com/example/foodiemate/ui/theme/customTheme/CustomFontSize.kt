@@ -8,5 +8,7 @@ data class CustomFontSize(
     val dialogTitleFont: TextUnit,
     val dialogTextFont: TextUnit,
     val noItemsFont: TextUnit,
-    val bottomBarItemFont: TextUnit
+    val bottomBarItemFont: TextUnit,
+    val basketTabFont: TextUnit,
+    val basketTabLineHeight: TextUnit
 )
