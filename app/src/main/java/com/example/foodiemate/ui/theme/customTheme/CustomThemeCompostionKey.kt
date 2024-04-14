@@ -28,8 +28,8 @@ val LocalCustomColorsPalette = staticCompositionLocalOf {
         editorIconBackground = Color.Unspecified,
         dialogBackground = Color.Unspecified,
         dialogButtonColor = Color.Unspecified,
-        tabSelected = Color.Unspecified,
-        tabIndicator = Color.Unspecified
+        tabUnselected = Color.Unspecified,
+        tabRowBorder = Color.Unspecified
     )
 }
 val LocalCustomFontSize = staticCompositionLocalOf {
@@ -76,7 +76,8 @@ val LocalCustomLayoutSize = staticCompositionLocalOf {
         searchLoaderSize = Dp.Unspecified,
         dialogIcon = Dp.Unspecified,
         basketTab = Dp.Unspecified,
-        tabIcon = Dp.Unspecified
+        tabIcon = Dp.Unspecified,
+        tabRowBorder = Dp.Unspecified
     )
 }
 val LocalCustomLayoutPadding = staticCompositionLocalOf {
@@ -98,6 +99,8 @@ val LocalCustomLayoutPadding = staticCompositionLocalOf {
         addFABCenterPadding = Dp.Unspecified,
         appBarPadding = Dp.Unspecified,
         productCardMargin = Dp.Unspecified,
-        firstProductMarginTop = Dp.Unspecified
+        firstProductMarginTop = Dp.Unspecified,
+        tabEndPadding = Dp.Unspecified,
+        tabFirstStartPadding = Dp.Unspecified
     )
 }

@@ -15,6 +15,7 @@ import com.example.foodiemate.ui.screens.basket.component.BasketTabs
 import com.example.foodiemate.ui.screens.basket.model.BasketEvent
 import com.example.foodiemate.ui.screens.basket.model.BasketViewState
 import com.example.foodiemate.ui.screens.basket.views.BasketViewLoading
+import com.example.foodiemate.ui.theme.component.AppSearchBar
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -29,6 +30,9 @@ fun BasketScreen(navController: NavHostController, viewModel: BasketViewModel) {
         val pagerState = rememberPagerState(pageCount = {
             viewModel.basketTypes.size
         })
+        AppSearchBar(modifier = Modifier, navController) {
+            viewModel.obtainEvent(BasketEvent.SearchProducts(it))
+        }
         BasketTabs(pagerState, viewModel.basketTypes)
         HorizontalPager(state = pagerState) {
             when (val state = viewState.value) {

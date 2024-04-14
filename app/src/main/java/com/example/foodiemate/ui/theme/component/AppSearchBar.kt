@@ -1,4 +1,4 @@
-package com.example.foodiemate.ui.screens.fridge.component
+package com.example.foodiemate.ui.theme.component
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -13,6 +13,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -96,6 +97,15 @@ fun AppSearchBar(
                 it()
             }
         }
+        Icon(modifier = Modifier
+            .size(CustomTheme.layoutSize.searchBarIcon)
+            .clickable {
+                navController.popBackStack()
+            }
+            .padding(start = 6.dp),
+            imageVector = Icons.Filled.MoreVert,
+            contentDescription = stringResource(id = R.string.back),
+            tint = CustomTheme.colors.secondaryText)
     }
 }
 

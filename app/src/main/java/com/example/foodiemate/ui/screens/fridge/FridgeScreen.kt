@@ -19,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
 import com.example.foodiemate.R
-import com.example.foodiemate.ui.screens.fridge.component.AppSearchBar
 import com.example.foodiemate.ui.screens.fridge.model.FridgeEvent
 import com.example.foodiemate.ui.screens.fridge.model.FridgeViewState
 import com.example.foodiemate.ui.screens.fridge.views.FridgeViewDisplay
@@ -27,6 +26,7 @@ import com.example.foodiemate.ui.screens.fridge.views.FridgeViewLoading
 import com.example.foodiemate.ui.screens.fridge.views.FridgeViewNoItems
 import com.example.foodiemate.ui.theme.component.AddFABLargeIcon
 import com.example.foodiemate.ui.theme.component.AddFABMenu
+import com.example.foodiemate.ui.theme.component.AppSearchBar
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable

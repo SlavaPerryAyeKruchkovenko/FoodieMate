@@ -23,4 +23,6 @@ data class CustomLayoutPadding(
     val appBarPadding: Dp,
     val productCardMargin: Dp,
     val firstProductMarginTop: Dp,
+    val tabFirstStartPadding: Dp,
+    val tabEndPadding: Dp
 )
