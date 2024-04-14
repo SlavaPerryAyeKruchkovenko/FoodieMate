@@ -36,4 +36,5 @@
     <string name="tinder">Тиндер</string>
     <string name="family_basket">семейная корзина</string>
     <string name="personal_basket">личная корзина</string>
+    <string name="basket_is_empty">Ваша корзина пуста</string>
 </resources>

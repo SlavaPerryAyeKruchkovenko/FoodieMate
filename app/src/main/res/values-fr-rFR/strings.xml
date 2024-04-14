@@ -36,4 +36,5 @@
     <string name="tinder">Tinder</string>
     <string name="family_basket">panier familial</string>
     <string name="personal_basket">panier personnel</string>
+    <string name="basket_is_empty">Votre panier est vide</string>
 </resources>

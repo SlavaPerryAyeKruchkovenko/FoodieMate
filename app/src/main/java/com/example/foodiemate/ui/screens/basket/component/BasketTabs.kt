@@ -1,11 +1,7 @@
 package com.example.foodiemate.ui.screens.basket.component
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.HorizontalDivider
@@ -13,12 +9,12 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.TabRowDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.foodiemate.ui.screens.basket.model.BasketType
+import com.example.foodiemate.ui.theme.customTheme.CustomModifier.tabIndicatorOffset
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -40,11 +36,8 @@ fun BasketTabs(pagerState: PagerState, tabs: MutableList<BasketType>) {
                 val indicatorWidth =
                     oldTabPosition.width - offset - CustomTheme.layoutPadding.tabEndPadding - CustomTheme.layoutSize.tabRowBorder * 2
                 TabRowDefaults.SecondaryIndicator(
-                    Modifier
-                        .fillMaxWidth()
-                        .wrapContentSize(Alignment.BottomStart)
-                        .offset(x = left)
-                        .width(indicatorWidth), color = CustomTheme.colors.primaryBackground
+                    Modifier.tabIndicatorOffset(left, indicatorWidth),
+                    color = CustomTheme.colors.primaryBackground
                 )
             }
         },

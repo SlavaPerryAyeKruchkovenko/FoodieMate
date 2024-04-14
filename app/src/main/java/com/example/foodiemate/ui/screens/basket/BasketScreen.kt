@@ -15,6 +15,7 @@ import com.example.foodiemate.ui.screens.basket.component.BasketTabs
 import com.example.foodiemate.ui.screens.basket.model.BasketEvent
 import com.example.foodiemate.ui.screens.basket.model.BasketViewState
 import com.example.foodiemate.ui.screens.basket.views.BasketViewLoading
+import com.example.foodiemate.ui.screens.basket.views.BasketViewNoItems
 import com.example.foodiemate.ui.theme.component.AppSearchBar
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
@@ -37,6 +38,7 @@ fun BasketScreen(navController: NavHostController, viewModel: BasketViewModel) {
         HorizontalPager(state = pagerState) {
             when (val state = viewState.value) {
                 is BasketViewState.Loading -> BasketViewLoading()
+                is BasketViewState.NoItems -> BasketViewNoItems()
                 else -> throw NotImplementedError("Unexpected daily state")
             }
         }
