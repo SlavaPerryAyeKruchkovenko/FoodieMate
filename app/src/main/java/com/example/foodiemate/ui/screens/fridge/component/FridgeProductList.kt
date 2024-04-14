@@ -22,7 +22,7 @@ import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.ui.theme.component.ConfirmDialog
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
-import com.example.foodiemate.utils.ProductUtils
+import com.example.foodiemate.utils.ProductUtils.getModifierWithPaddingForCard
 
 
 @Composable
@@ -62,7 +62,7 @@ fun FridgeProductList(
                     )
                 }
             }
-            FridgeSwipeProduct(modifier = ProductUtils.getModifierWithPaddingForCard(
+            FridgeSwipeProduct(modifier = Modifier.getModifierWithPaddingForCard(
                 index, items.value.size, firstItemMargin, lastItemMargin, itemMargin
             ),
                 product = product,

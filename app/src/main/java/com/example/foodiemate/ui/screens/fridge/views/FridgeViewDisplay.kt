@@ -12,7 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
@@ -62,6 +61,5 @@ fun FridgeViewDisplayPreview() {
     val isSearch = remember {
         mutableStateOf(false)
     }
-    val navController = rememberNavController()
     FridgeViewDisplay(items = products, { _, _, _ -> }, isSearch, {})
 }

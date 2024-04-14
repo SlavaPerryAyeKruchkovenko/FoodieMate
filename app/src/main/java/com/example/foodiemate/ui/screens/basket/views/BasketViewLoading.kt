@@ -12,6 +12,6 @@ fun BasketViewLoading() {
 
 @Preview
 @Composable
-fun PreviewBasketViewLoading() {
+fun BasketViewLoadingPreview() {
     BasketViewLoading()
 }

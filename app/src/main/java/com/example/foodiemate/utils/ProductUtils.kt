@@ -1,5 +1,6 @@
 package com.example.foodiemate.utils
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
@@ -25,7 +26,8 @@ object ProductUtils {
         }
     }
 
-    fun getModifierWithPaddingForCard(
+    @SuppressLint("ModifierFactoryUnreferencedReceiver")
+    fun Modifier.getModifierWithPaddingForCard(
         index: Int,
         itemsSize: Int,
         firstItemMargin: Dp,

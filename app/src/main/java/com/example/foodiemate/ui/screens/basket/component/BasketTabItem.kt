@@ -75,7 +75,7 @@ fun BasketTabItem(pagerState: PagerState, scope: CoroutineScope, tab: BasketType
 @OptIn(ExperimentalFoundationApi::class)
 @Preview
 @Composable
-fun PreviewBasketTabItem() {
+fun BasketTabItemPreview() {
     val pagerState = rememberPagerState(pageCount = {
         2
     })

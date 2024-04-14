@@ -37,7 +37,7 @@ import com.example.foodiemate.R
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
-fun ProductSearchBar(
+fun AppSearchBar(
     modifier: Modifier, navController: NavHostController, onSearch: (query: String) -> Unit
 ) {
     Row(
@@ -101,9 +101,9 @@ fun ProductSearchBar(
 
 @Preview
 @Composable
-fun ProductSearchBarPreview() {
+fun AppSearchBarPreview() {
     val navController = rememberNavController()
-    ProductSearchBar(Modifier, navController) {
+    AppSearchBar(Modifier, navController) {
         Log.d("value", it)
     }
 }
