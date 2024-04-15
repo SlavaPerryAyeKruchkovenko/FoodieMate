@@ -3,6 +3,7 @@ package com.example.foodiemate.ui.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodiemate.ui.theme.customTheme.CustomColorsPalette
@@ -30,8 +31,8 @@ private val darkColorScheme = CustomColorsPalette(
     removeProductBackground = Red,
     editProduct = Black,
     reduceColor = Red,
-    addColor = Green,
-    acceptColor = Green,
+    addColor = Green700,
+    acceptColor = Green700,
     darkScreen = Dark,
     FABBoxBackground = LightPurple900,
     editorBackground = PurpleHeart,
@@ -44,26 +45,26 @@ private val darkColorScheme = CustomColorsPalette(
 
 private val lightColorScheme = CustomColorsPalette(
     primaryText = Black,
-    primaryBackground = RebeccaPurpleLight,
-    secondaryText = White,
-    secondaryBackground = BrightLavender,
-    bottomNavigationBackground = Purple900,
-    bottomNavigationText = Purple500,
-    bottomNavigationTextSelected = White,
-    navigationBarIndicatorColor = Blue900,
-    addFABBackground = Purple900,
+    primaryBackground = White,
+    secondaryText = Black,
+    secondaryBackground = LightGray,
+    bottomNavigationBackground = WhiteSmoke,
+    bottomNavigationText = Black,
+    bottomNavigationTextSelected = Green700,
+    navigationBarIndicatorColor = Color.Red,//useless
+    addFABBackground = Green500,
     addFABIconTint = White,
-    removeProductBackground = LightRed,
+    removeProductBackground = DimRed,
     editProduct = Black,
     reduceColor = Red,
-    addColor = Green,
-    acceptColor = Green,
+    addColor = Green700,
+    acceptColor = Green700,
     darkScreen = Dark,
-    FABBoxBackground = LightPurple900,
-    editorBackground = PurpleHeart,
+    FABBoxBackground = DimGreen,
+    editorBackground = Green500,
     editorIconBackground = TransGray,
-    dialogBackground = LightAmethyst,
-    dialogButtonColor = Purple900,
+    dialogBackground = LightGray,
+    dialogButtonColor = Green700,
     tabUnselected = Gray,
     tabRowBorder = Gray
 )

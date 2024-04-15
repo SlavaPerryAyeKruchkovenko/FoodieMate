@@ -1,9 +1,9 @@
 package com.example.foodiemate.ui.theme.component
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.foodiemate.R
+import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 import kotlinx.coroutines.delay
 
 @Composable
@@ -32,11 +33,10 @@ fun Loader(delay: Long, rotateValue: Float, size: Dp) {
     }
 
     Box(
-        modifier = Modifier
-            .fillMaxSize(),
-        contentAlignment = Alignment.Center
+        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
-        Image(
+        Icon(
+            tint = CustomTheme.colors.secondaryText,
             modifier = Modifier
                 .size(size)
                 .rotate(rotationValue),
