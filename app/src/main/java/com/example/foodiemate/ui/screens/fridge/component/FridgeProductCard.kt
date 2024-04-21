@@ -56,7 +56,7 @@ fun FridgeProductView(
                     .fillMaxSize()
                     .padding(start = CustomTheme.layoutPadding.cardTextBoxPadding)
             ) {
-                FridgeProductTitleView(
+                FridgeProductCardView(
                     height = textSizeBox,
                     cardPadding = cardTextPadding,
                     isEdit = isEdit,

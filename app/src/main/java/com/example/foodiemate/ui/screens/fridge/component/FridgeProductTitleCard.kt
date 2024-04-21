@@ -23,7 +23,7 @@ import com.example.foodiemate.R
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
-fun FridgeProductTitleView(
+fun FridgeProductCardView(
     height: Dp,
     cardPadding: Dp,
     isEdit: Boolean,
@@ -91,6 +91,6 @@ fun FridgeProductTitleView(
 
 @Preview
 @Composable
-fun FridgeProductTitleViewPreview() {
-    FridgeProductTitleView(80.dp, 6.dp, false, "example", {}, {})
+fun FridgeProductTitleCardPreview() {
+    FridgeProductCardView(80.dp, 6.dp, false, "example", {}, {})
 }
