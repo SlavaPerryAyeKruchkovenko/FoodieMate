@@ -61,7 +61,7 @@ fun BasketScreen(navController: NavHostController, viewModel: BasketViewModel) {
                     is BasketViewState.Display -> BasketViewDisplay(
                         items = state.displayItems.collectAsState().value,
                         isSearching = state.isSearch.collectAsState().value,
-                        selectProduct = {
+                        onSelectProduct = { product, value ->
 
                         },
                         editProductCount = { _, _, _ -> }

@@ -56,7 +56,7 @@ fun FridgeProductView(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = CustomTheme.layoutPadding.productCardDeviderPadding)
+                    .padding(start = CustomTheme.layoutPadding.productCardDividerPadding)
             ) {
                 FridgeProductCardView(
                     height = textSizeBox,

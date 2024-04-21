@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,10 +25,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.models.BasketProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
+import com.example.foodiemate.ui.theme.FoodieMateTheme
 import com.example.foodiemate.ui.theme.component.ProductIcon
 import com.example.foodiemate.ui.theme.component.ProductUnit
 import com.example.foodiemate.ui.theme.component.ProductUnitEditor
@@ -47,6 +49,7 @@ fun BasketProductCard(
     UnitProductView(product) { scope, productCount, unit ->
         val cardSize = CustomTheme.layoutSize.productCardSize
         val imageSize = CustomTheme.layoutSize.basketProductImageSize
+        val dividerPadding = CustomTheme.layoutPadding.productCardDividerPadding
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -55,8 +58,11 @@ fun BasketProductCard(
                     cardSize, cardSize
                 )
         ) {
-            Column(modifier = Modifier.fillMaxSize()) {
-                Row(modifier = Modifier.fillMaxHeight()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight().weight(2f)
+            ) {
+                Row(modifier = Modifier) {
                     Image(
                         modifier = Modifier.size(imageSize),
                         painter = painterResource(id = R.drawable.cheese),
@@ -64,20 +70,26 @@ fun BasketProductCard(
                         contentScale = ContentScale.Fit,
                     )
                     Column(
-                        modifier = Modifier.fillMaxSize(),
+                        modifier = Modifier.fillMaxWidth()
+                            .height(imageSize)
+                            .padding(start = dividerPadding),
                         verticalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
                             modifier = Modifier.fillMaxWidth(),
                             text = product.product.name,
                             maxLines = 2,
-                            overflow = TextOverflow.Ellipsis
+                            overflow = TextOverflow.Ellipsis,
+                            fontSize = 18.sp,
+                            lineHeight = 20.sp
                         )
                         Text(
                             modifier = Modifier.fillMaxWidth(),
                             text = product.product.category.subCategory,
                             maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
+                            overflow = TextOverflow.Ellipsis,
+                            fontSize = 18.sp,
+                            lineHeight = 20.sp
                         )
                     }
                 }
@@ -86,12 +98,10 @@ fun BasketProductCard(
                         value = productCount.value, {
                             onEditProduct(it, unit)
                             productCount.value = it
-                        }, unit, modifier = Modifier
-                            .fillMaxWidth()
-                            .heightIn(
-                                CustomTheme.layoutSize.productEditorSize,
-                                CustomTheme.layoutSize.productEditorSize
-                            )
+                        }, unit, modifier = Modifier.heightIn(
+                            CustomTheme.layoutSize.productEditorSize,
+                            CustomTheme.layoutSize.productEditorSize
+                        )
                     )
                 } else {
                     ProductUnit(
@@ -106,9 +116,8 @@ fun BasketProductCard(
             }
             Column(
                 modifier = Modifier
-                    .fillMaxHeight()
                     .width(CustomTheme.layoutSize.basketCheckBoxSize)
-                    .padding(start = CustomTheme.layoutPadding.productCardDeviderPadding),
+                    .fillMaxHeight(),
                 verticalArrangement = Arrangement.SpaceBetween,
                 horizontalAlignment = Alignment.End
             ) {
@@ -133,8 +142,7 @@ fun BasketProductCard(
                         CustomTheme.layoutSize.mediumIconSize
                     )
                 }
-                Checkbox(
-                    modifier = Modifier.size(CustomTheme.layoutSize.basketCheckBoxSize),
+                Checkbox(modifier = Modifier.size(CustomTheme.layoutSize.basketCheckBoxSize),
                     checked = product.selected,
                     onCheckedChange = {
                         onSelect(product, it)
@@ -147,6 +155,8 @@ fun BasketProductCard(
 @Preview
 @Composable
 fun BasketProductCardPreview() {
-    val product = Mock.mockBasketProduct().first()
-    BasketProductCard(product, false, { _, _ -> }, {}, {}, { _, _ -> })
+    FoodieMateTheme {
+        val product = Mock.mockBasketProduct().first()
+        BasketProductCard(product, false, { _, _ -> }, {}, {}, { _, _ -> })
+    }
 }

@@ -10,6 +10,7 @@ import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.screens.basket.component.BasketNotFoundItems
 import com.example.foodiemate.ui.screens.basket.component.BasketProductList
+import com.example.foodiemate.ui.theme.FoodieMateTheme
 import com.example.foodiemate.ui.theme.component.SearchIndicator
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
@@ -17,7 +18,7 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 fun BasketViewDisplay(
     items: List<BasketProduct>,
     isSearching: Boolean,
-    selectProduct: (product: BasketProduct) -> Unit,
+    onSelectProduct: (product: BasketProduct, value: Boolean) -> Unit,
     editProductCount: (product: BasketProduct, value: Number, unit: UnitOfMeasure) -> Unit,
 ) {
     val editableProduct: MutableState<BasketProduct?> = remember {
@@ -34,7 +35,7 @@ fun BasketViewDisplay(
             BasketProductList(
                 items = items,
                 editableProduct = editableProduct,
-                onSelectProduct = selectProduct,
+                onSelectProduct = onSelectProduct,
                 editProductCount = editProductCount
             )
         }
@@ -44,5 +45,7 @@ fun BasketViewDisplay(
 @Preview
 @Composable
 fun BasketViewDisplayPreview() {
-    BasketViewDisplay(Mock.mockBasketProduct(), false, { _ -> }, { _, _, _ -> })
+    FoodieMateTheme {
+        BasketViewDisplay(Mock.mockBasketProduct(), false, { _, _ -> }, { _, _, _ -> })
+    }
 }

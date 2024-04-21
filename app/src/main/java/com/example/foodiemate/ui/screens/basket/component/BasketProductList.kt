@@ -15,6 +15,7 @@ import com.example.foodiemate.datasource.presentationModels.IndexObject
 import com.example.foodiemate.datasource.presentationModels.models.BasketProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
+import com.example.foodiemate.ui.theme.FoodieMateTheme
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
@@ -51,8 +52,10 @@ fun BasketProductList(
 @Preview
 @Composable
 fun BasketProductListPreview() {
-    val editableProduct: MutableState<BasketProduct?> = remember {
-        mutableStateOf(Mock.mockBasketProduct().first())
+    FoodieMateTheme {
+        val editableProduct: MutableState<BasketProduct?> = remember {
+            mutableStateOf(Mock.mockBasketProduct().first())
+        }
+        BasketProductList(Mock.mockBasketProduct(), editableProduct, { _, _ -> }, { _, _, _ -> })
     }
-    BasketProductList(Mock.mockBasketProduct(), editableProduct, { _, _ -> }, { _, _, _ -> })
 }

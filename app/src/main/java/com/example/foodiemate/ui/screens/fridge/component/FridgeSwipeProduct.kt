@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
+import com.example.foodiemate.ui.theme.FoodieMateTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,14 +61,16 @@ fun FridgeSwipeProduct(
 @Preview
 @Composable
 fun FridgeSwipeProductPreview() {
-    val editableProduct: MutableState<FridgeProduct?> = remember {
-        mutableStateOf(null)
+    FoodieMateTheme{
+        val editableProduct: MutableState<FridgeProduct?> = remember {
+            mutableStateOf(null)
+        }
+        FridgeSwipeProduct(
+            modifier = Modifier.padding(0.dp),
+            product = Mock.mockFridgeProduct()[0],
+            editableProduct = editableProduct,
+            editProductCount = { _, _, _ -> },
+            onSwipe = {}
+        )
     }
-    FridgeSwipeProduct(
-        modifier = Modifier.padding(0.dp),
-        product = Mock.mockFridgeProduct()[0],
-        editableProduct = editableProduct,
-        editProductCount = { _, _, _ -> },
-        onSwipe = {}
-    )
 }

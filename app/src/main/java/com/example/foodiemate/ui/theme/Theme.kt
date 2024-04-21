@@ -120,7 +120,7 @@ fun FoodieMateTheme(
         largePadding = 36.dp,
         cardPadding = 8.dp,
         cardTextPadding = 4.dp,
-        productCardDeviderPadding = 4.dp,
+        productCardDividerPadding = 4.dp,
         endCardTextPadding = 28.dp,
         smallIconPadding = 4.dp,
         mediumIconPadding = 3.dp,//useless
