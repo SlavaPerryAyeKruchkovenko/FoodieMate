@@ -14,6 +14,7 @@ import com.example.foodiemate.ui.navigation.NavigationBottomBar
 import com.example.foodiemate.ui.navigation.NavigationGraph
 import com.example.foodiemate.ui.theme.FoodieMateTheme
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,12 +23,15 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val systemUiController = rememberSystemUiController()
+            val navController = rememberNavController()
             FoodieMateTheme {
                 Surface(
-                    modifier = Modifier
-                        .fillMaxSize()
+                    modifier = Modifier.fillMaxSize()
                 ) {
-                    val navController = rememberNavController()
+                    systemUiController.setSystemBarsColor(
+                        color = CustomTheme.colors.bottomNavigationBackground
+                    )
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
                         floatingActionButtonPosition = FabPosition.End,
@@ -38,8 +42,7 @@ class MainActivity : ComponentActivity() {
                     ) { paddingValues ->
                         NavigationGraph(
                             navController = navController,
-                            modifier = Modifier
-                                .padding(bottom = paddingValues.calculateBottomPadding())
+                            modifier = Modifier.padding(bottom = paddingValues.calculateBottomPadding())
                         )
                     }
                 }
