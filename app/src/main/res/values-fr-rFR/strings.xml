@@ -20,6 +20,7 @@
     <string name="reduce">réduire</string>
     <string name="accept">accepter</string>
     <string name="menu">Menu</string>
+    <string name="add_product_to_basket">ajouter le produit au panier</string>
     <string name="add_by_mail">ajouter par courrier</string>
     <string name="add_by_qr_code">ajouter par code qr</string>
     <string name="add_manually">Ajouter manuellementmodifier</string>
