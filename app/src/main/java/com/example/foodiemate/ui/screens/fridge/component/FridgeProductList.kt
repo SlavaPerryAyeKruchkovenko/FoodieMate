@@ -9,17 +9,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.IndexObject
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
+import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.theme.component.ConfirmDialog
 import com.example.foodiemate.ui.theme.customTheme.CustomModifier.paddingForCard
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
@@ -27,7 +28,7 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
 fun FridgeProductList(
-    items: State<List<FridgeProduct>>,
+    items: List<FridgeProduct>,
     editableProduct: MutableState<FridgeProduct?>,
     editProductCount: (product: FridgeProduct, value: Number, unit: UnitOfMeasure) -> Unit,
     removeProduct: (product: FridgeProduct) -> Unit
@@ -44,7 +45,7 @@ fun FridgeProductList(
                 end = CustomTheme.layoutPadding.smallPadding,
             )
     ) {
-        items(items.value.mapIndexed { i: Int, product: FridgeProduct ->
+        items(items.mapIndexed { i: Int, product: FridgeProduct ->
             IndexObject(i, product)
         }) { (index, product) ->
             var openAlertDialog by remember { mutableStateOf(false) }
@@ -63,7 +64,7 @@ fun FridgeProductList(
                 }
             }
             FridgeSwipeProduct(modifier = Modifier.paddingForCard(
-                index, items.value.size, firstItemMargin, lastItemMargin, itemMargin
+                index, items.size, firstItemMargin, lastItemMargin, itemMargin
             ),
                 product = product,
                 editableProduct = editableProduct,
@@ -73,4 +74,13 @@ fun FridgeProductList(
                 })
         }
     }
+}
+
+@Preview
+@Composable
+fun FridgeProductListPreview() {
+    val editableProduct: MutableState<FridgeProduct?> = remember {
+        mutableStateOf(Mock.mockFridgeProduct().first())
+    }
+    FridgeProductList(items = Mock.mockFridgeProduct(), editableProduct, { _, _, _ -> }, { _ -> })
 }

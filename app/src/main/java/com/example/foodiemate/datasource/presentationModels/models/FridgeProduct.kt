@@ -2,7 +2,7 @@ package com.example.foodiemate.datasource.presentationModels.models
 
 data class FridgeProduct(
     val id: String,
-    val product: Product,
-    var count: Number,
+    override val product: Product,
+    override var count: Number,
     val family: Family?
-)
+) : CountedProduct

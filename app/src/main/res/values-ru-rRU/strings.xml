@@ -38,4 +38,5 @@
     <string name="family_basket">семейная корзина</string>
     <string name="personal_basket">личная корзина</string>
     <string name="basket_is_empty">Ваша корзина пуста</string>
+    <string name="no_products_in_basket">" В корзине нет продуктов There are no products in the basket"</string>
 </resources>

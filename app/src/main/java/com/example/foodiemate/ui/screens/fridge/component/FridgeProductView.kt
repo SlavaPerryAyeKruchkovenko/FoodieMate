@@ -10,15 +10,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.material.icons.twotone.Check
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,9 +34,8 @@ import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
+import com.example.foodiemate.ui.theme.component.UnitProductView
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
-import com.example.foodiemate.utils.NumberUtils.isInt
-import com.example.foodiemate.utils.ProductUtils.convertCountByUnit
 
 @Composable
 fun FridgeProductView(
@@ -53,25 +48,7 @@ fun FridgeProductView(
     val cardSize = CustomTheme.layoutSize.productImageSize
     val textSizeBox = CustomTheme.layoutSize.productTextSize
     val cardTextPadding = CustomTheme.layoutPadding.cardTextPadding
-    var unit by remember { mutableStateOf(product.product.unit) }
-    var productCount by remember {
-        mutableStateOf(product.count)
-    }
-    LaunchedEffect(product.product.unit) {
-        if (unit != product.product.unit) {
-            unit = product.product.unit
-            val count = convertCountByUnit(productCount.toDouble(), product.product.unit)
-            productCount = isInt<Number>(count, { count.toInt() }, { count })
-        }
-    }
-    Card(
-        modifier = Modifier
-            .fillMaxWidth(),
-        shape = RoundedCornerShape(CustomTheme.shapeRadius.card),
-        colors = CardDefaults.cardColors(
-            containerColor = CustomTheme.colors.secondaryBackground,
-        ),
-    ) {
+    UnitProductView(product) { scope, productCount, unit ->
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -122,7 +99,8 @@ fun FridgeProductView(
                         text = product.product.name,
                     )
                     if (isEdit) {
-                        ProductIcon(Icons.TwoTone.Check,
+                        ProductIcon(
+                            Icons.TwoTone.Check,
                             R.string.accept,
                             CustomTheme.colors.acceptColor,
                             Modifier
@@ -149,9 +127,9 @@ fun FridgeProductView(
                 }
                 if (isEdit) {
                     ProductUnitEditor(
-                        value = productCount, {
+                        value = productCount.value, {
                             onEditProduct(it, unit)
-                            productCount = it
+                            productCount.value = it
                         }, unit, modifier = Modifier
                             .fillMaxWidth()
                             .heightIn(
@@ -176,7 +154,7 @@ fun FridgeProductView(
 
 @Preview
 @Composable
-private fun FridgeProductViewPreview() {
+fun FridgeProductViewPreview() {
     val mockProducts = Mock.mockFridgeProduct()
     var isEdit by remember {
         mutableStateOf(false)

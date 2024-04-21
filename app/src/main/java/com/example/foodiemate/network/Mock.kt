@@ -1,5 +1,6 @@
 package com.example.foodiemate.network
 
+import com.example.foodiemate.datasource.presentationModels.models.BasketProduct
 import com.example.foodiemate.datasource.presentationModels.models.Family
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.Product
@@ -7,6 +8,67 @@ import com.example.foodiemate.datasource.presentationModels.models.ProductCatego
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 
 object Mock {
+    fun mockBasketProduct(): List<BasketProduct> {
+        return listOf(
+            BasketProduct(
+                "1",
+                mockProducts().first { it.id === "1" },
+                124,
+                false,
+                mockFamily,
+            ),
+            BasketProduct(
+                "2",
+                mockProducts().first { it.id === "2" },
+                13,
+                true,
+                mockFamily,
+            ),
+            BasketProduct(
+                "3",
+                mockProducts().first { it.id === "3" },
+                100,
+                true,
+                null,
+            ),
+            BasketProduct(
+                "4",
+                mockProducts().first { it.id === "4" },
+                13,
+                false,
+                null
+            ),
+            BasketProduct(
+                "5",
+                mockProducts().first { it.id === "5" },
+                800,
+                true,
+                null
+            ),
+            BasketProduct(
+                "6",
+                mockProducts().first { it.id === "6" },
+                3,
+                true,
+                mockFamily,
+            ),
+            BasketProduct(
+                "7",
+                mockProducts().first { it.id === "7" },
+                1.4,
+                false,
+                mockFamily,
+            ),
+            BasketProduct(
+                "8",
+                mockProducts().first { it.id === "8" },
+                230,
+                false,
+                null,
+            )
+        )
+    }
+
     fun mockFridgeProduct(): List<FridgeProduct> {
         return listOf(
             FridgeProduct(

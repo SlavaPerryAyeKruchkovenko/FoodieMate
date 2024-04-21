@@ -53,11 +53,11 @@ fun FridgeScreen(navController: NavHostController, viewModel: FridgeViewModel) {
             when (val state = viewState.value) {
                 is FridgeViewState.Loading -> FridgeViewLoading()
                 is FridgeViewState.Display -> FridgeViewDisplay(
-                    items = state.displayItems.collectAsState(),
+                    items = state.displayItems.collectAsState().value,
                     editProductCount = { product, value, unit ->
                         viewModel.obtainEvent(FridgeEvent.ChangeProductCount(product, value, unit))
                     },
-                    isSearching = state.isSearch.collectAsState(),
+                    isSearching = state.isSearch.collectAsState().value,
                     removeProduct = {
                         viewModel.obtainEvent(FridgeEvent.RemoveProduct(it))
                     }

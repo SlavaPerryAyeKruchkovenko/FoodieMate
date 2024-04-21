@@ -35,6 +35,7 @@
     <string name="fridge_is_empty">Your refrigerator is empty</string>
     <string name="basket_is_empty">Your basket is empty</string>
     <string name="products_not_found">No products found</string>
+    <string name="no_products_in_basket">There are no products in the basket</string>
     <string name="sad_smile" translatable="false">:(</string>
     <string name="family_basket">family basket</string>
     <string name="personal_basket">personal basket</string>

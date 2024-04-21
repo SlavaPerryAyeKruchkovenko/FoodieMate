@@ -11,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -24,6 +25,7 @@ import com.example.foodiemate.R
 import com.example.foodiemate.ui.screens.basket.component.BasketTabs
 import com.example.foodiemate.ui.screens.basket.model.BasketEvent
 import com.example.foodiemate.ui.screens.basket.model.BasketViewState
+import com.example.foodiemate.ui.screens.basket.views.BasketViewDisplay
 import com.example.foodiemate.ui.screens.basket.views.BasketViewLoading
 import com.example.foodiemate.ui.screens.basket.views.BasketViewNoItems
 import com.example.foodiemate.ui.theme.component.AddFABLargeIcon
@@ -56,6 +58,15 @@ fun BasketScreen(navController: NavHostController, viewModel: BasketViewModel) {
                 when (val state = viewState.value) {
                     is BasketViewState.Loading -> BasketViewLoading()
                     is BasketViewState.NoItems -> BasketViewNoItems()
+                    is BasketViewState.Display -> BasketViewDisplay(
+                        items = state.displayItems.collectAsState().value,
+                        isSearching = state.isSearch.collectAsState().value,
+                        selectProduct = {
+
+                        },
+                        editProductCount = { _, _, _ -> }
+                    )
+
                     else -> throw NotImplementedError("Unexpected daily state")
                 }
             }
