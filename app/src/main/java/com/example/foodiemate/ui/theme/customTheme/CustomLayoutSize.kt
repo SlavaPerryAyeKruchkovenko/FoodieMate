@@ -7,7 +7,8 @@ import androidx.compose.ui.unit.Dp
 data class CustomLayoutSize(
     val mediumIconSize: Dp,
     val smallIconSize: Dp,
-    val productImageSize: Dp,
+    val productCardSize: Dp,
+    val basketProductImageSize: Dp,
     val productTextSize: Dp,
     val navigationBottomBarHeight: Dp,
     val addFABIconSize: Dp,
@@ -26,5 +27,6 @@ data class CustomLayoutSize(
     val dialogIcon: Dp,
     val basketTab: Dp,
     val tabIcon: Dp,
-    val tabRowBorder: Dp
+    val tabRowBorder: Dp,
+    val basketCheckBoxSize: Dp,
 )

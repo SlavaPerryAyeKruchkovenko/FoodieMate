@@ -91,7 +91,7 @@ fun FoodieMateTheme(
     val layoutSize = CustomLayoutSize(
         mediumIconSize = 24.dp,
         smallIconSize = 18.dp,
-        productImageSize = 96.dp,
+        productCardSize = 96.dp,
         productTextSize = 58.dp,
         navigationBottomBarHeight = 76.dp,
         addFABSize = 56.dp,
@@ -110,7 +110,9 @@ fun FoodieMateTheme(
         dialogIcon = 18.dp,
         basketTab = 30.dp,
         tabIcon = 20.dp,
-        tabRowBorder = 2.dp
+        tabRowBorder = 2.dp,
+        basketProductImageSize = 64.dp,
+        basketCheckBoxSize = 56.dp
     )
     val layoutPadding = CustomLayoutPadding(
         smallPadding = 18.dp,
@@ -118,7 +120,7 @@ fun FoodieMateTheme(
         largePadding = 36.dp,
         cardPadding = 8.dp,
         cardTextPadding = 4.dp,
-        cardTextBoxPadding = 4.dp,
+        productCardDeviderPadding = 4.dp,
         endCardTextPadding = 28.dp,
         smallIconPadding = 4.dp,
         mediumIconPadding = 3.dp,//useless

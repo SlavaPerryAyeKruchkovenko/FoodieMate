@@ -34,7 +34,7 @@ fun BasketViewDisplay(
             BasketProductList(
                 items = items,
                 editableProduct = editableProduct,
-                selectProduct = selectProduct,
+                onSelectProduct = selectProduct,
                 editProductCount = editProductCount
             )
         }

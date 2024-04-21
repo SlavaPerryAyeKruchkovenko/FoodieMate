@@ -1,4 +1,4 @@
-package com.example.foodiemate.ui.screens.fridge.component
+package com.example.foodiemate.ui.theme.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -14,13 +14,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
+import com.example.foodiemate.datasource.presentationModels.models.CountedProduct
 import com.example.foodiemate.network.Mock.mockFridgeProduct
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 import com.example.foodiemate.utils.ProductUtils.getProductCountTitle
 
 @Composable
-fun ProductUnit(product: FridgeProduct, modifier: Modifier = Modifier) {
+fun <T : CountedProduct> ProductUnit(product: T, modifier: Modifier = Modifier) {
     val productCount = getProductCountTitle(product.count, product.product.unit)
     Row(
         modifier = Modifier

@@ -21,7 +21,7 @@ import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 fun BasketProductList(
     items: List<BasketProduct>,
     editableProduct: MutableState<BasketProduct?>,
-    selectProduct: (product: BasketProduct) -> Unit,
+    onSelectProduct: (product: BasketProduct, value: Boolean) -> Unit,
     editProductCount: (product: BasketProduct, value: Number, unit: UnitOfMeasure) -> Unit
 ) {
     LazyVerticalGrid(
@@ -34,8 +34,16 @@ fun BasketProductList(
     ) {
         items(items.mapIndexed { i: Int, product: BasketProduct ->
             IndexObject(i, product)
-        }) { (index, product) ->
-
+        }) { (_, product) ->
+            val isEdit = editableProduct.value != null && editableProduct.value == product
+            BasketProductCard(product = product, isEdit = isEdit, onEditProduct = { value, unit ->
+                editProductCount(product, value, unit)
+            }, onEnableEditProduct = {
+                editableProduct.value = product
+            }, onDisableEditProduct = {
+                editableProduct.value = null
+            }, onSelect = onSelectProduct
+            )
         }
     }
 }
@@ -46,5 +54,5 @@ fun BasketProductListPreview() {
     val editableProduct: MutableState<BasketProduct?> = remember {
         mutableStateOf(Mock.mockBasketProduct().first())
     }
-    BasketProductList(Mock.mockBasketProduct(), editableProduct, { _ -> }, { _, _, _ -> })
+    BasketProductList(Mock.mockBasketProduct(), editableProduct, { _, _ -> }, { _, _, _ -> })
 }

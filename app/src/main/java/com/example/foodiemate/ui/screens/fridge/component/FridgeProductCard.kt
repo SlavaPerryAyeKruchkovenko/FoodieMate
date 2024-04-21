@@ -22,6 +22,8 @@ import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
+import com.example.foodiemate.ui.theme.component.ProductUnit
+import com.example.foodiemate.ui.theme.component.ProductUnitEditor
 import com.example.foodiemate.ui.theme.component.UnitProductView
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
@@ -33,10 +35,10 @@ fun FridgeProductView(
     onEditProduct: (newValue: Number, newUnit: UnitOfMeasure) -> Unit,
     onDisableEditProduct: () -> Unit
 ) {
-    val cardSize = CustomTheme.layoutSize.productImageSize
+    val cardSize = CustomTheme.layoutSize.productCardSize
     val textSizeBox = CustomTheme.layoutSize.productTextSize
     val cardTextPadding = CustomTheme.layoutPadding.cardTextPadding
-    UnitProductView(product) { scope, productCount, unit ->
+    UnitProductView(product) { _, productCount, unit ->
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -46,7 +48,7 @@ fun FridgeProductView(
                 )
         ) {
             Image(
-                modifier = Modifier.size(CustomTheme.layoutSize.productImageSize),
+                modifier = Modifier.size(cardSize),
                 painter = painterResource(id = R.drawable.cheese),
                 contentDescription = stringResource(R.string.product_image),
                 contentScale = ContentScale.Fit,
@@ -54,7 +56,7 @@ fun FridgeProductView(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = CustomTheme.layoutPadding.cardTextBoxPadding)
+                    .padding(start = CustomTheme.layoutPadding.productCardDeviderPadding)
             ) {
                 FridgeProductCardView(
                     height = textSizeBox,

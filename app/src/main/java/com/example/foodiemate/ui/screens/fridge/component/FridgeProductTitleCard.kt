@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.foodiemate.R
+import com.example.foodiemate.ui.theme.component.ProductIcon
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
@@ -62,9 +63,7 @@ fun FridgeProductCardView(
             text = productName,
         )
         if (isEdit) {
-            ProductIcon(Icons.TwoTone.Check,
-                R.string.accept,
-                CustomTheme.colors.acceptColor,
+            ProductIcon(
                 Modifier
                     .constrainAs(comp2) {
                         top.linkTo(parent.top)
@@ -72,11 +71,14 @@ fun FridgeProductCardView(
                     }
                     .clickable {
                         onDisableEditProduct()
-                    })
+                    },
+                Icons.TwoTone.Check,
+                R.string.accept,
+                CustomTheme.colors.acceptColor,
+                CustomTheme.layoutSize.mediumIconSize
+            )
         } else {
-            ProductIcon(Icons.Rounded.Edit,
-                R.string.edit_product,
-                CustomTheme.colors.editProduct,
+            ProductIcon(
                 Modifier
                     .constrainAs(comp2) {
                         top.linkTo(parent.top)
@@ -84,7 +86,12 @@ fun FridgeProductCardView(
                     }
                     .clickable {
                         onEnableEditProduct()
-                    })
+                    },
+                Icons.Rounded.Edit,
+                R.string.edit_product,
+                CustomTheme.colors.editProduct,
+                CustomTheme.layoutSize.mediumIconSize
+            )
         }
     }
 }

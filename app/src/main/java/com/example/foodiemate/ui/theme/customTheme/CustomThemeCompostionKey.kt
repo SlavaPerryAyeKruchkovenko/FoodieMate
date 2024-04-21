@@ -58,7 +58,7 @@ val LocalCustomLayoutSize = staticCompositionLocalOf {
     CustomLayoutSize(
         mediumIconSize = Dp.Unspecified,
         smallIconSize = Dp.Unspecified,
-        productImageSize = Dp.Unspecified,
+        productCardSize = Dp.Unspecified,
         productTextSize = Dp.Unspecified,
         navigationBottomBarHeight = Dp.Unspecified,
         addFABSize = Dp.Unspecified,
@@ -77,7 +77,9 @@ val LocalCustomLayoutSize = staticCompositionLocalOf {
         dialogIcon = Dp.Unspecified,
         basketTab = Dp.Unspecified,
         tabIcon = Dp.Unspecified,
-        tabRowBorder = Dp.Unspecified
+        tabRowBorder = Dp.Unspecified,
+        basketProductImageSize = Dp.Unspecified,
+        basketCheckBoxSize = Dp.Unspecified
     )
 }
 val LocalCustomLayoutPadding = staticCompositionLocalOf {
@@ -87,7 +89,7 @@ val LocalCustomLayoutPadding = staticCompositionLocalOf {
         largePadding = Dp.Unspecified,
         cardPadding = Dp.Unspecified,
         cardTextPadding = Dp.Unspecified,
-        cardTextBoxPadding = Dp.Unspecified,
+        productCardDeviderPadding = Dp.Unspecified,
         endCardTextPadding = Dp.Unspecified,
         smallIconPadding = Dp.Unspecified,
         mediumIconPadding = Dp.Unspecified,

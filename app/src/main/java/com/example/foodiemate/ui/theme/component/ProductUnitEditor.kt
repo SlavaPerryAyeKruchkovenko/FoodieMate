@@ -1,4 +1,4 @@
-package com.example.foodiemate.ui.screens.fridge.component
+package com.example.foodiemate.ui.theme.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
