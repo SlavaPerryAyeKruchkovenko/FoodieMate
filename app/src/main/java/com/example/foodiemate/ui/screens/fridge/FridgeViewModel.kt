@@ -57,7 +57,7 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
             )
 
             is FridgeEvent.RemoveProduct -> removeProduct(state, event.product)
-            is FridgeEvent.SearchProducts -> searchProducts(event.query, state)
+            is FridgeEvent.SearchProducts -> searchProducts(event.query)
             else -> {}
         }
     }
@@ -136,7 +136,7 @@ class FridgeViewModel @Inject constructor() : ViewModel(), EventHandler<FridgeEv
         product.count = isInt(productCount, { productCount.toInt() }, { productCount })
     }
 
-    private fun searchProducts(query: String, state: FridgeViewState.Display) {
+    private fun searchProducts(query: String) {
         _searchText.value = query.lowercase()
     }
 }
