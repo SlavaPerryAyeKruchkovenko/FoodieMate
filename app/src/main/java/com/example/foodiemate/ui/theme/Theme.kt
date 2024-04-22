@@ -3,7 +3,6 @@ package com.example.foodiemate.ui.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodiemate.ui.theme.customTheme.CustomColorsPalette
@@ -25,11 +24,9 @@ private val darkColorScheme = CustomColorsPalette(
     bottomNavigationBackground = Purple900,
     bottomNavigationText = Purple500,
     bottomNavigationTextSelected = White,
-    navigationBarIndicatorColor = Blue900,
     addFABBackground = Purple900,
     addFABIconTint = White,
     removeProductBackground = Red,
-    editProduct = Black,
     reduceColor = Red,
     addColor = Green700,
     acceptColor = Green700,
@@ -51,17 +48,15 @@ private val lightColorScheme = CustomColorsPalette(
     bottomNavigationBackground = WhiteSmoke,
     bottomNavigationText = Black,
     bottomNavigationTextSelected = Green700,
-    navigationBarIndicatorColor = Color.Red,//useless
     addFABBackground = Green500,
     addFABIconTint = White,
     removeProductBackground = DimRed,
-    editProduct = Black,
     reduceColor = Red,
     addColor = Green700,
     acceptColor = Green700,
     darkScreen = Dark,
     FABBoxBackground = DimGreen,
-    editorBackground = Green500,
+    editorBackground = White,
     editorIconBackground = TransGray,
     dialogBackground = LightGray,
     dialogButtonColor = Green700,

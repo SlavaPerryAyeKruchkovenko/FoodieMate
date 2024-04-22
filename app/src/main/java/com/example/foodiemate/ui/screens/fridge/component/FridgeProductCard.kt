@@ -22,6 +22,7 @@ import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.models.FridgeProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
+import com.example.foodiemate.ui.theme.FoodieMateTheme
 import com.example.foodiemate.ui.theme.component.ProductUnit
 import com.example.foodiemate.ui.theme.component.ProductUnitEditor
 import com.example.foodiemate.ui.theme.component.UnitProductView
@@ -97,11 +98,13 @@ fun FridgeProductView(
 @Preview
 @Composable
 fun FridgeProductViewPreview() {
-    val mockProducts = Mock.mockFridgeProduct()
-    var isEdit by remember {
-        mutableStateOf(false)
+    FoodieMateTheme {
+        val mockProducts = Mock.mockFridgeProduct()
+        var isEdit by remember {
+            mutableStateOf(false)
+        }
+        FridgeProductView(mockProducts.first(), isEdit, {
+            isEdit = true
+        }, { _, _ -> }, {})
     }
-    FridgeProductView(mockProducts.first(), isEdit, {
-        isEdit = true
-    }, { _, _ -> }, {})
 }

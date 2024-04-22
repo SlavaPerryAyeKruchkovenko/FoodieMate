@@ -23,9 +23,11 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
+import com.example.foodiemate.ui.theme.FoodieMateTheme
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 import com.example.foodiemate.utils.NumberUtils.isInt
 
@@ -118,5 +120,13 @@ fun ProductUnitEditor(
                     }
                 }
                 .fillMaxHeight(1f))
+    }
+}
+
+@Preview
+@Composable
+fun ProductUnitEditorPreview() {
+    FoodieMateTheme {
+        ProductUnitEditor(12, { _ -> }, UnitOfMeasure.Gram)
     }
 }

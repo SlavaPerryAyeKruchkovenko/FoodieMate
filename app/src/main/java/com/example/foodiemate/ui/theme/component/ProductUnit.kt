@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodiemate.datasource.presentationModels.models.CountedProduct
 import com.example.foodiemate.network.Mock.mockFridgeProduct
+import com.example.foodiemate.ui.theme.FoodieMateTheme
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 import com.example.foodiemate.utils.ProductUtils.getProductCountTitle
 
@@ -49,5 +50,7 @@ fun <T : CountedProduct> ProductUnit(product: T, modifier: Modifier = Modifier) 
 @Preview
 @Composable
 fun ProductUnitPreview() {
-    ProductUnit(mockFridgeProduct().first())
+    FoodieMateTheme {
+        ProductUnit(mockFridgeProduct().first())
+    }
 }

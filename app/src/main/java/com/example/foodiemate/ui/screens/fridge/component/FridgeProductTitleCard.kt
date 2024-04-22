@@ -89,7 +89,7 @@ fun FridgeProductCardView(
                     },
                 Icons.Rounded.Edit,
                 R.string.edit_product,
-                CustomTheme.colors.editProduct,
+                CustomTheme.colors.primaryText,
                 CustomTheme.layoutSize.mediumIconSize
             )
         }
