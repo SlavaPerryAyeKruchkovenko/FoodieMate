@@ -21,7 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -149,10 +148,10 @@ fun BasketProductCard(
                         CustomTheme.layoutSize.mediumIconSize
                     )
                 }
-                CustomCheckBox(
-                    modifier = Modifier
-                        .size(CustomTheme.layoutSize.basketCheckBoxSize)
-                        .background(CustomTheme.colors.primaryBackground,RoundedCornerShape(10.dp)),
+                CustomCheckBox(modifier = Modifier
+                    .size(CustomTheme.layoutSize.basketCheckBoxSize)
+                    .background(CustomTheme.colors.editorBackground, RoundedCornerShape(10.dp))
+                    .padding(3.dp),
                     checked = product.selected,
                     onCheckedChange = {
                         onSelect(product, it)
