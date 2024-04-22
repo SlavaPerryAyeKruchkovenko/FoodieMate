@@ -12,17 +12,22 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.foodiemate.R
 import com.example.foodiemate.datasource.presentationModels.models.BasketProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
+import com.example.foodiemate.network.Mock
+import com.example.foodiemate.ui.theme.FoodieMateTheme
 import com.example.foodiemate.ui.theme.component.ProductUnit
 import com.example.foodiemate.ui.theme.component.ProductUnitEditor
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
@@ -52,8 +57,7 @@ fun BasketCardDataColumn(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(imageSize)
-                    .padding(start = dividerPadding),
-                verticalArrangement = Arrangement.SpaceBetween
+                    .padding(start = dividerPadding), verticalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
                     modifier = Modifier.fillMaxWidth(),
@@ -78,8 +82,7 @@ fun BasketCardDataColumn(
         val unitModifier = Modifier
             .fillMaxWidth()
             .heightIn(
-                CustomTheme.layoutSize.productEditorSize,
-                CustomTheme.layoutSize.productEditorSize
+                CustomTheme.layoutSize.productEditorSize, CustomTheme.layoutSize.productEditorSize
             )
             .padding(top = 6.dp)
         if (isEdit) {
@@ -94,5 +97,25 @@ fun BasketCardDataColumn(
                 product, modifier = unitModifier
             )
         }
+    }
+}
+
+@Preview
+@Composable
+fun BasketCardDataColumnPreview() {
+    FoodieMateTheme {
+        val product = Mock.mockBasketProduct().first()
+        val productCount: MutableState<Number> = remember {
+            mutableStateOf(12)
+        }
+        BasketCardDataColumn(
+            imageSize = 20.dp,
+            dividerPadding = 10.dp,
+            product = product,
+            isEdit = false,
+            productCount = productCount,
+            onEditProduct = { _, _ -> },
+            unit = UnitOfMeasure.Gram
+        )
     }
 }
