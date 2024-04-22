@@ -22,6 +22,7 @@ import com.example.foodiemate.utils.ProductUtils
 @Composable
 internal fun <T : CountedProduct> UnitProductView(
     product: T,
+    modifier: Modifier = Modifier,
     content: @Composable (scope: ColumnScope, productCount: MutableState<Number>, unit: UnitOfMeasure) -> Unit
 ) {
     var unit by remember { mutableStateOf(product.product.unit) }
@@ -38,7 +39,8 @@ internal fun <T : CountedProduct> UnitProductView(
     }
     Card(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .then(modifier),
         shape = RoundedCornerShape(CustomTheme.shapeRadius.card),
         colors = CardDefaults.cardColors(
             containerColor = CustomTheme.colors.secondaryBackground,

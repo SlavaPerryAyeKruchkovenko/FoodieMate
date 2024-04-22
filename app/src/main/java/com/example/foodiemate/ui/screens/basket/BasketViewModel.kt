@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.foodiemate.base.EventHandler
+import com.example.foodiemate.datasource.presentationModels.models.BasketProduct
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.screens.basket.model.BasketEvent
 import com.example.foodiemate.ui.screens.basket.model.BasketType
@@ -51,8 +52,8 @@ class BasketViewModel @Inject constructor() : ViewModel(), EventHandler<BasketEv
 
     private fun reduce(event: BasketEvent, state: BasketViewState.Display) {
         when (event) {
-            is BasketEvent.ChangeBasketType -> changeBasketType()
-            is BasketEvent.SelectProduct -> selectProduct()
+            is BasketEvent.ChangeBasketType -> changeBasketType(event.type)
+            is BasketEvent.SelectProduct -> selectProduct(event.product, event.isSelect)
             is BasketEvent.SearchProducts -> searchProducts(event.query)
             is BasketEvent.RemoveProductFromBasket -> removeProduct()
             else -> {}
@@ -71,21 +72,23 @@ class BasketViewModel @Inject constructor() : ViewModel(), EventHandler<BasketEv
             val products = MutableStateFlow(Mock.mockBasketProduct())
             val displayProducts = searchText.debounce(1000L).onEach { isSearching.update { true } }
                 .combine(products) { text, items ->
-                    val typeItems = when (_basketType.value) {
-                        BasketType.PersonalBasket -> items.filter { x -> x.family == null }
-                        BasketType.FamilyBasket -> items.filter { x -> x.family != null }
-                    }
                     if (text.isBlank()) {
-                        typeItems
+                        items
                     } else {
                         delay(1000L)
-                        val nameSearched = typeItems.filter {
+                        val nameSearched = items.filter {
                             it.product.name.lowercase().contains(text)
                         }
-                        val countSearch = typeItems.filter {
+                        val countSearch = items.filter {
                             it.count.toString().contains(text) && !nameSearched.contains(it)
                         }
                         nameSearched + countSearch
+                    }
+                }.combine(basketType) { items, type ->
+                    when (type) {
+                        BasketType.PersonalBasket -> items.filter { x -> x.family == null }
+                        BasketType.FamilyBasket -> items.filter { x -> x.family != null }
+                        else -> listOf()
                     }
                 }.onEach { isSearching.update { false } }.stateIn(
                     viewModelScope, SharingStarted.WhileSubscribed(1000), products.value
@@ -96,12 +99,12 @@ class BasketViewModel @Inject constructor() : ViewModel(), EventHandler<BasketEv
         }
     }
 
-    private fun changeBasketType() {
-
+    private fun changeBasketType(type: BasketType) {
+        _basketType.value = type
     }
 
-    private fun selectProduct() {
-
+    private fun selectProduct(product: BasketProduct, isSelect: Boolean) {
+        product.selected = isSelect
     }
 
     private fun searchProducts(query: String) {

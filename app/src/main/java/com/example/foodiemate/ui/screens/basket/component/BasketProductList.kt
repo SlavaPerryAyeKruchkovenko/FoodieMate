@@ -16,6 +16,7 @@ import com.example.foodiemate.datasource.presentationModels.models.BasketProduct
 import com.example.foodiemate.datasource.presentationModels.models.UnitOfMeasure
 import com.example.foodiemate.network.Mock
 import com.example.foodiemate.ui.theme.FoodieMateTheme
+import com.example.foodiemate.ui.theme.customTheme.CustomModifier.paddingForCard
 import com.example.foodiemate.ui.theme.customTheme.CustomTheme
 
 @Composable
@@ -25,6 +26,10 @@ fun BasketProductList(
     onSelectProduct: (product: BasketProduct, value: Boolean) -> Unit,
     editProductCount: (product: BasketProduct, value: Number, unit: UnitOfMeasure) -> Unit
 ) {
+    val lastItemMargin =
+        CustomTheme.layoutSize.addFABSize + CustomTheme.layoutPadding.addFABPadding * 2
+    val firstItemMargin = CustomTheme.layoutPadding.firstProductMarginTop
+    val itemMargin = CustomTheme.layoutPadding.productCardMargin
     LazyVerticalGrid(
         columns = GridCells.Fixed(1), modifier = Modifier
             .fillMaxSize()
@@ -35,15 +40,24 @@ fun BasketProductList(
     ) {
         items(items.mapIndexed { i: Int, product: BasketProduct ->
             IndexObject(i, product)
-        }) { (_, product) ->
+        }) { (index, product) ->
             val isEdit = editableProduct.value != null && editableProduct.value == product
-            BasketProductCard(product = product, isEdit = isEdit, onEditProduct = { value, unit ->
-                editProductCount(product, value, unit)
-            }, onEnableEditProduct = {
-                editableProduct.value = product
-            }, onDisableEditProduct = {
-                editableProduct.value = null
-            }, onSelect = onSelectProduct
+            BasketProductCard(
+                modifier = Modifier.paddingForCard(
+                    index, items.size, firstItemMargin, lastItemMargin, itemMargin
+                ),
+                product = product,
+                isEdit = isEdit,
+                onEditProduct = { value, unit ->
+                    editProductCount(product, value, unit)
+                },
+                onEnableEditProduct = {
+                    editableProduct.value = product
+                },
+                onDisableEditProduct = {
+                    editableProduct.value = null
+                },
+                onSelect = onSelectProduct
             )
         }
     }

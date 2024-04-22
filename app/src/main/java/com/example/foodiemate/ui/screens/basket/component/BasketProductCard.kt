@@ -24,9 +24,10 @@ fun BasketProductCard(
     onEditProduct: (newValue: Number, newUnit: UnitOfMeasure) -> Unit,
     onEnableEditProduct: () -> Unit,
     onDisableEditProduct: () -> Unit,
-    onSelect: (product: BasketProduct, isSelect: Boolean) -> Unit
+    onSelect: (product: BasketProduct, isSelect: Boolean) -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    UnitProductView(product) { _, productCount, unit ->
+    UnitProductView(product = product, modifier = modifier) { _, productCount, unit ->
         val cardSize = CustomTheme.layoutSize.productCardSize
         val imageSize = CustomTheme.layoutSize.basketProductImageSize
         val dividerPadding = CustomTheme.layoutPadding.productCardDividerPadding

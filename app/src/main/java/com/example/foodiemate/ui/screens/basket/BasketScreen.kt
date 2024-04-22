@@ -58,14 +58,12 @@ fun BasketScreen(navController: NavHostController, viewModel: BasketViewModel) {
                 when (val state = viewState.value) {
                     is BasketViewState.Loading -> BasketViewLoading()
                     is BasketViewState.NoItems -> BasketViewNoItems()
-                    is BasketViewState.Display -> BasketViewDisplay(
-                        items = state.displayItems.collectAsState().value,
+                    is BasketViewState.Display -> BasketViewDisplay(items = state.displayItems.collectAsState().value,
                         isSearching = state.isSearch.collectAsState().value,
                         onSelectProduct = { product, value ->
-
+                            viewModel.obtainEvent(BasketEvent.SelectProduct(product, value))
                         },
-                        editProductCount = { _, _, _ -> }
-                    )
+                        editProductCount = { _, _, _ -> })
 
                     else -> throw NotImplementedError("Unexpected daily state")
                 }
